@@ -1,0 +1,34 @@
+# ===== IDE / editores =====
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== LaTeX / compilados de documentación =====
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+# ===== Temporales =====
+*.tmp
+*.bak
+~$*
+
+# ===== Office locks =====
+~$*.docx
+~$*.xlsx
+~$*.pptx

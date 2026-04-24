@@ -1,0 +1,11 @@
+# Apuntes — Idea de Proyecto y Descripción del Problema
+
+> Borrador inicial de trabajo. Un párrafo por punto. Se formalizará luego al integrarse al anteproyecto.
+
+## Idea de Proyecto
+
+Se propone el desarrollo de una plataforma de software que tome como entrada grabaciones de partidos de rugby en video estándar y produzca, de manera automática, una catalogación de los eventos relevantes del encuentro —formaciones fijas, infracciones, gestos arbitrales— entregando al cuerpo técnico los clips segmentados y listos para su análisis, sin requerir ningún tipo de instrumentación física del entorno de juego. La propuesta apunta a ofrecer a los clubes amateurs una alternativa basada exclusivamente en software que reduzca drásticamente el tiempo destinado a tareas mecánicas de localización y recorte, y les permita recuperar valor analítico de su propio archivo de video histórico. El proyecto toma el rugby como caso de validación por su complejidad táctica y por la disponibilidad de un entorno real de prueba, pero se concibe como una solución orientada al deporte amateur en general y extensible a otras disciplinas que requieran reconocer eventos a partir de señales de video.
+
+## Descripción del Problema
+
+El análisis de video se ha consolidado como una pieza central de la preparación táctica en el rugby contemporáneo, pero su práctica en clubes amateurs sigue dependiendo de un procedimiento manual en el que un analista recorre la grabación completa del partido, identifica visualmente los eventos de interés y los recorta en clips para su estudio posterior, con un costo en horas desproporcionado respecto de la duración del encuentro. Las herramientas comerciales que automatizan esta tarea se apoyan en hardware especializado —chips en la pelota, dispositivos GPS en los jugadores, cámaras instrumentadas— cuyo costo y logística de despliegue resultan inviables para el deporte amateur, y que además no pueden aplicarse sobre el archivo histórico de grabaciones de los clubes. En consecuencia, el análisis asistido por tecnología queda reservado al rugby profesional y se configura una brecha de acceso entre quienes disponen de recursos para instrumentar el entorno de juego y el resto del ecosistema deportivo, que cuenta con el video pero no con herramientas de software accesibles para explotarlo.
