@@ -56,7 +56,15 @@ _A desarrollar._
 
 ## 8. Alcance
 
-_A desarrollar._
+Este apartado delimita qué aspectos del problema cubre el Trabajo Final, manteniendo el esfuerzo acotado a un objetivo demostrable.
+
+- **Dominio.** Sistema diseñado, implementado y validado exclusivamente sobre el rugby, con grabaciones reales del ámbito amateur regional en formato estándar. La extensión a otros deportes o dominios queda fuera del alcance.
+- **Eventos.** El *line-out* es el evento inicial y único de validación obligatoria, sobre el que se construye la cadena completa de reconocimiento. El *scrum* y el *ruck* quedan especificados como extensión, no exigibles. Los demás eventos del rugby quedan fuera del alcance.
+- **Incluido.** Detección y seguimiento de jugadores y balón; reconocimiento y localización temporal del line-out; registro indexado y generación automática de clips; evaluación con métricas objetivas (mAP, precisión, exhaustividad y F1-score).
+- **Excluido.** Instrumentación física del entorno; procesamiento en tiempo real (el análisis es *offline*); análisis táctico interpretativo automático, estadísticas avanzadas y reconocimiento del marcador; interfaz de nivel comercial y despliegue en producción; comercialización, soporte y mantenimiento.
+- **Supuestos.** Disponibilidad de grabaciones con calidad/encuadre suficientes, colaboración de un referente técnico para validar el etiquetado, y recursos de cómputo estándar. Los volúmenes y umbrales son metas de referencia preliminares.
+
+> El desarrollo completo de este apartado se encuentra en [`07_alcance.md`](07_alcance.md).
 
 ---
 
