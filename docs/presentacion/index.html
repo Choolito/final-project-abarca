@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ojo de Halcón Amateur — Anteproyecto TF</title>
+<style>
+  :root{
+    --bg:#0d1b2a; --bg2:#1b263b; --accent:#e07a26; --accent2:#4cc9f0;
+    --text:#e8eef4; --muted:#9fb3c8; --card:#16263a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:"Segoe UI",system-ui,-apple-system,sans-serif;
+    background:var(--bg); color:var(--text); overflow:hidden;
+  }
+  .deck{position:relative;width:100vw;height:100vh}
+  .slide{
+    position:absolute;inset:0;display:none;flex-direction:column;
+    justify-content:center;padding:6vh 9vw;
+    background:radial-gradient(120% 120% at 80% 0%,var(--bg2) 0%,var(--bg) 60%);
+    animation:fade .45s ease;
+  }
+  .slide.active{display:flex}
+  @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .kicker{color:var(--accent);font-weight:700;letter-spacing:.18em;
+    text-transform:uppercase;font-size:clamp(.7rem,1.2vw,.95rem);margin-bottom:1.2rem}
+  h1{font-size:clamp(2rem,6vw,4.2rem);line-height:1.05;font-weight:800}
+  h2{font-size:clamp(1.6rem,4.2vw,3rem);line-height:1.1;font-weight:800;margin-bottom:2.2rem}
+  h2 .hl{color:var(--accent)}
+  .sub{color:var(--muted);font-size:clamp(1rem,2vw,1.4rem);margin-top:1.6rem;max-width:60ch}
+  ul{list-style:none;display:flex;flex-direction:column;gap:1.1rem;max-width:65ch}
+  li{display:flex;align-items:flex-start;gap:1rem;font-size:clamp(1.05rem,2.1vw,1.55rem)}
+  li .ic{font-size:1.4em;line-height:1;flex:none}
+  .big{font-size:clamp(4rem,16vw,12rem);font-weight:900;color:var(--accent);line-height:1}
+  .meta{margin-top:2.4rem;color:var(--muted);font-size:clamp(.95rem,1.8vw,1.25rem);line-height:1.7}
+  .layers{display:flex;flex-direction:column;gap:1rem;max-width:60ch}
+  .layer{background:var(--card);border-left:5px solid var(--accent);
+    border-radius:10px;padding:1.1rem 1.4rem}
+  .layer b{color:var(--accent2);display:block;font-size:1.15em;margin-bottom:.2rem}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;max-width:75ch}
+  .cols h3{font-size:1.2rem;margin-bottom:1rem;letter-spacing:.05em}
+  .cols .yes h3{color:#4ade80}.cols .no h3{color:#f87171}
+  .badge{display:inline-block;background:var(--card);border:1px solid #2a3c52;
+    border-radius:999px;padding:.45rem 1rem;font-size:1.05rem;margin:.3rem .3rem 0 0}
+  .badge b{color:var(--accent)}
+  .provisorio{position:absolute;top:5vh;right:6vw;color:var(--muted);
+    font-size:.8rem;border:1px dashed #3a4f6b;border-radius:6px;padding:.3rem .6rem}
+  /* HUD */
+  .hud{position:fixed;bottom:2.5vh;left:0;right:0;display:flex;
+    justify-content:center;align-items:center;gap:1.4rem;z-index:10}
+  .hud button{background:var(--card);color:var(--text);border:1px solid #2a3c52;
+    border-radius:8px;width:42px;height:42px;font-size:1.2rem;cursor:pointer}
+  .hud button:hover{border-color:var(--accent)}
+  .counter{color:var(--muted);font-size:.95rem;min-width:48px;text-align:center}
+  .bar{position:fixed;top:0;left:0;height:4px;background:var(--accent);
+    transition:width .35s ease;z-index:11}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide">
+    <div class="provisorio">Título provisorio</div>
+    <div class="kicker">Trabajo Final · Ingeniería en Informática · UCSE DAR</div>
+    <h1>Ojo de Halcón<br>Amateur</h1>
+    <p class="sub">Reconocimiento automático de eventos de rugby en video.</p>
+    <div class="meta">Juan Ignacio Abarca · Fase de Anteproyecto</div>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="kicker">El problema</div>
+    <h2>Analizar video <span class="hl">a mano</span> cuesta demasiado</h2>
+    <div style="display:flex;align-items:center;gap:4vw;flex-wrap:wrap">
+      <div class="big">4:1</div>
+      <ul>
+        <li><span class="ic">⏱️</span> +4 horas de análisis por 1 hora de partido</li>
+        <li><span class="ic">👤</span> Depende de un analista experto y disponible</li>
+        <li><span class="ic">🔁</span> Manual, repetitivo y poco reproducible</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="kicker">La brecha</div>
+    <h2>Lo que existe <span class="hl">no sirve</span> para el club amateur</h2>
+    <ul>
+      <li><span class="ic">💰</span> El software comercial es caro</li>
+      <li><span class="ic">📡</span> Requiere hardware: sensores en el balón, GPS, cámaras especiales</li>
+      <li><span class="ic">🗄️</span> No funciona sobre el archivo histórico del club</li>
+    </ul>
+    <div class="meta">Caso testigo: <b style="color:var(--accent)">CRAR</b> — Círculo Rafaelino de Rugby</div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="kicker">La idea</div>
+    <h2>Una plataforma que <span class="hl">solo necesita el video</span></h2>
+    <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;font-size:clamp(1.1rem,2.4vw,1.8rem)">
+      <span class="badge">🎥 Video estándar</span>
+      <span style="color:var(--accent);font-size:1.6em">➜</span>
+      <span class="badge">⚙️ Sistema</span>
+      <span style="color:var(--accent);font-size:1.6em">➜</span>
+      <span class="badge">🏷️ Eventos + ✂️ Clips</span>
+    </div>
+    <p class="sub">Sin hardware especial. Funciona sobre el video que el club ya tiene.</p>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="kicker">Cómo funciona</div>
+    <h2>Tres <span class="hl">capas</span></h2>
+    <div class="layers">
+      <div class="layer"><b>👁️ Percepción</b>Detecta y sigue jugadores y balón</div>
+      <div class="layer"><b>🧠 Semántica</b>Reconoce la formación (line-out)</div>
+      <div class="layer"><b>🏷️ Eventos</b>Marca, registra y corta el clip</div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="kicker">Objetivo concreto</div>
+    <h2>Detectar el <span class="hl">line-out</span></h2>
+    <ul>
+      <li><span class="ic">📍</span> Ubicarlo en el tiempo de la grabación</li>
+      <li><span class="ic">✂️</span> Generar el clip (~10 s antes y después)</li>
+      <li><span class="ic">➕</span> <i>Scrum</i> y <i>ruck</i> quedan como extensión futura</li>
+    </ul>
+    <p class="sub">El line-out es el evento inicial sobre el que se valida toda la cadena.</p>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="kicker">Alcance y metas</div>
+    <h2>Acotado y <span class="hl">medible</span></h2>
+    <div class="cols">
+      <div class="yes">
+        <h3>✅ Incluye</h3>
+        <ul style="gap:.7rem">
+          <li style="font-size:1.1rem">Solo software · análisis offline</li>
+          <li style="font-size:1.1rem">≥200 clips de line-out etiquetados</li>
+          <li style="font-size:1.1rem">Detección mAP ≥ 0,70 · Evento F1 ≥ 0,70</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>❌ No incluye</h3>
+        <ul style="gap:.7rem">
+          <li style="font-size:1.1rem">Tiempo real</li>
+          <li style="font-size:1.1rem">Otros eventos del rugby</li>
+          <li style="font-size:1.1rem">Interfaz comercial</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="kicker">Cierre</div>
+    <h2>Democratizar el análisis táctico<br>para el <span class="hl">rugby amateur</span></h2>
+    <ul>
+      <li><span class="ic">🔧</span> Aporte técnico: arquitectura reutilizable de reconocimiento de eventos</li>
+      <li><span class="ic">🤝</span> Aporte social: herramienta accesible, sin hardware</li>
+      <li><span class="ic">🗓️</span> ~6 meses de desarrollo</li>
+    </ul>
+    <p class="sub" style="color:var(--accent);font-weight:700;font-size:1.6rem">¿Preguntas?</p>
+  </section>
+
+</div>
+
+<div class="hud">
+  <button id="prev" aria-label="Anterior">‹</button>
+  <span class="counter"><span id="cur">1</span> / <span id="tot">8</span></span>
+  <button id="next" aria-label="Siguiente">›</button>
+</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  let i = 0;
+  const bar = document.getElementById('bar');
+  const cur = document.getElementById('cur');
+  document.getElementById('tot').textContent = slides.length;
+
+  function show(n){
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+    cur.textContent = i + 1;
+    bar.style.width = ((i + 1) / slides.length * 100) + '%';
+  }
+  function next(){ show(i + 1); }
+  function prev(){ show(i - 1); }
+
+  document.getElementById('next').onclick = next;
+  document.getElementById('prev').onclick = prev;
+  document.addEventListener('keydown', e => {
+    if (['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)) { e.preventDefault(); next(); }
+    if (['ArrowLeft','ArrowUp','PageUp'].includes(e.key)) { e.preventDefault(); prev(); }
+    if (e.key === 'Home') show(0);
+    if (e.key === 'End') show(slides.length - 1);
+    if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    }
+  });
+  // swipe en mobile
+  let x0 = null;
+  document.addEventListener('touchstart', e => x0 = e.touches[0].clientX, {passive:true});
+  document.addEventListener('touchend', e => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 50) (dx < 0 ? next() : prev());
+    x0 = null;
+  }, {passive:true});
+
+  show(0);
+</script>
+</body>
+</html>
