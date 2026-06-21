@@ -24,7 +24,7 @@ El resultado es una brecha estructural de acceso entre el deporte profesional, c
 
 ---
 
-## 3. Objetivos y Metas
+## 3. Objetivos Generales y Específicos
 
 ### Objetivo General
 

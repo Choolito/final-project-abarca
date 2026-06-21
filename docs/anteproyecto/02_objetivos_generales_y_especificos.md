@@ -1,4 +1,4 @@
-# 02 — Objetivos y Metas
+# 02 — Objetivos Generales y Específicos
 
 > **Reglamento de TF — UCSE DAR, Art. 6b, inciso 2.**
 > Trabajo Final de Carrera — Ingeniería en Informática.
