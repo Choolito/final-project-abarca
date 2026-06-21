@@ -1,0 +1,29 @@
+name: Convención de ramas
+
+# Refuerza el Git Flow del proyecto: las ramas de origen de un PR deben
+# respetar los prefijos permitidos (feature/, fix/, docs/, release/x.y.z).
+on:
+  pull_request:
+    types: [opened, reopened, edited, synchronize]
+
+permissions:
+  contents: read
+
+jobs:
+  validar-nombre:
+    name: Validar nombre de rama
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar prefijo de la rama
+        env:
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          echo "Rama de origen: $BRANCH"
+          if [[ "$BRANCH" =~ ^(feature|fix|docs)/.+ ]] || \
+             [[ "$BRANCH" =~ ^release/[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "✅ Nombre de rama válido."
+          else
+            echo "::error::Nombre de rama inválido: '$BRANCH'."
+            echo "Use uno de: feature/<nombre>, fix/<nombre>, docs/<nombre> o release/x.y.z"
+            exit 1
+          fi
