@@ -22,6 +22,16 @@
     background:radial-gradient(120% 120% at 80% 0%,var(--bg2) 0%,var(--bg) 60%);
     animation:fade .45s ease;
   }
+  /* Líneas de cancha de fondo (SVG embebido, sin dependencias externas) */
+  .slide::before{
+    content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.10;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><g fill='none' stroke='white' stroke-width='2'><rect x='40' y='40' width='1120' height='720'/><line x1='320' y1='40' x2='320' y2='760'/><line x1='600' y1='40' x2='600' y2='760'/><line x1='880' y1='40' x2='880' y2='760'/><line x1='180' y1='40' x2='180' y2='760' stroke-dasharray='10 14'/><line x1='1020' y1='40' x2='1020' y2='760' stroke-dasharray='10 14'/></g></svg>");
+    background-size:cover;background-position:center;
+  }
+  .slide > *{position:relative;z-index:1}
+  /* Pelota de rugby decorativa */
+  .ball{position:absolute;z-index:0;opacity:.85;
+    filter:drop-shadow(0 12px 30px rgba(0,0,0,.45))}
   .slide.active{display:flex}
   @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
   .kicker{color:var(--accent);font-weight:700;letter-spacing:.18em;
@@ -65,6 +75,12 @@
   <!-- 1 -->
   <section class="slide">
     <div class="provisorio">Título provisorio</div>
+    <svg class="ball" style="bottom:-4vh;right:4vw;width:34vw;height:auto" viewBox="0 0 220 130">
+      <ellipse cx="110" cy="65" rx="105" ry="52" fill="#5a3a1e" stroke="#e07a26" stroke-width="3"/>
+      <path d="M30 65 H190" stroke="#f5e9da" stroke-width="3"/>
+      <path d="M95 50 V80 M110 48 V82 M125 50 V80" stroke="#f5e9da" stroke-width="3"/>
+      <ellipse cx="110" cy="65" rx="105" ry="52" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="6"/>
+    </svg>
     <div class="kicker">Trabajo Final · Ingeniería en Informática · UCSE DAR</div>
     <h1>Ojo de Halcón<br>Amateur</h1>
     <p class="sub">Reconocimiento automático de eventos de rugby en video.</p>
@@ -131,6 +147,14 @@
       <li><span class="ic">✂️</span> Generar el clip (~10 s antes y después)</li>
       <li><span class="ic">➕</span> <i>Scrum</i> y <i>ruck</i> quedan como extensión futura</li>
     </ul>
+    <svg class="ball" style="top:8vh;right:5vw;width:30vw;height:auto" viewBox="0 0 300 200" opacity="0.9">
+      <!-- líneas de formación line-out -->
+      <line x1="150" y1="20" x2="150" y2="185" stroke="#4cc9f0" stroke-width="3" stroke-dasharray="6 8"/>
+      <g fill="#e07a26"><circle cx="110" cy="55" r="11"/><circle cx="110" cy="100" r="11"/><circle cx="110" cy="145" r="11"/></g>
+      <g fill="#4cc9f0"><circle cx="190" cy="55" r="11"/><circle cx="190" cy="100" r="11"/><circle cx="190" cy="145" r="11"/></g>
+      <ellipse cx="150" cy="38" rx="13" ry="7" fill="#f5e9da" stroke="#5a3a1e" stroke-width="2"/>
+      <text x="150" y="178" fill="#9fb3c8" font-size="13" text-anchor="middle" font-family="sans-serif">line-out</text>
+    </svg>
     <p class="sub">El line-out es el evento inicial sobre el que se valida toda la cadena.</p>
   </section>
 
@@ -161,6 +185,11 @@
   <!-- 8 -->
   <section class="slide">
     <div class="kicker">Cierre</div>
+    <svg class="ball" style="bottom:-3vh;right:5vw;width:26vw;height:auto" viewBox="0 0 220 130">
+      <ellipse cx="110" cy="65" rx="105" ry="52" fill="#5a3a1e" stroke="#e07a26" stroke-width="3"/>
+      <path d="M30 65 H190" stroke="#f5e9da" stroke-width="3"/>
+      <path d="M95 50 V80 M110 48 V82 M125 50 V80" stroke="#f5e9da" stroke-width="3"/>
+    </svg>
     <h2>Democratizar el análisis táctico<br>para el <span class="hl">rugby amateur</span></h2>
     <ul>
       <li><span class="ic">🔧</span> Aporte técnico: arquitectura reutilizable de reconocimiento de eventos</li>
