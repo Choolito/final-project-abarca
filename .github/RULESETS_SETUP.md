@@ -20,7 +20,7 @@ Configura estos 2 rulesets en: `https://github.com/Choolito/final-project-abarca
 1. ✅ **Require pull requests before merging**
    - NO marcar "Require approvals"
    - Parámetros: `require_pull_request_reviews: false`
-   
+
 2. ✅ **Block force pushes**
 
 3. ✅ **Block deletions**
@@ -79,18 +79,18 @@ docs/cambios          → PR a develop (obligatorio)
 
 ## Resultado final
 
-✅ **main:** Producción  
+✅ **main:** Producción
    - Requiere PR desde release/* (sin aprobación)
    - Protegido contra force-push y eliminación
 
-✅ **develop:** Integración  
+✅ **develop:** Integración
    - Requiere PR desde feature/*, fix/*, docs/* (sin aprobación)
    - Protegido contra force-push y eliminación
 
-✅ **feature/*, fix/*, docs/*:** Ramas de trabajo  
+✅ **feature/*, fix/*, docs/*:** Ramas de trabajo
    - Libre para crear y trabajar
    - Se mergean vía PR a develop
 
-✅ **release/x.y.z:** Ramas de release  
+✅ **release/x.y.z:** Ramas de release
    - Se crean desde develop
    - Se mergean vía PR a main
