@@ -78,7 +78,29 @@ _A desarrollar._
 
 ## 8. Alcance
 
-_A desarrollar._
+Este apartado delimita **qué se va a hacer y qué no se va a hacer** en el Trabajo Final, manteniendo el esfuerzo acotado a un objetivo demostrable.
+
+**Qué se va a hacer:**
+
+- Sistema **exclusivamente de software** sobre grabaciones de rugby en formato de video estándar.
+- Reconocimiento del *line-out* (evento inicial y único de validación obligatoria) y su localización temporal: objetivo central del sistema.
+- Detección y seguimiento de jugadores y balón como **paso intermedio necesario** para identificar el evento (no es un fin en sí mismo).
+- Registro indexado de eventos y **generación automática de clips segmentados**, con una ventana de referencia de **≈10 s antes y 10 s después** del evento.
+- Validación sobre grabaciones reales del ámbito amateur regional con métricas objetivas (mAP; precisión, exhaustividad y F1-score).
+- Arquitectura **modular**, con *scrum* y *ruck* especificados como extensión opcional, no exigible.
+
+**Qué no se va a hacer:**
+
+- Instrumentación física del entorno (sensores, GPS, cámaras especiales).
+- Procesamiento en **tiempo real**; el análisis es *offline*.
+- Reconocimiento de otros eventos del rugby fuera del line-out (tries, conversiones, infracciones, marcador).
+- Análisis táctico interpretativo automático, recomendaciones ni estadísticas avanzadas.
+- Interfaz de nivel comercial, despliegue en producción, comercialización, soporte o mantenimiento.
+- Validación de la extensión a otros deportes o dominios.
+
+**Supuestos:** grabaciones con calidad/encuadre suficientes, colaboración de un referente técnico para validar el etiquetado y recursos de cómputo estándar. Los volúmenes y umbrales son metas de referencia preliminares.
+
+> El desarrollo completo de este apartado se encuentra en [`07_alcance.md`](07_alcance.md).
 
 ---
 
