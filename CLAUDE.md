@@ -34,7 +34,10 @@ final-project-abarca/
 │   ├── papers/                # Estado del arte y referencias
 │   └── reglamento_ucse/       # Reglamento oficial
 ├── .github/
-│   └── rulesets.json          # Reglas de ramas (Git Flow)
+│   ├── workflows/             # CI (markdownlint, link check, convención de ramas)
+│   ├── rulesets-main.json     # Ruleset de protección de main
+│   ├── rulesets-develop.json  # Ruleset de protección de develop
+│   └── RULESETS_SETUP.md      # Guía de configuración manual de rulesets
 ├── .gitignore
 ├── README.md
 └── CLAUDE.md (este archivo)
@@ -126,12 +129,12 @@ Copia del reglamento: `research/reglamento_ucse/reglamento_tf_ucse.pdf`.
 
 ## Rulesets — Protección de ramas
 
-Las reglas para el repositorio están definidas en `.github/rulesets.json`. Se deben configurar manualmente en:
+Las reglas para el repositorio están definidas en `.github/rulesets-main.json` y `.github/rulesets-develop.json`. Se deben configurar manualmente siguiendo `.github/RULESETS_SETUP.md`:
 
 **Pasos:**
 1. Ve a: `https://github.com/Choolito/final-project-abarca/settings/rules`
-2. Click en **"New ruleset"** 
-3. Copia el contenido de `.github/rulesets.json`
+2. Click en **"New ruleset"**
+3. Copia el contenido de `.github/rulesets-main.json` (y luego `.github/rulesets-develop.json`)
 
 **Qué protege:**
 
