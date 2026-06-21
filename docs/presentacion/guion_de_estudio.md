@@ -106,3 +106,5 @@ Eso es todo de mi parte. Muchas gracias, y quedo abierto a las preguntas que ten
 - **¿Y cuando hay muchos jugadores amontonados?** "Ese es justamente el desafío técnico principal. Lo abordo con la detección y el seguimiento de la primera capa."
 - **¿Sirve para cualquier cancha?** "Sí, funciona con video normal. Lo único que necesito es que la grabación tenga calidad y un encuadre razonable."
 - **¿Se puede usar en otros deportes?** "Por cómo está diseñado, sí se podría, pero eso no lo voy a validar en este trabajo. Queda como posibilidad a futuro."
+- **¿Qué es el mAP?** "Es la métrica estándar para medir qué tan bien un modelo detecta objetos. Tiene en cuenta dos cosas: que el sistema no se equivoque marcando cosas que no son, y que tampoco se pierda jugadores que sí están. Va de cero a uno, y mi meta es al menos cero coma setenta."
+- **¿Y el F1-score?** "Es parecido, pero para el reconocimiento del evento. Combina en un solo número la precisión —cuántos de los line-outs que marcó eran de verdad— y la exhaustividad —cuántos de los que había logró encontrar—. También va de cero a uno y la meta es cero coma setenta."
