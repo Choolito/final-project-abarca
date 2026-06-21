@@ -79,7 +79,7 @@ Otras jugadas como el scrum o el ruck las dejo planteadas para más adelante, co
 
 "Acá quiero ser claro con hasta dónde llega el trabajo, porque parte de hacer un buen proyecto es saber ponerle un límite.
 
-Lo que sí voy a hacer: es un sistema solo de software, que analiza el partido después de que terminó, no en vivo. Voy a armar un conjunto de al menos doscientos clips de line-out para entrenar y probar el sistema. Y me pongo metas concretas y medibles: que la detección alcance un valor de al menos cero coma setenta en la métrica que se usa para esto, y lo mismo para el reconocimiento del evento.
+Lo que sí voy a hacer: es un sistema solo de software, que analiza el partido después de que terminó, no en vivo. Voy a armar un conjunto de al menos doscientos clips de line-out para entrenar y probar el sistema. Y me pongo metas concretas y medibles: que la detección de los jugadores alcance al menos cero coma setenta en mAP —que es la métrica estándar para medir qué tan bien detecta un modelo—, y que el reconocimiento del line-out alcance al menos cero coma setenta en F1-score, que combina la precisión y la exhaustividad del sistema.
 
 Lo que NO voy a hacer: no funciona en tiempo real durante el partido, no reconoce otros eventos más allá del line-out, y no incluye una interfaz comercial pulida. La salida son los clips y el listado, nada más.
 
