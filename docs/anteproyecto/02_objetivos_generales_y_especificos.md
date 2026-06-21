@@ -16,19 +16,30 @@ Desarrollar y validar un sistema de software para el **reconocimiento automátic
 
 ## 2. Objetivos Específicos
 
-Los objetivos específicos se formulan bajo el criterio **SMART** —específicos, medibles, alcanzables, relevantes y acotados en el tiempo—. Los umbrales cuantitativos consignados son metas de referencia preliminares, sujetas a ajuste definitivo en los apartados de *Metodología* (Art. 6b.6) y *Alcance* (Art. 6b.7) una vez caracterizado el conjunto de datos disponible.
+Los objetivos específicos se formulan bajo el criterio **SMART** —específicos, medibles, alcanzables, relevantes y acotados en el tiempo—. El sistema se aborda de manera incremental: el **line-out** se adopta como **evento inicial** sobre el cual se construye y valida la cadena completa de reconocimiento, dejando el *scrum* y el *ruck* como eventos de extensión. La delimitación definitiva de los eventos cubiertos se desarrolla en el apartado de *Alcance* (Art. 6b.7). Los umbrales cuantitativos consignados son metas de referencia preliminares, sujetas a ajuste definitivo en *Metodología* (Art. 6b.6) y *Alcance*, y los plazos se expresan de forma relativa al inicio del desarrollo; su ubicación exacta en el calendario se detalla en el *Plan de Trabajo y Cronograma* (Art. 6b.8).
 
-1. **Delimitar y especificar el catálogo de eventos.** Definir, durante los primeros 2 meses del proyecto, un catálogo documentado de al menos **6 eventos tácticos** del rugby susceptibles de reconocimiento en video (formaciones fijas, infracciones y gestos arbitrales), estableciendo para cada uno sus criterios observables de identificación, validados con al menos un referente del cuerpo técnico del club de prueba.
+1. **Delimitar y especificar el catálogo de eventos.** Definir y documentar, dentro de los primeros **2 meses** de desarrollo, el catálogo de eventos tácticos a reconocer —tomando el **line-out** como evento inicial y dejando especificados el *scrum* y el *ruck* como extensión—, estableciendo para cada uno sus criterios observables de identificación, validados con al menos un referente del cuerpo técnico del club de prueba. *(Medible: documento de catálogo con criterios del evento inicial + 2 eventos de extensión especificados.)*
 
-2. **Construir el conjunto de datos etiquetado.** Conformar, en un plazo de 3 meses, un *dataset* a partir de grabaciones reales en formato estándar con un mínimo de **3 partidos completos** anotados temporalmente según el catálogo, particionado en subconjuntos de entrenamiento, validación y prueba, y documentado mediante un protocolo de etiquetado reproducible.
+2. **Construir el conjunto de datos etiquetado.** Conformar, dentro de los primeros **4 meses**, un *dataset* de **al menos 200 clips de line-out** extraídos de grabaciones reales en distintos puntos de vista y condiciones de captura, anotados temporalmente y particionados en entrenamiento, validación y prueba (70/15/15), con un protocolo de etiquetado documentado y reproducible. *(Medible: ≥200 clips etiquetados y partición verificable.)*
 
-3. **Diseñar la arquitectura modular del sistema.** Producir un documento de diseño que especifique las tres capas del sistema —percepción, interpretación semántica y gestión de eventos— con sus interfaces y responsabilidades definidas, de modo que cada módulo sea desarrollable y comprobable de forma independiente.
+3. **Diseñar la arquitectura modular del sistema.** Elaborar y aprobar con el director, antes del inicio de la etapa de implementación (hacia el **mes 3**), un documento de diseño que especifique las tres capas del sistema —percepción, interpretación semántica y gestión de eventos— con sus interfaces y responsabilidades definidas, de modo que cada módulo sea desarrollable y comprobable de forma independiente. *(Medible: documento de diseño aprobado, con las 3 capas e interfaces especificadas.)*
 
-4. **Implementar el módulo de percepción.** Desarrollar el componente de detección y seguimiento de los agentes del juego (jugadores, árbitros y balón) que procese una grabación completa y alcance, sobre el conjunto de prueba, un desempeño de detección de referencia de **mAP ≥ 0,70** para la clase jugador.
+4. **Implementar el módulo de percepción.** Desarrollar, hacia el **mes 6**, el componente de detección y seguimiento de los agentes del juego (jugadores y balón) capaz de procesar una grabación completa, alcanzando sobre el conjunto de prueba un desempeño de detección de referencia de **mAP@0.5 ≥ 0,70** para la clase *jugador*. *(Medible: mAP@0.5 sobre conjunto de prueba.)*
 
-5. **Implementar el módulo de reconocimiento y catalogación de eventos.** Desarrollar el componente que, a partir de las primitivas de percepción, identifique los eventos del catálogo, determine su localización temporal, los registre de forma indexada y genere automáticamente los clips segmentados correspondientes para su consulta por el cuerpo técnico.
+5. **Implementar el módulo de reconocimiento y catalogación del line-out.** Desarrollar, hacia el **mes 8**, el componente que a partir de las primitivas de percepción identifique los line-outs, determine su localización temporal, los registre de forma indexada y genere automáticamente los clips segmentados, alcanzando sobre el conjunto de prueba un **F1-score ≥ 0,70** en la detección del evento. *(Medible: F1-score del evento sobre conjunto de prueba.)*
 
-6. **Evaluar empíricamente el sistema.** Medir el desempeño del sistema completo sobre el conjunto de prueba mediante métricas objetivas (precisión, exhaustividad y F1 por tipo de evento), contrastando los resultados con el etiquetado de referencia, y documentar las conclusiones en un informe de evaluación antes del cierre del Trabajo Final.
+6. **Evaluar empíricamente el sistema.** Medir, antes del cierre del Trabajo Final (**mes 9**), el desempeño del sistema completo sobre el conjunto de prueba mediante precisión, exhaustividad y F1-score del line-out, contrastando los resultados con el etiquetado de referencia, y documentar las conclusiones en un informe de evaluación. *(Medible: informe con métricas precisión/exhaustividad/F1.)*
+
+### 2.1. Verificación del criterio SMART
+
+| # | Específico (S) | Medible (M) | Alcanzable (A) | Relevante (R) | Temporal (T) |
+|---|----------------|-------------|----------------|---------------|--------------|
+| 1 | Catálogo de eventos con criterios | Documento con ≥1 evento inicial + 2 de extensión | Alcance acotado, validable con el club | Define el dominio de todo el TF | Mes 2 |
+| 2 | Dataset de line-out etiquetado | ≥200 clips, partición 70/15/15 | Volumen acotado a un evento | Insumo para entrenar y evaluar | Mes 4 |
+| 3 | Documento de arquitectura modular | Diseño de 3 capas aprobado | Diseño documental, sin desarrollo | Habilita el trabajo independiente por módulo | Mes 3 |
+| 4 | Módulo de percepción (detección) | mAP@0.5 ≥ 0,70 (jugador) | Métrica de referencia realista | Base perceptual del reconocimiento | Mes 6 |
+| 5 | Módulo de reconocimiento de line-out | F1-score ≥ 0,70 | Un único evento inicial | Núcleo funcional del sistema | Mes 8 |
+| 6 | Evaluación del sistema completo | Precisión / exhaustividad / F1 | Sobre conjunto de prueba acotado | Valida el cumplimiento del objetivo general | Mes 9 |
 
 ---
 

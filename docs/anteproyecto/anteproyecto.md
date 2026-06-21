@@ -32,14 +32,14 @@ Desarrollar y validar un sistema de software para el reconocimiento automático 
 
 ### Objetivos Específicos
 
-Formulados bajo criterio **SMART** (los umbrales cuantitativos son metas de referencia preliminares, a ajustar en *Metodología* y *Alcance*):
+Formulados bajo criterio **SMART** y de forma incremental, tomando el **line-out** como evento inicial (scrum y ruck como extensión; detalle en *Alcance*). Los umbrales son metas de referencia preliminares y los plazos, relativos al inicio del desarrollo:
 
-1. Delimitar y documentar un catálogo de al menos 6 eventos tácticos del rugby con sus criterios observables, en los primeros 2 meses, validado con el cuerpo técnico del club de prueba.
-2. Construir un dataset etiquetado a partir de un mínimo de 3 partidos completos en formato estándar, particionado en entrenamiento/validación/prueba, con protocolo de etiquetado reproducible.
-3. Diseñar la arquitectura modular en tres capas (percepción, interpretación semántica y gestión de eventos) con interfaces e responsabilidades definidas.
-4. Implementar el módulo de percepción (detección y seguimiento de jugadores, árbitros y balón) con un desempeño de referencia mAP ≥ 0,70 para la clase jugador sobre el conjunto de prueba.
-5. Implementar el módulo de reconocimiento y catalogación de eventos, que identifique los eventos, determine su localización temporal y genere automáticamente los clips segmentados.
-6. Evaluar empíricamente el sistema con métricas objetivas (precisión, exhaustividad y F1 por tipo de evento) contra el etiquetado de referencia, documentando un informe de evaluación antes del cierre.
+1. Delimitar y documentar el catálogo de eventos —line-out como evento inicial y scrum/ruck especificados como extensión— con sus criterios observables, hacia el mes 2, validado con el cuerpo técnico del club.
+2. Construir un dataset de ≥200 clips de line-out en distintos puntos de vista, anotados y particionados 70/15/15, con protocolo reproducible, hacia el mes 4.
+3. Diseñar y aprobar el documento de arquitectura modular en tres capas (percepción, interpretación semántica y gestión de eventos) con interfaces definidas, hacia el mes 3.
+4. Implementar el módulo de percepción (detección de jugadores y balón) con mAP@0.5 ≥ 0,70 para la clase jugador sobre el conjunto de prueba, hacia el mes 6.
+5. Implementar el módulo de reconocimiento y catalogación del line-out (localización temporal + clips automáticos) con F1-score ≥ 0,70 sobre el conjunto de prueba, hacia el mes 8.
+6. Evaluar el sistema completo con precisión, exhaustividad y F1-score del line-out contra el etiquetado de referencia, documentando un informe, hacia el mes 9.
 
 > El desarrollo completo de este apartado se encuentra en [`02_objetivos_generales_y_especificos.md`](02_objetivos_generales_y_especificos.md).
 
