@@ -32,14 +32,14 @@ Desarrollar y validar un sistema de software para el reconocimiento automático 
 
 ### Objetivos Específicos
 
-Formulados bajo criterio **SMART** y de forma incremental, tomando el **line-out** como evento inicial (scrum y ruck como extensión; detalle en *Alcance*). Los umbrales son metas de referencia preliminares y los plazos, relativos al inicio del desarrollo:
+Formulados bajo criterio **SMART** y de forma incremental, tomando el **line-out** como evento inicial (scrum y ruck como extensión; detalle en *Alcance*). Los umbrales son metas de referencia preliminares y los plazos se expresan en **semanas** sobre una duración total de **6 meses (≈26 semanas)**; el etiquetado del dataset es la actividad de mayor extensión:
 
-1. Delimitar y documentar el catálogo de eventos —line-out como evento inicial y scrum/ruck especificados como extensión— con sus criterios observables, hacia el mes 2, validado con el cuerpo técnico del club.
-2. Construir un dataset de ≥200 clips de line-out en distintos puntos de vista, anotados y particionados 70/15/15, con protocolo reproducible, hacia el mes 4.
-3. Diseñar y aprobar el documento de arquitectura modular en tres capas (percepción, interpretación semántica y gestión de eventos) con interfaces definidas, hacia el mes 3.
-4. Implementar el módulo de percepción (detección de jugadores y balón) con mAP@0.5 ≥ 0,70 para la clase jugador sobre el conjunto de prueba, hacia el mes 6.
-5. Implementar el módulo de reconocimiento y catalogación del line-out (localización temporal + clips automáticos) con F1-score ≥ 0,70 sobre el conjunto de prueba, hacia el mes 8.
-6. Evaluar el sistema completo con precisión, exhaustividad y F1-score del line-out contra el etiquetado de referencia, documentando un informe, hacia el mes 9.
+1. Delimitar y documentar el catálogo de eventos —line-out como evento inicial y scrum/ruck especificados como extensión— con sus criterios observables, hacia la semana 3, validado con el cuerpo técnico del club.
+2. Construir un dataset de ≥200 clips de line-out en distintos puntos de vista, anotados y particionados 70/15/15, con protocolo reproducible (semanas 3–14, la tarea más larga).
+3. Diseñar y aprobar el documento de arquitectura modular en tres capas (percepción, interpretación semántica y gestión de eventos) con interfaces definidas, hacia la semana 5.
+4. Implementar el módulo de percepción (detección de jugadores y balón) con mAP@0.5 ≥ 0,70 para la clase jugador sobre el conjunto de prueba, hacia la semana 16.
+5. Implementar el módulo de reconocimiento y catalogación del line-out (localización temporal + clips automáticos) con F1-score ≥ 0,70 sobre el conjunto de prueba, hacia la semana 22.
+6. Evaluar el sistema completo con precisión, exhaustividad y F1-score del line-out contra el etiquetado de referencia, documentando un informe, hacia la semana 26.
 
 > El desarrollo completo de este apartado se encuentra en [`02_objetivos_generales_y_especificos.md`](02_objetivos_generales_y_especificos.md).
 
