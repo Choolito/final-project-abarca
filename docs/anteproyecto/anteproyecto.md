@@ -53,7 +53,14 @@ _A desarrollar._
 
 ## 5. Justificación
 
-_A desarrollar._
+El Trabajo Final se justifica por la convergencia de una necesidad concreta y desatendida, una oportunidad tecnológica madura y una pertinencia académica directa con las competencias de la carrera.
+
+- **Relevancia práctica.** El análisis de video es un insumo central de la preparación táctica, pero en el ámbito amateur depende de un proceso manual costoso en horas. Automatizar la detección y segmentación de eventos a partir de grabaciones estándar libera ese tiempo y lo redirige hacia el análisis interpretativo, que es donde se aporta valor. La solución es exclusivamente de software, operable sobre el video que los clubes ya producen.
+- **Relevancia social.** Las herramientas comerciales dependen de instrumentación física (sensores en el balón, GPS, cámaras certificadas) inaccesible para el deporte amateur, reproduciendo la brecha competitiva a escala tecnológica. Al prescindir de hardware y operar sobre grabaciones estándar —incluido el archivo histórico— el sistema busca democratizar el acceso al análisis táctico, con el rugby amateur regional como caso testigo.
+- **Relevancia académica y tecnológica.** Integra ingeniería de software, sistemas inteligentes y procesamiento de señales sobre un problema real, recorriendo el ciclo completo de formulación, diseño, implementación y validación, y dejando una base reutilizable.
+- **Viabilidad.** Se apoya en tecnologías de visión por computadora maduras, no requiere infraestructura física especial y acota su validación a un evento inicial (el *line-out*), manteniendo el alcance controlado. La disponibilidad de un entorno real de prueba refuerza la factibilidad.
+
+> El desarrollo completo de este apartado se encuentra en [`04_justificacion.md`](04_justificacion.md).
 
 ---
 
