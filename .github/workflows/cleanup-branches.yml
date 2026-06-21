@@ -1,0 +1,33 @@
+name: Limpieza de ramas
+
+# Al mergear un PR, elimina su rama de origen para que no se acumulen.
+# Las ramas principales (main, develop) nunca se eliminan.
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: write
+
+jobs:
+  eliminar-rama:
+    name: Eliminar rama mergeada
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Eliminar rama de origen (excepto main/develop)
+        env:
+          BRANCH: ${{ github.event.pull_request.head.ref }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          if [[ "$BRANCH" == "main" || "$BRANCH" == "develop" ]]; then
+            echo "🛡️  Rama protegida ($BRANCH): no se elimina."
+            exit 0
+          fi
+          echo "🧹 Eliminando rama mergeada: $BRANCH"
+          if gh api -X DELETE "repos/$REPO/git/refs/heads/$BRANCH"; then
+            echo "✅ Rama '$BRANCH' eliminada."
+          else
+            echo "ℹ️  No se pudo eliminar '$BRANCH' (puede que ya no exista)."
+          fi

@@ -34,7 +34,7 @@ final-project-abarca/
 │   ├── papers/                # Estado del arte y referencias
 │   └── reglamento_ucse/       # Reglamento oficial
 ├── .github/
-│   ├── workflows/             # CI (markdownlint, link check, convención de ramas)
+│   ├── workflows/             # CI (markdownlint, link check, convención de ramas, limpieza de ramas)
 │   ├── rulesets-main.json     # Ruleset de protección de main
 │   ├── rulesets-develop.json  # Ruleset de protección de develop
 │   └── RULESETS_SETUP.md      # Guía de configuración manual de rulesets
@@ -80,6 +80,13 @@ final-project-abarca/
    ```
 
 5. **PR de release a main** (una vez aprobada).
+
+6. **Etiquetar la release (tag).** El entorno remoto de Claude Code **no permite** hacer push de tags desde consola. El tag se crea **desde la web de GitHub**, sin necesidad de repo local:
+   - Ir a `https://github.com/Choolito/final-project-abarca/releases/new`
+   - En *Choose a tag* escribir `vX.Y.Z` → *Create new tag on publish*
+   - *Target:* `main` → *Publish release*
+
+> **Limpieza de ramas:** al mergear un PR, su rama de origen se elimina automáticamente (workflow `cleanup-branches.yml`). `main` y `develop` están excluidas y nunca se eliminan.
 
 ### Convenciones de nombres
 
