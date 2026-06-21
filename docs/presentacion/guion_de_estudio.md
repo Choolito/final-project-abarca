@@ -1,98 +1,108 @@
-# Guion de estudio — Presentación del Anteproyecto
+# Guion de estudio — Qué decir en la presentación
 
-> Texto de apoyo para hablar cada ventana. No leer de corrido: usar como machete.
-> Tiempo objetivo: ~6–8 minutos. Una idea por ventana.
+> Texto para decir **directamente**, palabra por palabra. Una sección por ventana.
+> Hablá tranquilo, sin apurarte. Total: ~6–8 minutos. Las frases entre [corchetes] son indicaciones, no se dicen.
 
 ---
 
 ## Ventana 1 — Portada
 
-> *"Buenas, soy Juan Ignacio Abarca. Les voy a presentar el anteproyecto de mi Trabajo Final de Ingeniería en Informática: un sistema que reconoce automáticamente eventos de rugby en video. El título es provisorio."*
+"Buenas a todos. Mi nombre es Juan Ignacio Abarca y les voy a presentar el anteproyecto de mi Trabajo Final de la carrera de Ingeniería en Informática.
 
-- Saludar, presentarte, dar el marco (TF, fase de anteproyecto).
-- No entrar en detalle todavía: es solo la apertura.
+El proyecto consiste en un sistema que reconoce de forma automática eventos de un partido de rugby a partir del video. El título que ven es provisorio, todavía no es el definitivo.
+
+Les voy a contar primero qué problema busca resolver, después la idea, cómo funciona, y por último el alcance concreto del trabajo."
+
+[Pasás a la siguiente ventana.]
 
 ---
 
 ## Ventana 2 — El problema
 
-> *"Hoy, analizar un partido en video es un trabajo manual y carísimo en tiempo. Por cada hora de juego se pueden ir más de cuatro horas de análisis."*
+"Hoy, en casi todos los equipos, el análisis de los partidos se hace mirando el video. El problema es que ese análisis se hace a mano, y eso lleva muchísimo tiempo.
 
-- El analista mira toda la grabación, marca los eventos a mano y los recorta.
-- Tres problemas: **lento**, **depende de una persona experta** y **poco reproducible** (cada analista marca distinto).
-- Quedate con el número: **4 a 1**.
+Un analista tiene que mirar la grabación entera, ir encontrando los momentos importantes, y recortarlos uno por uno para poder estudiarlos después. Para que se den una idea: por cada hora de partido se pueden ir más de cuatro horas de trabajo.
+
+Y además de ser lento, depende de que haya una persona experta y disponible para hacerlo, y cada analista lo hace un poco a su manera, así que tampoco es algo que se pueda repetir igual siempre."
 
 ---
 
 ## Ventana 3 — La brecha
 
-> *"Ya existen herramientas que automatizan esto, pero no sirven para un club amateur."*
+"Ahora, alguno podría decir: bueno, pero ya existen herramientas que hacen esto automáticamente. Y es verdad, existen. El tema es que no sirven para un club amateur.
 
-- Las soluciones comerciales dependen de **hardware**: sensores en el balón, GPS en los jugadores, cámaras especiales.
-- Eso las vuelve **caras** y **logísticamente inviables** para el amateur.
-- Peor: no se pueden usar sobre el **archivo histórico** del club, que es su material más valioso.
-- Resultado: una brecha entre el deporte profesional y el amateur. Caso testigo: el **CRAR**, de Rafaela.
+¿Por qué? Porque esas herramientas comerciales necesitan hardware especial: sensores adentro de la pelota, GPS en los jugadores, cámaras especiales. Eso las hace muy caras y muy difíciles de usar en la práctica.
+
+Y lo peor de todo: como dependen de ese equipamiento, no se pueden aplicar sobre las grabaciones viejas que el club ya tiene guardadas, que justamente son su material más valioso.
+
+El resultado es una brecha: el deporte profesional puede pagar todo esto, y el deporte amateur se queda afuera. Como caso testigo de este trabajo voy a tomar al Círculo Rafaelino de Rugby, el CRAR."
 
 ---
 
 ## Ventana 4 — La idea
 
-> *"Mi propuesta es una plataforma que solo necesita el video que el club ya tiene."*
+"Entonces, mi propuesta es un sistema que solamente necesita el video. Nada más.
 
-- Entrada: grabación en **formato estándar**, sin instrumentar nada.
-- Salida: un **catálogo de eventos** y los **clips ya cortados** para el cuerpo técnico.
-- La clave: **solo software**. Eso es lo que la hace accesible.
+La idea es simple: vos le das una grabación normal del partido, y el sistema te devuelve, por un lado, un listado de los eventos que pasaron, y por el otro, los clips ya recortados y listos para que el entrenador los mire.
+
+La clave de todo esto es que es solo software. No hace falta comprar ningún aparato. Funciona con el video que el club ya graba y ya tiene. Eso es lo que lo hace accesible."
 
 ---
 
-## Ventana 5 — Cómo funciona (3 capas)
+## Ventana 5 — Cómo funciona
 
-> *"El sistema se organiza en tres capas, de lo más simple a lo más abstracto."*
+"¿Y cómo hace el sistema para lograr esto? Lo organicé en tres capas, de lo más simple a lo más complejo.
 
-- **Percepción:** detecta y sigue a los agentes del juego (jugadores y balón). Acá entran tecnologías de visión como YOLO y seguimiento tipo DeepSORT.
-- **Semántica:** con esa información reconoce la **formación táctica**, en este caso el line-out.
-- **Eventos:** marca el momento, lo guarda indexado y genera el clip.
-- Mencionar que es **modular**: cada capa se desarrolla y prueba por separado.
+La primera capa es la de percepción: acá el sistema mira el video y detecta y sigue a los jugadores y a la pelota a lo largo del tiempo.
+
+La segunda capa es la semántica: con esa información, reconoce la jugada o la formación que se está dando. En este caso, el line-out.
+
+Y la tercera capa es la de eventos: una vez que reconoció la jugada, la marca en el tiempo, la guarda, y genera el clip recortado.
+
+Algo importante: las tres capas son independientes, así que cada una se puede desarrollar y probar por separado."
 
 ---
 
 ## Ventana 6 — Objetivo concreto
 
-> *"Para que el alcance sea realista, el objetivo central es un único evento: el line-out."*
+"Para que el trabajo sea realista y se pueda terminar, no voy a intentar reconocer todas las jugadas del rugby. Me voy a enfocar en una sola: el line-out.
 
-- El line-out es el **evento inicial** sobre el que se valida toda la cadena.
-- El sistema lo **ubica en el tiempo** y genera un clip de ~10 segundos antes y después.
-- *Scrum* y *ruck* quedan **especificados como extensión**, no son obligatorios.
-- Por qué el line-out: es una formación fija, visualmente clara y fácil de etiquetar.
+El line-out es ese saque de lateral donde los jugadores se forman en dos filas y se levanta a un compañero para agarrar la pelota. Lo elegí porque es una formación fija, se ve muy clara en el video, y es fácil de etiquetar.
+
+El sistema tiene que poder ubicar ese line-out en el tiempo de la grabación y generar el clip, con unos diez segundos antes y diez segundos después.
+
+Otras jugadas como el scrum o el ruck las dejo planteadas para más adelante, como una posible extensión, pero no son obligatorias para este trabajo."
 
 ---
 
 ## Ventana 7 — Alcance y metas
 
-> *"El alcance está acotado a propósito, para que sea demostrable en un Trabajo Final."*
+"Acá quiero ser claro con hasta dónde llega el trabajo, porque parte de hacer un buen proyecto es saber ponerle un límite.
 
-- **Incluye:** solo software, análisis posterior al partido (*offline*).
-- Dataset de referencia: **al menos 200 clips** de line-out etiquetados, partidos en entrenamiento/validación/prueba.
-- Metas medibles: **mAP ≥ 0,70** en detección y **F1 ≥ 0,70** en el reconocimiento del evento.
-- **No incluye:** tiempo real, otros eventos, análisis táctico interpretativo ni interfaz comercial.
-- Aclarar: los números son **metas de referencia**, ajustables según el material real.
+Lo que sí voy a hacer: es un sistema solo de software, que analiza el partido después de que terminó, no en vivo. Voy a armar un conjunto de al menos doscientos clips de line-out para entrenar y probar el sistema. Y me pongo metas concretas y medibles: que la detección alcance un valor de al menos cero coma setenta en la métrica que se usa para esto, y lo mismo para el reconocimiento del evento.
+
+Lo que NO voy a hacer: no funciona en tiempo real durante el partido, no reconoce otros eventos más allá del line-out, y no incluye una interfaz comercial pulida. La salida son los clips y el listado, nada más.
+
+[Si te preguntan por los números: aclarar que son metas de referencia, ajustables según el material que se consiga.]"
 
 ---
 
 ## Ventana 8 — Cierre
 
-> *"En resumen: busco democratizar el análisis táctico para el rugby amateur."*
+"Para cerrar: la idea de fondo de este proyecto es democratizar el análisis táctico, es decir, acercarle al rugby amateur una herramienta que hoy solo está al alcance del profesional.
 
-- Doble aporte: **técnico** (una arquitectura de reconocimiento de eventos reutilizable en otros dominios) y **social** (una herramienta accesible, sin hardware).
-- Duración estimada: **~6 meses** de desarrollo.
-- Cerrar con la frase fuerte y abrir a preguntas.
+El trabajo tiene un doble aporte. Por el lado técnico, queda una arquitectura de reconocimiento de eventos que se podría reutilizar para otros casos. Y por el lado social, es una herramienta accesible, que no necesita ningún hardware caro.
+
+El desarrollo lo estimo en unos seis meses.
+
+Eso es todo de mi parte. Muchas gracias, y quedo abierto a las preguntas que tengan."
 
 ---
 
-## Posibles preguntas (preparar)
+## Si te preguntan (respuestas cortas para decir)
 
-- **¿Por qué rugby y no otro deporte?** → Alta complejidad táctica, eventos estructurados y entorno real de prueba (CRAR).
-- **¿Por qué solo el line-out?** → Acotar el alcance; es el evento más claro para validar la cadena completa.
-- **¿Qué pasa con la oclusión / muchos jugadores juntos?** → Es el desafío técnico central; se aborda con detección + seguimiento.
-- **¿Funciona en cualquier cancha?** → Sí, opera sobre video estándar; supone calidad y encuadre suficientes.
-- **¿Es extensible a otros deportes?** → Por diseño sí (modular), pero **no** se valida en este TF.
+- **¿Por qué rugby?** "Porque es un deporte con muchas jugadas estructuradas y bien definidas, y porque tengo un entorno real donde probarlo, que es el CRAR."
+- **¿Por qué solo el line-out?** "Para acotar el alcance. Es la jugada más clara para validar que todo el sistema funciona de punta a punta. Después se puede extender."
+- **¿Y cuando hay muchos jugadores amontonados?** "Ese es justamente el desafío técnico principal. Lo abordo con la detección y el seguimiento de la primera capa."
+- **¿Sirve para cualquier cancha?** "Sí, funciona con video normal. Lo único que necesito es que la grabación tenga calidad y un encuadre razonable."
+- **¿Se puede usar en otros deportes?** "Por cómo está diseñado, sí se podría, pero eso no lo voy a validar en este trabajo. Queda como posibilidad a futuro."
