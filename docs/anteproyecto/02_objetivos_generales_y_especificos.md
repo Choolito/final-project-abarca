@@ -16,17 +16,19 @@ Desarrollar y validar un sistema de software para el **reconocimiento automátic
 
 ## 2. Objetivos Específicos
 
-Para alcanzar el objetivo general se establecen los siguientes objetivos específicos:
+Los objetivos específicos se formulan bajo el criterio **SMART** —específicos, medibles, alcanzables, relevantes y acotados en el tiempo—. Los umbrales cuantitativos consignados son metas de referencia preliminares, sujetas a ajuste definitivo en los apartados de *Metodología* (Art. 6b.6) y *Alcance* (Art. 6b.7) una vez caracterizado el conjunto de datos disponible.
 
-1. **Relevar y delimitar** el conjunto de eventos tácticos del rugby susceptibles de reconocimiento automático en video (formaciones fijas, infracciones y gestos arbitrales), definiendo para cada uno los criterios observables que permiten su identificación, y **construir** a partir de grabaciones reales en formato estándar un conjunto de datos etiquetado temporalmente que sirva de base para el entrenamiento y la evaluación del sistema.
+1. **Delimitar y especificar el catálogo de eventos.** Definir, durante los primeros 2 meses del proyecto, un catálogo documentado de al menos **6 eventos tácticos** del rugby susceptibles de reconocimiento en video (formaciones fijas, infracciones y gestos arbitrales), estableciendo para cada uno sus criterios observables de identificación, validados con al menos un referente del cuerpo técnico del club de prueba.
 
-2. **Diseñar la arquitectura** del sistema bajo criterios de modularidad, separando las responsabilidades de percepción (detección y seguimiento de agentes en el cuadro de video), de interpretación semántica (reconocimiento de estados espacio-temporales) y de gestión de eventos (catalogación y segmentación de clips).
+2. **Construir el conjunto de datos etiquetado.** Conformar, en un plazo de 3 meses, un *dataset* a partir de grabaciones reales en formato estándar con un mínimo de **3 partidos completos** anotados temporalmente según el catálogo, particionado en subconjuntos de entrenamiento, validación y prueba, y documentado mediante un protocolo de etiquetado reproducible.
 
-3. **Implementar el módulo de percepción**, capaz de detectar y seguir a los agentes relevantes del juego —jugadores, árbitros y balón— a lo largo de la secuencia de video.
+3. **Diseñar la arquitectura modular del sistema.** Producir un documento de diseño que especifique las tres capas del sistema —percepción, interpretación semántica y gestión de eventos— con sus interfaces y responsabilidades definidas, de modo que cada módulo sea desarrollable y comprobable de forma independiente.
 
-4. **Implementar el módulo de reconocimiento y catalogación de eventos**, que a partir de las primitivas de percepción identifique los eventos tácticos del catálogo, determine su localización temporal en la grabación, los registre de forma indexada y genere automáticamente los clips segmentados correspondientes.
+4. **Implementar el módulo de percepción.** Desarrollar el componente de detección y seguimiento de los agentes del juego (jugadores, árbitros y balón) que procese una grabación completa y alcance, sobre el conjunto de prueba, un desempeño de detección de referencia de **mAP ≥ 0,70** para la clase jugador.
 
-5. **Evaluar empíricamente** el desempeño del sistema sobre grabaciones reales de partidos, mediante métricas objetivas de calidad del reconocimiento, contrastando los resultados con un etiquetado de referencia.
+5. **Implementar el módulo de reconocimiento y catalogación de eventos.** Desarrollar el componente que, a partir de las primitivas de percepción, identifique los eventos del catálogo, determine su localización temporal, los registre de forma indexada y genere automáticamente los clips segmentados correspondientes para su consulta por el cuerpo técnico.
+
+6. **Evaluar empíricamente el sistema.** Medir el desempeño del sistema completo sobre el conjunto de prueba mediante métricas objetivas (precisión, exhaustividad y F1 por tipo de evento), contrastando los resultados con el etiquetado de referencia, y documentar las conclusiones en un informe de evaluación antes del cierre del Trabajo Final.
 
 ---
 

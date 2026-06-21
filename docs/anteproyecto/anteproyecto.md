@@ -32,13 +32,16 @@ Desarrollar y validar un sistema de software para el reconocimiento automático 
 
 ### Objetivos Específicos
 
-1. Relevar y delimitar el conjunto de eventos tácticos del rugby susceptibles de reconocimiento automático en video, definiendo sus criterios observables, y construir a partir de grabaciones reales un conjunto de datos etiquetado temporalmente para el entrenamiento y la evaluación del sistema.
-2. Diseñar la arquitectura modular del sistema, separando las responsabilidades de percepción, interpretación semántica y gestión de eventos.
-3. Implementar el módulo de percepción (detección y seguimiento de jugadores, árbitros y balón).
-4. Implementar el módulo de reconocimiento y catalogación de eventos, que identifique los eventos tácticos, determine su localización temporal y genere automáticamente los clips segmentados.
-5. Evaluar empíricamente el desempeño del sistema sobre grabaciones reales mediante métricas objetivas, contrastando con un etiquetado de referencia.
+Formulados bajo criterio **SMART** (los umbrales cuantitativos son metas de referencia preliminares, a ajustar en *Metodología* y *Alcance*):
 
-> El desarrollo completo de este apartado se encuentra en [`02_objetivos_y_metas.md`](02_objetivos_y_metas.md).
+1. Delimitar y documentar un catálogo de al menos 6 eventos tácticos del rugby con sus criterios observables, en los primeros 2 meses, validado con el cuerpo técnico del club de prueba.
+2. Construir un dataset etiquetado a partir de un mínimo de 3 partidos completos en formato estándar, particionado en entrenamiento/validación/prueba, con protocolo de etiquetado reproducible.
+3. Diseñar la arquitectura modular en tres capas (percepción, interpretación semántica y gestión de eventos) con interfaces e responsabilidades definidas.
+4. Implementar el módulo de percepción (detección y seguimiento de jugadores, árbitros y balón) con un desempeño de referencia mAP ≥ 0,70 para la clase jugador sobre el conjunto de prueba.
+5. Implementar el módulo de reconocimiento y catalogación de eventos, que identifique los eventos, determine su localización temporal y genere automáticamente los clips segmentados.
+6. Evaluar empíricamente el sistema con métricas objetivas (precisión, exhaustividad y F1 por tipo de evento) contra el etiquetado de referencia, documentando un informe de evaluación antes del cierre.
+
+> El desarrollo completo de este apartado se encuentra en [`02_objetivos_generales_y_especificos.md`](02_objetivos_generales_y_especificos.md).
 
 ---
 
