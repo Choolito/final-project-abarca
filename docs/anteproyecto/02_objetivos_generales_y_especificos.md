@@ -30,17 +30,6 @@ Los objetivos específicos se formulan bajo el criterio **SMART** —específico
 
 6. **Evaluar empíricamente el sistema.** Medir, antes del cierre del Trabajo Final (hacia la **semana 26**), el desempeño del sistema completo sobre el conjunto de prueba mediante precisión, exhaustividad y F1-score del line-out, contrastando los resultados con el etiquetado de referencia, y documentar las conclusiones en un informe de evaluación. *(Medible: informe con métricas precisión/exhaustividad/F1.)*
 
-### 2.1. Verificación del criterio SMART
-
-| # | Específico (S) | Medible (M) | Alcanzable (A) | Relevante (R) | Temporal (T) |
-|---|----------------|-------------|----------------|---------------|--------------|
-| 1 | Catálogo de eventos con criterios | Documento con ≥1 evento inicial + 2 de extensión | Alcance acotado, validable con el club | Define el dominio de todo el TF | Semana 3 |
-| 2 | Dataset de line-out etiquetado | ≥200 clips, partición 70/15/15 | Volumen acotado a un evento | Insumo para entrenar y evaluar | Semanas 3–14 |
-| 3 | Documento de arquitectura modular | Diseño de 3 capas aprobado | Diseño documental, sin desarrollo | Habilita el trabajo independiente por módulo | Semana 5 |
-| 4 | Módulo de percepción (detección) | mAP@0.5 ≥ 0,70 (jugador) | Métrica de referencia realista | Base perceptual del reconocimiento | Semana 16 |
-| 5 | Módulo de reconocimiento de line-out | F1-score ≥ 0,70 | Un único evento inicial | Núcleo funcional del sistema | Semana 22 |
-| 6 | Evaluación del sistema completo | Precisión / exhaustividad / F1 | Sobre conjunto de prueba acotado | Valida el cumplimiento del objetivo general | Semana 26 |
-
 ---
 
 *Los apartados subsiguientes del anteproyecto —Antecedentes (Art. 6b.3), Justificación (Art. 6b.4), Marco Teórico (Art. 6b.5), Metodología (Art. 6b.6), Alcance (Art. 6b.7), Plan de Trabajo y Cronograma (Art. 6b.8) y Bibliografía Tentativa (Art. 6b.9)— se desarrollan en los archivos correspondientes del directorio `docs/anteproyecto/`.*
