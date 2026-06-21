@@ -18,38 +18,15 @@ Desarrollar y validar un sistema de software para el **reconocimiento automátic
 
 Para alcanzar el objetivo general se establecen los siguientes objetivos específicos:
 
-1. **Relevar y delimitar** el conjunto de eventos tácticos del rugby susceptibles de reconocimiento automático en video (formaciones fijas, infracciones y gestos arbitrales), definiendo para cada uno los criterios observables que permiten su identificación y etiquetado.
+1. **Relevar y delimitar** el conjunto de eventos tácticos del rugby susceptibles de reconocimiento automático en video (formaciones fijas, infracciones y gestos arbitrales), definiendo para cada uno los criterios observables que permiten su identificación, y **construir** a partir de grabaciones reales en formato estándar un conjunto de datos etiquetado temporalmente que sirva de base para el entrenamiento y la evaluación del sistema.
 
-2. **Construir un conjunto de datos** representativo a partir de grabaciones de partidos en formato estándar, etiquetado temporalmente según el catálogo de eventos definido, que sirva como base para el entrenamiento y la evaluación del sistema.
+2. **Diseñar la arquitectura** del sistema bajo criterios de modularidad, separando las responsabilidades de percepción (detección y seguimiento de agentes en el cuadro de video), de interpretación semántica (reconocimiento de estados espacio-temporales) y de gestión de eventos (catalogación y segmentación de clips).
 
-3. **Diseñar la arquitectura** del sistema bajo criterios de modularidad, separando las responsabilidades de percepción (detección y seguimiento de agentes en el cuadro de video), de interpretación semántica (reconocimiento de estados espacio-temporales) y de gestión de eventos (catalogación y segmentación de clips).
+3. **Implementar el módulo de percepción**, capaz de detectar y seguir a los agentes relevantes del juego —jugadores, árbitros y balón— a lo largo de la secuencia de video.
 
-4. **Implementar el módulo de percepción**, capaz de detectar y seguir a los agentes relevantes del juego (jugadores, árbitros y balón) a lo largo de la secuencia de video.
+4. **Implementar el módulo de reconocimiento y catalogación de eventos**, que a partir de las primitivas de percepción identifique los eventos tácticos del catálogo, determine su localización temporal en la grabación, los registre de forma indexada y genere automáticamente los clips segmentados correspondientes.
 
-5. **Implementar el módulo de reconocimiento de eventos**, que a partir de las primitivas de percepción identifique los eventos tácticos del catálogo y determine su localización temporal dentro de la grabación.
-
-6. **Desarrollar el módulo de catalogación y segmentación**, que registre los eventos detectados de forma indexada y genere automáticamente los clips de video correspondientes, dejándolos disponibles para el cuerpo técnico.
-
-7. **Evaluar empíricamente** el desempeño del sistema sobre grabaciones reales de partidos, mediante métricas objetivas de calidad del reconocimiento, contrastando los resultados con un etiquetado de referencia.
-
-8. **Documentar** el proceso de diseño, desarrollo y validación conforme a las exigencias metodológicas y reglamentarias del Trabajo Final.
-
----
-
-## 3. Metas
-
-Las metas constituyen los resultados concretos y verificables comprometidos por el Trabajo Final:
-
-| # | Meta | Verificable mediante |
-|---|------|----------------------|
-| M1 | Catálogo documentado de eventos tácticos del rugby a reconocer, con sus criterios de observación. | Documento de especificación del catálogo de eventos. |
-| M2 | Conjunto de datos etiquetado a partir de grabaciones reales de partidos, particionado para entrenamiento y evaluación. | Dataset versionado y descripción del protocolo de etiquetado. |
-| M3 | Arquitectura modular del sistema especificada y documentada. | Documento de diseño arquitectónico. |
-| M4 | Prototipo funcional capaz de procesar una grabación completa y producir el catálogo de eventos y los clips segmentados. | Demostración del prototipo sobre un partido de prueba. |
-| M5 | Informe de evaluación del desempeño del sistema con métricas objetivas de reconocimiento sobre el conjunto de prueba. | Informe de resultados con métricas y análisis. |
-| M6 | Documentación final del Trabajo Final conforme al Reglamento de TF de la UCSE DAR. | Documento de TF aprobado por la cátedra. |
-
-> Los umbrales cuantitativos de las métricas de evaluación (meta M5) se definirán en el apartado de **Metodología** (Art. 6b.6) y **Alcance** (Art. 6b.7), una vez caracterizado el conjunto de datos disponible.
+5. **Evaluar empíricamente** el desempeño del sistema sobre grabaciones reales de partidos, mediante métricas objetivas de calidad del reconocimiento, contrastando los resultados con un etiquetado de referencia.
 
 ---
 

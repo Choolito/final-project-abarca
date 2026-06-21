@@ -32,23 +32,11 @@ Desarrollar y validar un sistema de software para el reconocimiento automático 
 
 ### Objetivos Específicos
 
-1. Relevar y delimitar el conjunto de eventos tácticos del rugby susceptibles de reconocimiento automático en video, definiendo los criterios observables de identificación de cada uno.
-2. Construir un conjunto de datos representativo, etiquetado temporalmente, a partir de grabaciones de partidos en formato estándar.
-3. Diseñar la arquitectura modular del sistema, separando las responsabilidades de percepción, interpretación semántica y gestión de eventos.
-4. Implementar el módulo de percepción (detección y seguimiento de jugadores, árbitros y balón).
-5. Implementar el módulo de reconocimiento de eventos tácticos y su localización temporal.
-6. Desarrollar el módulo de catalogación y segmentación automática de clips.
-7. Evaluar empíricamente el desempeño del sistema sobre grabaciones reales mediante métricas objetivas.
-8. Documentar el proceso de diseño, desarrollo y validación conforme al Reglamento de TF.
-
-### Metas
-
-- **M1** — Catálogo documentado de eventos tácticos del rugby con sus criterios de observación.
-- **M2** — Conjunto de datos etiquetado a partir de grabaciones reales, particionado para entrenamiento y evaluación.
-- **M3** — Arquitectura modular del sistema especificada y documentada.
-- **M4** — Prototipo funcional que procesa una grabación completa y produce el catálogo de eventos y los clips segmentados.
-- **M5** — Informe de evaluación del desempeño con métricas objetivas de reconocimiento sobre el conjunto de prueba.
-- **M6** — Documentación final del Trabajo Final conforme al Reglamento de TF de la UCSE DAR.
+1. Relevar y delimitar el conjunto de eventos tácticos del rugby susceptibles de reconocimiento automático en video, definiendo sus criterios observables, y construir a partir de grabaciones reales un conjunto de datos etiquetado temporalmente para el entrenamiento y la evaluación del sistema.
+2. Diseñar la arquitectura modular del sistema, separando las responsabilidades de percepción, interpretación semántica y gestión de eventos.
+3. Implementar el módulo de percepción (detección y seguimiento de jugadores, árbitros y balón).
+4. Implementar el módulo de reconocimiento y catalogación de eventos, que identifique los eventos tácticos, determine su localización temporal y genere automáticamente los clips segmentados.
+5. Evaluar empíricamente el desempeño del sistema sobre grabaciones reales mediante métricas objetivas, contrastando con un etiquetado de referencia.
 
 > El desarrollo completo de este apartado se encuentra en [`02_objetivos_y_metas.md`](02_objetivos_y_metas.md).
 
