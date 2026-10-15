@@ -17,9 +17,9 @@ Este repositorio funciona por ahora como **espacio de documentación**. El alcan
 
 ## Abstract preliminar
 
-Trabajo Final orientado al diseño de un **sistema de reconocimiento automático de eventos deportivos en video**, formulado como una arquitectura genérica y validado sobre un caso de estudio de análisis de partidos de rugby. El enfoque persigue una doble contribución: una **técnica** (motor reutilizable de detección de eventos) y una **social** (democratizar el acceso a herramientas de análisis de video en el tejido deportivo amateur argentino).
+Trabajo Final orientado al diseño de un **sistema de reconocimiento automático de eventos deportivos en video**, diseñado, implementado y validado sobre partidos de rugby, con el **line-out** como evento inicial. El enfoque persigue una doble contribución: una **técnica** (cadena de reconocimiento de eventos sobre video estándar, organizada de forma modular) y una **social** (democratizar el acceso a herramientas de análisis de video en el tejido deportivo amateur argentino).
 
-El abstract definitivo se consolidará en [`docs/anteproyecto/01_titulo_y_problema.md`](docs/anteproyecto/01_titulo_y_problema.md).
+El abstract definitivo se consolidará en [`docs/anteproyecto/01_titulo_y_problema.md`](docs/anteproyecto/01_titulo_y_problema.md). El documento consolidado del anteproyecto está en [`docs/anteproyecto/anteproyecto.md`](docs/anteproyecto/anteproyecto.md).
 
 ---
 
@@ -28,11 +28,14 @@ El abstract definitivo se consolidará en [`docs/anteproyecto/01_titulo_y_proble
 ```
 final-project-abarca/
 ├── docs/
-│   └── anteproyecto/      # Art. 6b — las 9 secciones del reglamento
+│   ├── anteproyecto/      # Art. 6b — consolidado + un archivo por sección
+│   └── consigna/          # Consigna de la cátedra (10 puntos del plan de proyecto)
 ├── research/
 │   ├── papers/            # Estado del arte, referencias
 │   └── reglamento_ucse/   # Reglamento oficial y extractos
+├── .github/               # CI y rulesets de protección de ramas
 ├── .gitignore
+├── CLAUDE.md
 └── README.md
 ```
 
@@ -46,19 +49,22 @@ Matriz de trazabilidad frente al *Reglamento para la Elaboración de los Trabajo
 |---|---|---|
 | **Art. 1** | Integración de conocimientos: formulación de problemas, investigación, redacción y gestión de proyectos TIC. | `docs/anteproyecto/`. |
 | **Art. 2b** | Desarrollo de prototipo/sistema que aplique tecnologías afines. | *(Fase posterior)* |
-| **Art. 3** | Metodología y alcance alineados al perfil del egresado. | `docs/anteproyecto/06_metodologia.md`, `07_alcance.md`. |
+| **Art. 3** | Metodología y alcance alineados al perfil del egresado. | `docs/anteproyecto/06_metodologia.md` *(pendiente — #15)*, `07_alcance.md`. |
 | **Art. 4** | Trabajo **individual**. | Único autor en commits. |
 | **Art. 6b.1** | Título y descripción del problema. | `docs/anteproyecto/01_titulo_y_problema.md`. |
-| **Art. 6b.2** | Objetivos y metas evaluables. | `docs/anteproyecto/02_objetivos_y_metas.md`. |
-| **Art. 6b.3** | Antecedentes / estado del arte. | `docs/anteproyecto/03_antecedentes.md`. |
+| **Art. 6b.2** | Objetivos y metas evaluables. | `docs/anteproyecto/02_objetivos_generales_y_especificos.md`. |
+| **Art. 6b.3** | Antecedentes / estado del arte. | `docs/anteproyecto/03_antecedentes.md` *(pendiente — #13)*. |
 | **Art. 6b.4** | Justificación. | `docs/anteproyecto/04_justificacion.md`. |
-| **Art. 6b.5** | Marco teórico. | `docs/anteproyecto/05_marco_teorico.md`. |
-| **Art. 6b.6** | Metodología. | `docs/anteproyecto/06_metodologia.md`. |
+| **Art. 6b.5** | Marco teórico. | `docs/anteproyecto/05_marco_teorico.md` *(pendiente — #14)*. |
+| **Art. 6b.6** | Metodología. | `docs/anteproyecto/06_metodologia.md` *(pendiente — #15)*. |
 | **Art. 6b.7** | Alcance. | `docs/anteproyecto/07_alcance.md`. |
-| **Art. 6b.8** | Plan de trabajo y cronograma. | `docs/anteproyecto/08_cronograma.md`. |
-| **Art. 6b.9** | Bibliografía tentativa. | `docs/anteproyecto/09_bibliografia.md`. |
-| **Art. 7** | Evaluación del anteproyecto por la cátedra. | *(Pendiente — cierra la fase actual)* |
+| **Art. 6b.8** | Plan de trabajo y cronograma. | `docs/anteproyecto/08_cronograma.md` *(pendiente — #16)*. |
+| **Art. 6b.9** | Bibliografía tentativa. | `docs/anteproyecto/09_bibliografia.md` *(pendiente — #17)*. |
+| **Art. 6a** | Designación de Profesor Tutor por la cátedra. | *(Pendiente — #18)* |
+| **Art. 7** | Evaluación del anteproyecto por la cátedra. | *(Pendiente — cierra la fase actual, #20)* |
 | **Art. 8-10** | Desarrollo, presentación y evaluación del TF. | *(Fases posteriores)* |
+
+> La consigna de la cátedra ([`docs/consigna/`](docs/consigna/Elementos_del_Plan_de_Proyecto_de_Trabajo_Final.pdf)) enumera **10 puntos** porque separa *Título* y *Descripción del problema*, que el Art. 6b agrupa en el inciso 1. El consolidado [`anteproyecto.md`](docs/anteproyecto/anteproyecto.md) sigue la numeración de la consigna (1–10); los archivos por sección siguen la del reglamento (`01`–`09`).
 
 Copia íntegra del reglamento en [`research/reglamento_ucse/reglamento_tf_ucse.pdf`](research/reglamento_ucse/reglamento_tf_ucse.pdf).
 
