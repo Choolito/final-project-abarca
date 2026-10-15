@@ -10,7 +10,11 @@ Este documento desarrolla los diez puntos requeridos por la consigna de Trabajo 
 
 ## 1. Título del Proyecto
 
-_A definir al cierre del anteproyecto._
+**Sistema de Reconocimiento Automático de Eventos Deportivos en Video mediante Visión por Computadora — Caso de Estudio: Análisis de Partidos de Rugby.**
+
+*Subtítulo técnico:* Plataforma modular de detección, segmentación y catalogación de eventos tácticos en secuencias de video, basada en arquitecturas de aprendizaje profundo aplicadas al reconocimiento de comportamiento colectivo.
+
+> El desarrollo completo de este apartado se encuentra en [`01_titulo_y_problema.md`](01_titulo_y_problema.md).
 
 ---
 

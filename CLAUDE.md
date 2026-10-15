@@ -20,16 +20,19 @@ El repositorio actúa como **espacio de documentación y versionado** del antepr
 ```
 final-project-abarca/
 ├── docs/
-│   └── anteproyecto/          # 9 secciones reglamentarias (Art. 6b)
-│       ├── 01_titulo_y_problema.md
-│       ├── 02_objetivos_y_metas.md
-│       ├── 03_antecedentes.md
-│       ├── 04_justificacion.md
-│       ├── 05_marco_teorico.md
-│       ├── 06_metodologia.md
-│       ├── 07_alcance.md
-│       ├── 08_cronograma.md
-│       └── 09_bibliografia.md
+│   ├── anteproyecto/          # 9 secciones reglamentarias (Art. 6b)
+│   │   ├── anteproyecto.md    # Documento consolidado (10 puntos de la consigna)
+│   │   ├── apuntes_idea_y_problema.md  # Borrador inicial de trabajo
+│   │   ├── 01_titulo_y_problema.md
+│   │   ├── 02_objetivos_generales_y_especificos.md
+│   │   ├── 03_antecedentes.md       # pendiente (#13)
+│   │   ├── 04_justificacion.md
+│   │   ├── 05_marco_teorico.md      # pendiente (#14)
+│   │   ├── 06_metodologia.md        # pendiente (#15)
+│   │   ├── 07_alcance.md
+│   │   ├── 08_cronograma.md         # pendiente (#16)
+│   │   └── 09_bibliografia.md       # pendiente (#17)
+│   └── consigna/              # Consigna de la cátedra (PDF)
 ├── research/
 │   ├── papers/                # Estado del arte y referencias
 │   └── reglamento_ucse/       # Reglamento oficial
@@ -121,7 +124,7 @@ git commit -m "docs: actualizar sección X del anteproyecto"
 | Art. | Requisito | Archivo |
 |-----|-----------|---------|
 | 6b.1 | Título y problema | `01_titulo_y_problema.md` |
-| 6b.2 | Objetivos y metas | `02_objetivos_y_metas.md` |
+| 6b.2 | Objetivos y metas | `02_objetivos_generales_y_especificos.md` |
 | 6b.3 | Antecedentes | `03_antecedentes.md` |
 | 6b.4 | Justificación | `04_justificacion.md` |
 | 6b.5 | Marco teórico | `05_marco_teorico.md` |
@@ -131,6 +134,8 @@ git commit -m "docs: actualizar sección X del anteproyecto"
 | 6b.9 | Bibliografía | `09_bibliografia.md` |
 
 Copia del reglamento: `research/reglamento_ucse/reglamento_tf_ucse.pdf`.
+
+**Numeración:** la consigna de la cátedra (`docs/consigna/`) enumera 10 puntos porque separa *Título* y *Descripción del problema* (Art. 6b.1). El consolidado `anteproyecto.md` sigue la numeración de la consigna (1–10); los archivos por sección, la del reglamento (`01`–`09`). Al completar una sección se crea su archivo y se resume en el consolidado con un link al detalle.
 
 ---
 

@@ -60,7 +60,7 @@ Este enunciado delimita con precisión el espacio-problema sobre el cual se form
 
 ### 3.1. Formulación general
 
-Se propone el diseño, desarrollo y validación empírica de una **plataforma de software** capaz de procesar grabaciones de partidos de rugby en formato de video estándar y producir, de manera automática, una catalogación estructurada de los eventos tácticos ocurridos durante el encuentro. La plataforma se formula como una **arquitectura genérica de reconocimiento de eventos en video**, instanciada sobre el dominio del rugby a efectos de la validación académica del Trabajo Final, pero diseñada con criterios de modularidad que habilitan su extensión futura a otros dominios de análisis de comportamiento colectivo (seguridad urbana, análisis de tráfico, monitoreo industrial, entre otros).
+Se propone el diseño, desarrollo y validación empírica de una **plataforma de software** capaz de procesar grabaciones de partidos de rugby en formato de video estándar y producir, de manera automática, una catalogación estructurada de los eventos tácticos ocurridos durante el encuentro. El **rugby** es el objeto concreto sobre el cual el sistema se diseña, implementa y valida, tomando el **line-out** como evento inicial y único de validación obligatoria. La plataforma se organiza con criterios de **modularidad** —separando el núcleo de procesamiento de video del catálogo de eventos propio de la disciplina—; esta organización es una **orientación de diseño** que no clausura su extensión futura a otros deportes de características análogas, pero **no constituye un objetivo a validar** en el presente Trabajo Final (ver *Objetivos* y *Alcance*).
 
 ### 3.2. Arquitectura conceptual por capas de abstracción
 
@@ -68,8 +68,8 @@ A fin de preservar la separación de responsabilidades y facilitar la evolución
 
 | Capa | Responsabilidad abstracta | Instanciación en el caso de estudio (Rugby) |
 |---|---|---|
-| **Capa 1 — Percepción** | Segmentación de objetos, detección de agentes y estimación de flujo óptico sobre el cuadro de video. | Detección y seguimiento de jugadores, árbitros y balón en el campo de juego. |
-| **Capa 2 — Semántica** | Reconocimiento de estados espacio-temporales complejos a partir de la agregación de las primitivas de percepción. | Identificación de formaciones tácticas (*scrum*, *line-out*, *ruck*, *maul*) y gestos arbitrales. |
+| **Capa 1 — Percepción** | Segmentación de objetos, detección de agentes y estimación de flujo óptico sobre el cuadro de video. | Detección y seguimiento de jugadores y balón en el campo de juego, como paso intermedio para identificar el evento. |
+| **Capa 2 — Semántica** | Reconocimiento de estados espacio-temporales complejos a partir de la agregación de las primitivas de percepción. | Identificación del *line-out* (evento inicial obligatorio); *scrum* y *ruck* especificados como eventos de extensión. |
 | **Capa 3 — Eventos** | Disparo de etiquetas (*triggers*), persistencia de la información catalogada y exposición de los clips segmentados al usuario final. | Generación automática de clips segmentados, registro temporal indexado y puesta a disposición del cuerpo técnico. |
 
 ### 3.3. Enfoque técnico preliminar
@@ -85,7 +85,7 @@ El desarrollo se apoyará en el ecosistema de Python y, en particular, en el sig
 
 La propuesta persigue una doble contribución de ingeniería:
 
-- **Contribución técnica.** La formulación del sistema como una arquitectura genérica de reconocimiento de eventos en video —y no como una aplicación *ad hoc* al rugby— constituye un aporte metodológico reutilizable en otros dominios de análisis de comportamiento colectivo caracterizados por alta densidad de agentes y oclusión parcial.
+- **Contribución técnica.** Una cadena completa y validada empíricamente de reconocimiento de un evento táctico del rugby —el *line-out*— sobre video estándar de nivel amateur, escenario caracterizado por alta densidad de agentes y oclusión parcial, organizada en capas desacopladas que dejan una base modular para incorporar nuevos eventos en trabajos posteriores.
 - **Contribución social.** La solución se formula como una plataforma **exclusivamente basada en software**, operable sobre video estándar y sin dependencia de hardware especializado, con el objeto de **democratizar el acceso** a herramientas de análisis táctico de alto rendimiento para instituciones deportivas de nivel amateur y regional, tomando como caso testigo al Círculo Rafaelino de Rugby.
 
 ### 3.5. Encuadre en el Reglamento de TF
