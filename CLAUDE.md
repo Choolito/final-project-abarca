@@ -160,17 +160,17 @@ Las reglas para el repositorio están definidas en `.github/rulesets-main.json` 
 
 ## Labels — Priorización de issues
 
-Definidos en `.github/labels.yml`. Cada issue lleva **una etiqueta de cada grupo**:
+Definidos en `.github/labels.yml`. Cada issue lleva **uno de cada grupo** (se distinguen por color):
 
-| Grupo | Valores | Criterio |
-|---|---|---|
-| **Prioridad** | `P0 · urgente`, `P1 · alta`, `P2 · media`, `P3 · baja` | P0 = bloquea a otros o tiene plazo externo; P3 = opcional |
-| **Tipo** | `tipo: redacción`, `tipo: gestión`, `tipo: release`, `tipo: infra` | Naturaleza del trabajo |
-| **Estado** | `estado: listo`, `estado: bloqueado`, `estado: esperando terceros` | Se actualiza al cerrar una dependencia |
-| **Esfuerzo** | `esfuerzo: S` (≈2 h), `M` (≈10 h), `L` (>10 h) | Referencia: ~10 h/semana de dedicación |
-| **Fase** | `fase: anteproyecto`, `fase: desarrollo` | Art. 6–7 vs. Art. 8–10 |
+| Grupo | Valores |
+|---|---|
+| **Prioridad** | `P0` (bloquea a otros o tiene plazo externo), `P1`, `P2`, `P3` (opcional) |
+| **Estado** | `listo`, `bloqueado` (depende de otro issue), `esperando` (respuesta externa) |
+| **Esfuerzo** | `S` ≈2 h, `M` ≈10 h, `L` >10 h (referencia: ~10 h/semana) |
 
-**Qué hacer primero:** filtrar por `estado: listo` y tomar la prioridad más alta (P0 → P1 → …). Al cerrar un issue, revisar los que dependían de él y pasarlos de `estado: bloqueado` a `estado: listo`.
+El tipo de trabajo lo indica el prefijo del título (`docs:`, `gestión:`, `release:`).
+
+**Qué hacer primero:** filtrar por `listo` y tomar la prioridad más alta. Al cerrar un issue, pasar los que dependían de él de `bloqueado` a `listo`.
 
 ---
 

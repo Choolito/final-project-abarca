@@ -1,61 +1,18 @@
-# Sistema de labels del repositorio (fuente de verdad versionada).
-# Los labels se crean en GitHub a partir de este archivo; si se agrega o
-# modifica uno, actualizar también aquí. Criterios de uso: CLAUDE.md → "Labels".
+# Sistema de labels (fuente de verdad versionada). Criterio de uso: CLAUDE.md → "Labels".
+# Cada issue lleva uno de cada grupo; los grupos se distinguen por color.
 
-# --- Prioridad (exactamente una por issue) ---
-- name: "P0 · urgente"
-  color: "b60205"
-  description: "Hacer ya: bloquea a otras tareas o tiene plazo externo"
-- name: "P1 · alta"
-  color: "d93f0b"
-  description: "Siguiente en la cola, una vez liberados los P0"
-- name: "P2 · media"
-  color: "fbca04"
-  description: "Necesario, pero puede esperar a que avancen P0/P1"
-- name: "P3 · baja"
-  color: "c5def5"
-  description: "Deseable u opcional; no compromete la entrega"
+# Prioridad (rojo → amarillo)
+- { name: "P0", color: "b60205", description: "Hacer ya: bloquea a otros o tiene plazo externo" }
+- { name: "P1", color: "d93f0b", description: "Siguiente en la cola" }
+- { name: "P2", color: "fbca04", description: "Necesario, puede esperar" }
+- { name: "P3", color: "fef2c0", description: "Opcional" }
 
-# --- Tipo (una por issue) ---
-- name: "tipo: redacción"
-  color: "0075ca"
-  description: "Redacción de una sección del anteproyecto o del informe"
-- name: "tipo: gestión"
-  color: "5319e7"
-  description: "Trámite o coordinación con terceros (cátedra, tutor, club)"
-- name: "tipo: release"
-  color: "0e8a16"
-  description: "Cierre, exportación y entrega de una versión"
-- name: "tipo: infra"
-  color: "6e7781"
-  description: "CI, workflows, configuración del repositorio"
+# Estado
+- { name: "listo", color: "2ea44f", description: "Se puede empezar" }
+- { name: "bloqueado", color: "6e7781", description: "Depende de otro issue abierto" }
+- { name: "esperando", color: "8250df", description: "Pendiente de respuesta externa" }
 
-# --- Estado (una por issue abierto; se actualiza al cambiar) ---
-- name: "estado: listo"
-  color: "2ea44f"
-  description: "Sin dependencias pendientes; se puede empezar"
-- name: "estado: bloqueado"
-  color: "e99695"
-  description: "Depende de otro issue abierto (ver 'Depende de')"
-- name: "estado: esperando terceros"
-  color: "f9d0c4"
-  description: "Pendiente de respuesta externa (cátedra, tutor, club)"
-
-# --- Esfuerzo (referencia: ~10 h/semana de dedicación) ---
-- name: "esfuerzo: S"
-  color: "d4f4dd"
-  description: "Hasta ~1 sesión de trabajo (≈2 h)"
-- name: "esfuerzo: M"
-  color: "a6e3b8"
-  description: "Aprox. una semana de dedicación (≈10 h)"
-- name: "esfuerzo: L"
-  color: "57c47a"
-  description: "Más de una semana de dedicación (>10 h)"
-
-# --- Fase del Trabajo Final ---
-- name: "fase: anteproyecto"
-  color: "bfd4f2"
-  description: "Art. 6–7: elaboración y evaluación del anteproyecto"
-- name: "fase: desarrollo"
-  color: "1d76db"
-  description: "Art. 8–10: desarrollo, presentación y evaluación del TF"
+# Esfuerzo (azules; referencia ~10 h/semana)
+- { name: "S", color: "c5def5", description: "≈2 h" }
+- { name: "M", color: "79b8ff", description: "≈10 h (una semana)" }
+- { name: "L", color: "0366d6", description: ">10 h" }
