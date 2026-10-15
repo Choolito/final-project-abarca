@@ -160,17 +160,17 @@ Las reglas para el repositorio están definidas en `.github/rulesets-main.json` 
 
 ## Labels — Priorización de issues
 
-Definidos en `.github/labels.yml`. Cada issue lleva **uno de cada grupo** (se distinguen por color):
+Definidos en `.github/labels.yml` (nombres en inglés, sin prefijo de grupo; los grupos se distinguen por color). Cada issue lleva **uno de cada grupo**:
 
-| Grupo | Valores |
+| Grupo | Labels |
 |---|---|
 | **Prioridad** | `P0` (bloquea a otros o tiene plazo externo), `P1`, `P2`, `P3` (opcional) |
-| **Estado** | `listo`, `bloqueado` (depende de otro issue), `esperando` (respuesta externa) |
+| **Estado** | `ready` (se puede empezar), `blocked` (depende de otro issue), `waiting` (respuesta externa) |
 | **Esfuerzo** | `S` ≈2 h, `M` ≈10 h, `L` >10 h (referencia: ~10 h/semana) |
+| **Tipo** | `writing` (redacción), `management` (gestión con terceros), `release`, `infra` |
+| **Fase** | `proposal` (anteproyecto, Art. 6–7), `development` (desarrollo, Art. 8–10) |
 
-El tipo de trabajo lo indica el prefijo del título (`docs:`, `gestión:`, `release:`).
-
-**Qué hacer primero:** filtrar por `listo` y tomar la prioridad más alta. Al cerrar un issue, pasar los que dependían de él de `bloqueado` a `listo`.
+**Qué hacer primero:** filtrar por `ready` y tomar la prioridad más alta. Al cerrar un issue, pasar los que dependían de él de `blocked` a `ready`.
 
 ---
 
