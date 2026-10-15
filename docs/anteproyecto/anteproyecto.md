@@ -51,7 +51,16 @@ Formulados bajo criterio **SMART** y de forma incremental, tomando el **line-out
 
 ## 4. Antecedentes
 
-_A desarrollar._
+El reconocimiento automático de eventos en video deportivo es un área madura en lo metodológico, pero su aplicación al rugby amateur presenta una brecha concreta.
+
+- **Soluciones comerciales.** Las herramientas de uso extendido (Hudl Sportscode, Nacsport, LongoMatch) sólo aceleran el **etiquetado manual**. Las que automatizan la detección dependen de **instrumentación física** (sensores GPS/IMU de Catapult), de **servicios profesionales de datos** (Stats Perform/Opta) o de **hardware propietario con suscripción** (Veo, que detecta automáticamente scrums y line-outs, pero sólo sobre video de su propia cámara). Ninguna de las soluciones automáticas es aplicable al **archivo histórico** de los clubes.
+- **Investigación en deportes.** *SoccerNet* (Giancola et al., 2018; Deliège et al., 2021) formalizó el *action spotting*, es decir, la localización de eventos dispersos en videos largos, y existen relevamientos recientes que consolidan el campo (Wu et al., 2022; Xu et al., 2025). Los datasets y modelos se concentran, sin embargo, en el fútbol y en transmisiones profesionales.
+- **Investigación en rugby.** Es escasa. Los trabajos que reconocen eventos tácticos, incluido el line-out, operan sobre **transmisiones televisivas** (Jayasuriya, 2022; Nonaka et al., 2024). Los que abordan video amateur se orientan a la **seguridad del jugador**, como la detección de choques y tackles de riesgo (Martin et al., 2021; Santana Domínguez, 2024).
+- **Contexto local.** No se identificaron antecedentes argentinos. A nivel institucional, la URBA impulsa la codificación manual estandarizada de video (URBA, s.f.).
+
+**Contribución.** El presente trabajo propone un sistema de software que reconoce y localiza temporalmente el **line-out** sobre **video amateur de una sola cámara**, **sin sensores ni hardware propietario**, y que genera los clips correspondientes. El sistema es aplicable al archivo histórico de los clubes. Se acompaña de un dataset anotado y de una evaluación cuantitativa construidos en el **contexto regional argentino**.
+
+> El desarrollo completo de este apartado, con la tabla comparativa de soluciones, se encuentra en [`03_antecedentes.md`](03_antecedentes.md).
 
 ---
 
@@ -116,4 +125,6 @@ _A desarrollar._
 
 ## 10. Bibliografía Tentativa
 
-_A desarrollar._
+_En construcción._ Se redacta en estilo APA 7.ª ed., en orden alfabético, e incluye únicamente las obras citadas en el texto (Art. 9c). Por ahora contiene las referencias de *Antecedentes*.
+
+> El listado vigente se encuentra en [`09_bibliografia.md`](09_bibliografia.md).
