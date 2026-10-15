@@ -40,6 +40,7 @@ final-project-abarca/
 │   ├── workflows/             # CI (markdownlint, link check, convención de ramas, limpieza de ramas)
 │   ├── rulesets-main.json     # Ruleset de protección de main
 │   ├── rulesets-develop.json  # Ruleset de protección de develop
+│   ├── labels.yml             # Definición del sistema de labels
 │   └── RULESETS_SETUP.md      # Guía de configuración manual de rulesets
 ├── .gitignore
 ├── README.md
@@ -154,6 +155,22 @@ Las reglas para el repositorio están definidas en `.github/rulesets-main.json` 
 - ✅ **main:** requiere PR con aprobación antes de mergear
 - ✅ **main y develop:** protegidas contra force-push y eliminación
 - ✅ **develop:** rama de integración para feature/*, fix/*, docs/*
+
+---
+
+## Labels — Priorización de issues
+
+Definidos en `.github/labels.yml`. Cada issue lleva **una etiqueta de cada grupo**:
+
+| Grupo | Valores | Criterio |
+|---|---|---|
+| **Prioridad** | `P0 · urgente`, `P1 · alta`, `P2 · media`, `P3 · baja` | P0 = bloquea a otros o tiene plazo externo; P3 = opcional |
+| **Tipo** | `tipo: redacción`, `tipo: gestión`, `tipo: release`, `tipo: infra` | Naturaleza del trabajo |
+| **Estado** | `estado: listo`, `estado: bloqueado`, `estado: esperando terceros` | Se actualiza al cerrar una dependencia |
+| **Esfuerzo** | `esfuerzo: S` (≈2 h), `M` (≈10 h), `L` (>10 h) | Referencia: ~10 h/semana de dedicación |
+| **Fase** | `fase: anteproyecto`, `fase: desarrollo` | Art. 6–7 vs. Art. 8–10 |
+
+**Qué hacer primero:** filtrar por `estado: listo` y tomar la prioridad más alta (P0 → P1 → …). Al cerrar un issue, revisar los que dependían de él y pasarlos de `estado: bloqueado` a `estado: listo`.
 
 ---
 
