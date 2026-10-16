@@ -10,7 +10,7 @@
 
 Este apartado describe el estado actual del conocimiento y de la práctica en el reconocimiento automático de eventos en video deportivo, con el fin de delimitar con claridad la contribución del presente Trabajo Final.
 
-El relevamiento se ordena **por proximidad al caso de estudio**, de lo más cercano a lo más lejano: ámbito **local** (Rafaela), **regional** (provincia de Santa Fe y Litoral), **nacional**, **latinoamericano** e **internacional**. En cada nivel se consideraron tres tipos de antecedentes: producción académica, soluciones comerciales o institucionales y prácticas de los clubes. El criterio de selección fue la afinidad con alguno de los rasgos que definen la propuesta:
+El relevamiento se ordena **por proximidad al caso de estudio**, de lo más cercano a lo más lejano: ámbito **local** (Rafaela), **regional** (provincia de Santa Fe y Litoral), **nacional**, **latinoamericano** e **internacional**. En cada nivel se consideraron tres tipos de antecedentes: producción académica, soluciones comerciales o institucionales y prácticas de los clubes. Sólo se incluyen los trabajos afines a alguno de los rasgos que definen la propuesta; cuando un nivel no presenta antecedentes pertinentes, se deja constancia y se pasa al siguiente. Los rasgos considerados son:
 
 - el **rugby** como dominio;
 - el reconocimiento de **eventos o formaciones colectivas** en video;
@@ -19,54 +19,34 @@ El relevamiento se ordena **por proximidad al caso de estudio**, de lo más cerc
 
 > Las referencias completas, en orden alfabético y según APA 7.ª ed., se encuentran en [`09_bibliografia.md`](09_bibliografia.md). Las afirmaciones sobre productos comerciales se basan en la documentación pública de cada fabricante o en prensa especializada y describen capacidades declaradas, no evaluadas de forma independiente.
 
-### 1.1. Ámbito local — Rafaela
+### 1.1. Ámbitos local y regional
 
-**Producción académica.** En la UCSE DAR existe al menos un Trabajo Final de la carrera de Ingeniería en Informática que aplica visión por computadora con aprendizaje profundo. Se presentó en el Concurso de Trabajos Estudiantiles (EST) de las 49 JAIIO y traduce el alfabeto dactilológico de la Lengua de Señas Argentina a subtítulos mediante redes convolucionales (VGG-16, ResNet-50, Inception V3), con exactitudes en test de 0,96 con guantes y 0,82 sin guantes (*Traducción del alfabeto dactilológico*, 2020).
+En Rafaela (UCSE DAR, UTN Facultad Regional Rafaela, Universidad Nacional de Rafaela) y en la región de Santa Fe y el Litoral (UNL, UNR, UTN, Unión Santafesina de Rugby) no se identificaron, en las fuentes públicas consultadas, antecedentes de análisis automático de video deportivo, por lo que el relevamiento continúa en el ámbito nacional.
 
-No aborda el deporte, pero es un **antecedente institucional directo**: muestra que el reconocimiento visual con *deep learning* es un tema viable y validado como Trabajo Final en la propia unidad académica. Además, anticipa una dificultad que este trabajo comparte: la caída de desempeño cuando las condiciones de captura dejan de estar controladas.
+> **Pendiente de relevamiento (issue #19).** La práctica actual del club caso testigo, el Círculo Rafaelino de Rugby (CRAR), constituye el antecedente local directo del problema. Se completará con datos primarios: dispositivo de grabación, herramienta de análisis utilizada, horas-analista por partido y volumen de archivo histórico disponible. El dato de horas por partido permitirá cuantificar el costo del proceso manual descrito en el *Problema*.
 
-En la UTN Facultad Regional Rafaela y en la Universidad Nacional de Rafaela no se identificaron, en las fuentes públicas consultadas, proyectos finales ni de investigación sobre análisis de video deportivo.
+### 1.2. Ámbito nacional — Argentina
 
-**Contexto deportivo.** El caso testigo es el **Círculo Rafaelino de Rugby (CRAR)**. El club compite en los torneos de la Unión Santafesina de Rugby y en el Torneo Regional del Litoral, y organiza desde 1976 uno de los seven más tradicionales del interior del país (El Litoral, s.f.). No se encontró información pública sobre cómo el club registra o analiza sus partidos.
+**Instituciones del rugby.** La Unión de Rugby de Buenos Aires (URBA) puso en marcha una plataforma de análisis de video y estadísticas para sus clubes, con un **protocolo único de codificación** de los partidos de sus divisiones superiores (URBA, s.f.). La iniciativa confirma el valor que la principal unión del país asigna al análisis de video. También confirma que su producción descansa en la **codificación manual** de cada encuentro.
 
-> **Pendiente de relevamiento (issue #19).** Se completará con datos primarios del CRAR: dispositivo de grabación, herramienta de análisis utilizada, horas-analista por partido y volumen de archivo histórico disponible. El dato de horas por partido permitirá cuantificar el costo del proceso manual descrito en el *Problema*.
+**Industria.** **Beelup** instala kits de cámaras fijas conectadas en canchas de fútbol amateur y otros deportes. Bajo un modelo de abono mensual, utiliza inteligencia artificial para identificar automáticamente las jugadas destacadas y generar los clips. Se informaron 5.000 cámaras en 2.500 canchas de 17 países (Forbes Argentina, 2024; InfoNegocios, s.f.). Es la **validación nacional más clara del modelo "cámara fija + IA + clips automáticos" en el deporte amateur**. Su objetivo, no obstante, es el *highlight* recreativo, no la catalogación táctica, y no abarca el rugby.
 
-### 1.2. Ámbito regional — Santa Fe y Litoral
-
-La región cuenta con **capacidades científicas consolidadas** en las disciplinas que sustentan el trabajo:
-
-- el Instituto de Investigación en Señales, Sistemas e Inteligencia Computacional, sinc(i) (UNL-CONICET), en Santa Fe, que lista visión por computadora y aprendizaje profundo entre sus líneas de trabajo (sinc(i), s.f.);
-- el CIFASIS (CONICET-UNR), en Rosario, cuyos investigadores dictan formación específica en visión con *deep learning* (CONICET Rosario, s.f.).
-
-Sin embargo, no se identificaron trabajos de estas instituciones —ni de las facultades de ingeniería de UNL, UNR o UTN en la región— aplicados al análisis de video deportivo. Tampoco se encontraron iniciativas documentadas de la Unión Santafesina de Rugby en materia de análisis de video.
-
-En el ámbito regional, entonces, **la base técnica existe, pero no se aplicó al deporte**.
-
-### 1.3. Ámbito nacional — Argentina
-
-**Producción académica.** El antecedente nacional más próximo es el trabajo de Francois, Ippolito y Fuster (2025), del Instituto Tecnológico de Buenos Aires, presentado en el Simposio Argentino de Imágenes y Visión de las 54 JAIIO. Forma parte de una solución para obtener métricas de partidos de tenis —detección de jugadores, pelota y límites de la cancha— **con equipamiento accesible**, y aporta un método de detección de objetos a alta velocidad de menor costo computacional.
+**Producción académica.** En lo académico, el trabajo nacional más afín es el trabajo de Francois, Ippolito y Fuster (2025), del Instituto Tecnológico de Buenos Aires, presentado en el Simposio Argentino de Imágenes y Visión de las 54 JAIIO. Forma parte de una solución para obtener métricas de partidos de tenis —detección de jugadores, pelota y límites de la cancha— **con equipamiento accesible**, y aporta un método de detección de objetos a alta velocidad de menor costo computacional.
 
 Comparte con este trabajo la motivación de democratizar el análisis con hardware no especializado, pero se orienta a un deporte individual y a la percepción de objetos, no al reconocimiento de eventos colectivos.
 
 Una búsqueda exploratoria en repositorios universitarios argentinos (SEDICI-UNLP, Biblioteca Digital FCEN-UBA, repositorios institucionales) no identificó trabajos sobre reconocimiento automático de eventos de rugby. Queda pendiente una consulta sistemática en el Sistema Nacional de Repositorios Digitales (SNRD).
 
-**Industria.** El ecosistema argentino de tecnología deportiva incluye dos casos relevantes:
-
-- **Beelup** instala kits de cámaras fijas conectadas en canchas de fútbol amateur y otros deportes. Bajo un modelo de abono mensual, utiliza inteligencia artificial para identificar automáticamente las jugadas destacadas y generar los clips. Se informaron 5.000 cámaras en 2.500 canchas de 17 países (Forbes Argentina, 2024; InfoNegocios, s.f.). Es la **validación local más clara del modelo "cámara fija + IA + clips automáticos" en el deporte amateur**. Su objetivo, no obstante, es el *highlight* recreativo, no la catalogación táctica, y no abarca el rugby.
-- **Sportian Performance**, división de Globant y LaLiga, integra datos, video e IA para cuerpos técnicos, pero se orienta a clubes profesionales y selecciones (El Cronista, s.f.).
-
-**Instituciones del rugby.** La Unión de Rugby de Buenos Aires (URBA) puso en marcha una plataforma de análisis de video y estadísticas para sus clubes, con un **protocolo único de codificación** de los partidos de sus divisiones superiores (URBA, s.f.). La iniciativa confirma el valor que la principal unión del país asigna al análisis de video. También confirma que su producción descansa en la **codificación manual** de cada encuentro.
-
-### 1.4. Ámbito latinoamericano
+### 1.3. Ámbito latinoamericano
 
 - **Chile.** Santana Domínguez (2024), en una memoria de título de la Universidad Técnica Federico Santa María, desarrolló un sistema que detecta y clasifica choques entre rugbistas (caídas, tackles, colisiones) a partir de video. Es el **antecedente regional más cercano en dominio**. Su motivación refuerza el planteo de este trabajo: la cámara Veo que utilizaba el club no identificaba los eventos que el cuerpo técnico necesitaba. El trabajo se orienta, no obstante, a la seguridad del jugador y no a las formaciones fijas.
 - **Perú.** Laboriano Galindo (2024), en una tesis de maestría de la Pontificia Universidad Católica del Perú, clasificó cinco tipos de eventos de fútbol (saques de arco, córners, faltas, tiros libres indirectos y remates al arco) sobre 1.959 clips derivados de SoccerNet, con una exactitud del 91 % usando EfficientNet-B0. Ilustra el enfoque de clasificación de clips recortados, aunque sobre video profesional.
 
 En Brasil y Uruguay se encontraron trabajos de detección de eventos en fútbol, pero ninguno sobre rugby ni sobre video amateur.
 
-### 1.5. Ámbito internacional
+### 1.4. Ámbito internacional
 
-#### 1.5.1. Soluciones comerciales
+#### 1.4.1. Soluciones comerciales
 
 El mercado internacional ofrece tres familias de soluciones, que se distinguen por el **insumo** del que parten y por el **grado de automatización** del reconocimiento de eventos.
 
@@ -99,7 +79,7 @@ Veo demuestra que la detección automática del line-out es **técnicamente fact
 2. el reconocimiento opera sobre el video capturado **por su propia cámara**, por lo que no se aplica a grabaciones previas ni a material registrado con otros dispositivos;
 3. es un sistema cerrado: su método, sus datos de entrenamiento y su desempeño no están documentados públicamente, lo que impide auditarlo o adaptarlo.
 
-#### 1.5.2. Investigación en deportes en general
+#### 1.4.2. Investigación en deportes en general
 
 La comunidad de visión por computadora consolidó el análisis de video deportivo como un área propia, con el *workshop* **CVsports** del CVPR como foro de referencia. Los trabajos relevantes se agrupan en cuatro líneas.
 
@@ -133,7 +113,7 @@ Es el antecedente más próximo en **condiciones de captura**, y su conclusión 
 - Wu et al. (2022) cubren el reconocimiento de acciones en más de diez deportes y señalan que la anotación fina exige conocimiento experto del dominio.
 - Xu et al. (2025) ordenan la detección de eventos en video deportivo en tres tareas: clasificación, localización temporal y *action spotting*.
 
-#### 1.5.3. Investigación específica sobre rugby
+#### 1.4.3. Investigación específica sobre rugby
 
 La producción académica sobre rugby es **comparativamente escasa** y se orienta mayormente a problemas distintos del reconocimiento de formaciones fijas sobre video amateur.
 
@@ -154,7 +134,7 @@ Se observan tres regularidades:
 2. Ningún trabajo relevado combina la **localización temporal del line-out** con la **generación automática de clips** para el cuerpo técnico.
 3. Una parte significativa de la investigación sobre rugby se orienta a la **seguridad del jugador** (tackles de riesgo, colisiones), no a la preparación táctica.
 
-#### 1.5.4. El line-out como objeto de análisis
+#### 1.4.4. El line-out como objeto de análisis
 
 Las ciencias del deporte confirman la **relevancia táctica** del line-out y, de paso, dimensionan el problema:
 
@@ -166,7 +146,7 @@ Este último trabajo aporta dos datos útiles para la planificación:
 - en el nivel amateur se registran **≈25 line-outs por partido**, lo que permite estimar que la meta de ≥200 clips del objetivo específico 2 requiere del orden de **8 a 10 partidos** completos;
 - aun en un estudio académico, la obtención de los datos depende del **etiquetado manual**, que es precisamente el costo que este trabajo busca reducir.
 
-### 1.6. Síntesis comparativa
+### 1.5. Síntesis comparativa
 
 | Solución / trabajo | Ámbito | Insumo | Costo / acceso | Eventos que cubre | ¿Aplica al archivo histórico? |
 |---|---|---|---|---|---|
@@ -186,7 +166,7 @@ Este último trabajo aporta dos datos útiles para la planificación:
 
 El relevamiento muestra que el reconocimiento automático de eventos en video deportivo está **resuelto en lo metodológico**: el *action spotting*, la detección y el seguimiento de jugadores y el reconocimiento de formaciones son técnicas maduras. Su aplicación al rugby amateur, en cambio, presenta una brecha concreta en cada nivel de proximidad:
 
-1. **En lo local y regional** existen capacidades académicas en visión por computadora —incluso un Trabajo Final previo en la propia UCSE DAR—, pero ninguna aplicada al análisis de video deportivo. El club caso testigo no cuenta con herramientas de detección automática documentadas.
+1. **En lo local y regional** no se identificaron antecedentes de análisis automático de video deportivo.
 2. **En lo nacional**, la principal unión de rugby impulsa el análisis de video, pero sobre **codificación manual**. Las soluciones locales con IA (Beelup) generan *highlights* recreativos de fútbol con hardware propio, no catalogación táctica de rugby.
 3. **En Latinoamérica**, el único antecedente de rugby sobre video amateur (Santana Domínguez, 2024) aborda la seguridad del jugador y confirma que las cámaras comerciales no cubren todas las necesidades de los cuerpos técnicos.
 4. **En lo internacional**:
