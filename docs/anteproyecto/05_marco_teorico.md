@@ -24,16 +24,17 @@ Este apartado expone los aspectos teórico-prácticos necesarios para el desarro
 
 El line-out es la formación con la que se reanuda el juego cuando el balón sale por la línea de *touch*. Está regulado por la Ley 18 del reglamento de World Rugby (*Touch, quick throw and lineout*) (World Rugby, s.f.). A los fines de este trabajo interesan los rasgos que la ley impone y que, por lo tanto, son **observables en video**:
 
-- **Dos filas paralelas** de jugadores, una por equipo, perpendiculares a la línea de *touch*, con un mínimo de dos jugadores por fila.
-- **Ubicación acotada**: las filas se forman entre las líneas de 5 m y de 15 m, es decir, siempre junto a una de las bandas.
-- **Un espacio de separación** de aproximadamente 1 m entre ambas filas.
-- **Un lanzador** ubicado en la marca de *touch*, fuera del campo, que arroja el balón en línea recta a lo largo de la línea de lanzamiento, entre ambas filas.
-- **Saltadores elevados** por compañeros, que disputan el balón en el aire.
+- **Dos filas paralelas** de jugadores, una por equipo, perpendiculares a la línea de *touch*, con un mínimo de dos jugadores por equipo (Ley 18.11).
+- **Ubicación acotada**: las filas se forman entre las líneas de 5 m y de 15 m, es decir, siempre junto a una de las bandas (Ley 18.10).
+- **Un espacio de separación** entre ambas filas: cada una se ubica a medio metro de la línea de lanzamiento (*mark of touch*), de su lado, lo que deja ≈1 m entre ellas hasta el lanzamiento (Ley 18.10).
+- **Un lanzador** ubicado en la marca de *touch*, fuera del campo, que arroja el balón derecho a lo largo de la línea de lanzamiento, hacia un jugador del line-out (Ley 18.23).
+- **Saltadores elevados** por compañeros, que disputan el balón en el aire (Ley 18.29).
+- **Aislamiento espacial**: el resto de los jugadores debe permanecer a 10 m de la línea de lanzamiento (Ley 18.35), por lo que la formación queda separada del resto del juego en la imagen.
 
 Estos rasgos tienen dos consecuencias de diseño:
 
 1. El line-out es una **configuración espacial colectiva muy característica** y relativamente estática en los segundos previos al lanzamiento. Por eso puede describirse a partir de la **disposición de los jugadores**, sin necesidad de modelar gestos individuales.
-2. Tiene un **instante canónico**: el momento en que el balón sale de las manos del lanzador. Es breve, inequívoco y fácil de marcar por un anotador. Se adopta como **instante de referencia del evento** para la anotación (objetivo 2) y para la evaluación (§1.7), sujeto a validación con el referente técnico del club (issue #19).
+2. Tiene un **instante canónico**: el momento en que el balón sale de las manos del lanzador. El propio reglamento lo usa como frontera, ya que nadie puede saltar ni ser levantado antes de ese instante (Ley 18.20). Es breve, inequívoco y fácil de marcar por un anotador. Se adopta como **instante de referencia del evento** para la anotación (objetivo 2) y para la evaluación (§1.7), sujeto a validación con el referente técnico del club (issue #19).
 
 ### 1.2. Fundamentos: video digital, aprendizaje profundo y transferencia
 
