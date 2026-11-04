@@ -44,11 +44,11 @@ Chambers, R. M., Gabbett, T. J., & Cole, M. H. (2019). Validity of a microsensor
 
 Chambers, R. M., Gabbett, T. J., Gupta, R., Josman, C., Bown, R., Stridgeon, P., & Cole, M. H. (2019). Automatic detection of one-on-one tackles and ruck events using microtechnology in rugby union. *Journal of Science and Medicine in Sport, 22*(7), 827–832. <https://doi.org/10.1016/j.jsams.2019.01.001>
 
-Cui, Y., Zeng, C., Zhao, X., Yang, Y., Wu, G., & Wang, L. (2023). SportsMOT: A large multi-object tracking dataset in multiple sports scenes. En *Proceedings of the IEEE/CVF International Conference on Computer Vision* (pp. 9921–9931). <https://doi.org/10.48550/arXiv.2304.05170> **[verificar: coautores]**
+Cui, Y., Zeng, C., Zhao, X., Yang, Y., Wu, G., & Wang, L. (2023). SportsMOT: A large multi-object tracking dataset in multiple sports scenes. En *Proceedings of the IEEE/CVF International Conference on Computer Vision* (pp. 9921–9931). <https://doi.org/10.1109/ICCV51070.2023.00910>
 
 Cullen, W. (2026). *A technical and tactical assessment of lineouts in National 2 SE Rugby Union: Can successful lineout performances be predicted?* [Tesis de Master of Research, University of Kent]. <https://kar.kent.ac.uk/112954/>
 
-Deliège, A., Cioppa, A., Giancola, S., Seikavandi, M. J., Dueholm, J. V., Nasrollahi, K., Ghanem, B., Moeslund, T. B., & Van Droogenbroeck, M. (2021). SoccerNet-v2: A dataset and benchmarks for holistic understanding of broadcast soccer videos. En *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops* (pp. 4508–4519). <https://doi.org/10.48550/arXiv.2011.13367> **[verificar: coautores]**
+Deliège, A., Cioppa, A., Giancola, S., Seikavandi, M. J., Dueholm, J. V., Nasrollahi, K., Ghanem, B., Moeslund, T. B., & Van Droogenbroeck, M. (2021). SoccerNet-v2: A dataset and benchmarks for holistic understanding of broadcast soccer videos. En *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops* (pp. 4508–4519). <https://doi.org/10.1109/CVPRW53098.2021.00508>
 
 Everingham, M., Van Gool, L., Williams, C. K. I., Winn, J., & Zisserman, A. (2010). The PASCAL Visual Object Classes (VOC) challenge. *International Journal of Computer Vision, 88*(2), 303–338. <https://doi.org/10.1007/s11263-009-0275-4>
 
@@ -90,7 +90,7 @@ Jocher, G., Chaurasia, A., & Qiu, J. (2023). *Ultralytics YOLO* (Versión 8.0.0)
 
 Kalman, R. E. (1960). A new approach to linear filtering and prediction problems. *Journal of Basic Engineering, 82*(1), 35–45. <https://doi.org/10.1115/1.3662552>
 
-Kodathala, S. V., et al. (2026). *Prompt, probe, train, or annotate? Single-camera sports video understanding in amateur settings* (arXiv:2609.28049). arXiv. <https://arxiv.org/abs/2609.28049> **[verificar: lista completa de autores; APA no admite "et al." en la referencia]**
+Kodathala, S. V., Pollishetty, P., & Cargill, J. (2026). *Prompt, probe, train, or annotate? Single-camera sports video understanding in amateur settings* (arXiv:2609.28049). arXiv. <https://doi.org/10.48550/arXiv.2609.28049>
 
 Kuhn, H. W. (1955). The Hungarian method for the assignment problem. *Naval Research Logistics Quarterly, 2*(1–2), 83–97. <https://doi.org/10.1002/nav.3800020109>
 
@@ -108,7 +108,7 @@ Martin, Z., Hendricks, S., & Patel, A. (2021). Automated tackle injury risk asse
 
 Migdalski, A., & Stone, J. (2019). Investigating lineout performance between the top and bottom four English Premiership rugby union teams in the 2016/17 season. *International Journal of Performance Analysis in Sport, 19*(1), 131–141. <https://doi.org/10.1080/24748668.2019.1570459>
 
-Nacsport. (s.f.). *Nacsport: Video analysis software*. Recuperado el 15 de octubre de 2026 de <https://www.nacsport.com> **[verificar: título de la página]**
+Nacsport. (s.f.). [Página de inicio del software de análisis de video Nacsport]. Recuperado el 15 de octubre de 2026 de <https://www.nacsport.com>
 
 Nonaka, N., Fujihira, R., Koshiba, T., Maeda, A., & Seita, J. (2024). Rugby scene classification enhanced by vision language model. En *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops* (pp. 3256–3266). <https://doi.org/10.1109/CVPRW63382.2024.00331>
 

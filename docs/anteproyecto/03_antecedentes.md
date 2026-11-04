@@ -103,8 +103,10 @@ Ambos respaldan la hipótesis de diseño de este trabajo: reconocer el evento a 
 
 **d) Video amateur de una sola cámara.** Kodathala et al. (2026) estudiaron la comprensión de video deportivo en **condiciones amateur con una sola cámara fija**, sobre 66 partidos de vóley con 46.648 contactos anotados. Reportan dos hallazgos:
 
-- un modelo entrenado de apenas dos millones de parámetros supera a los modelos de visión-lenguaje basados en *prompts* en la localización de eventos, con una fracción del costo;
-- los *benchmarks* construidos sobre video profesional pueden **sobrestimar** el desempeño esperable en video amateur.
+- un modelo entrenado específico, mucho más pequeño, supera a los modelos de visión-lenguaje basados en *prompts* en la detección de eventos (*spotting* de contactos), con una fracción del costo;
+- los buenos resultados sobre *benchmarks* curados o filmados profesionalmente **no garantizan** un desempeño equivalente en video amateur.
+
+Los autores pertenecen a una empresa de análisis de video deportivo (Sports Vision, Inc.), por lo que sus conclusiones deben leerse con esa salvedad.
 
 Es el antecedente más próximo en **condiciones de captura**, y su conclusión justifica construir y evaluar sobre un dataset propio de video amateur.
 
