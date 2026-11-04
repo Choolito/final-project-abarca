@@ -70,7 +70,7 @@ Estas soluciones exigen **equipar a cada jugador** o contratar un servicio profe
 
 **c) Cámaras autónomas con inteligencia artificial.** Es la categoría más cercana a la propuesta.
 
-- **Veo** comercializa una cámara panorámica autónoma que graba el partido sin camarógrafo. Su plataforma **detecta automáticamente eventos de rugby** —inicio y fin de período, *try*, conversión, **scrum y line-out**— y genera los clips (Veo, s.f.-a, s.f.-c). La generación de clips por IA no está disponible en el plan de entrada (*Starter*), sino en los planes superiores de suscripción (Veo, s.f.-b).
+- **Veo** comercializa una cámara panorámica autónoma que graba el partido sin camarógrafo. Su plataforma **detecta automáticamente eventos de rugby**: marca el inicio y el fin de cada período y genera clips de *try*, conversión, **scrum y line-out** (Veo, s.f.-a, s.f.-c). La generación de clips por IA no está disponible en el plan de entrada (*Starter*), sino en los planes superiores de suscripción (Veo, s.f.-b).
 - **Hudl Focus** y **Pixellot** ofrecen cámaras que siguen la acción y suben la grabación de forma automática; el etiquetado se resuelve en sus plataformas o mediante servicios (Hudl, s.f.-c; Pixellot, s.f.). En la documentación consultada de Pixellot, el rugby no figura entre los deportes soportados.
 
 Veo demuestra que la detección automática del line-out es **técnicamente factible y comercialmente valorada**. Su modelo presenta, sin embargo, tres restricciones relevantes para el ámbito amateur regional:
