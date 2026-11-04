@@ -51,7 +51,16 @@ Formulados bajo criterio **SMART** y de forma incremental, tomando el **line-out
 
 ## 4. Antecedentes
 
-_A desarrollar._
+El relevamiento se ordena de lo más cercano a lo más lejano: local, regional, nacional, latinoamericano e internacional. Muestra que el reconocimiento automático de eventos en video deportivo está maduro en lo metodológico, pero que su aplicación al rugby amateur presenta una brecha concreta.
+
+- **Local y regional.** No se identificaron antecedentes de análisis automático de video deportivo. La práctica actual del club caso testigo (CRAR) está pendiente de relevamiento.
+- **Nacional.** La URBA impulsa una plataforma de análisis de video basada en **codificación manual** (URBA, s.f.). En la industria, Beelup valida el modelo "cámara fija + IA + clips" en el deporte amateur, pero orientado a *highlights* recreativos de fútbol y con hardware propio (Forbes Argentina, 2024). En lo académico, el antecedente más próximo detecta objetos en tenis con equipamiento accesible (Francois et al., 2025).
+- **Latinoamérica.** El único antecedente de rugby sobre video amateur detecta choques entre jugadores. Su motivación fue que la cámara comercial del club no identificaba esos eventos (Santana Domínguez, 2024).
+- **Internacional.** Las herramientas accesibles (Hudl Sportscode, Nacsport, LongoMatch, Framesports) sólo asisten el **etiquetado manual**. Las que automatizan dependen de **sensores** (Catapult) o de **hardware propietario con suscripción** (Veo, que detecta line-outs, pero sólo sobre video de su propia cámara). La investigación formalizó el *action spotting* (Giancola et al., 2018) y el reconocimiento de formaciones colectivas (Atmosukarto et al., 2013). Los trabajos de rugby que reconocen el line-out operan, en cambio, sobre **transmisiones televisivas** y no generan clips (Jayasuriya, 2022; Nonaka et al., 2024). La evidencia reciente advierte que los resultados sobre video profesional no se trasladan directamente al video amateur de una sola cámara (Kodathala et al., 2026).
+
+**Contribución.** El trabajo propone un sistema de software que reconoce y localiza temporalmente el **line-out** sobre **video amateur de una sola cámara**, **sin sensores ni hardware propietario**, y genera los clips correspondientes. El sistema es aplicable al archivo histórico de los clubes. Se acompaña de un dataset anotado y de una evaluación cuantitativa construidos en el **contexto regional argentino**. Según estudios de nivel amateur, se registran ≈25 line-outs por partido (Cullen, 2026), por lo que la meta de ≥200 clips equivale a unos 8–10 partidos.
+
+> El desarrollo completo de este apartado, con la tabla comparativa de soluciones, se encuentra en [`03_antecedentes.md`](03_antecedentes.md).
 
 ---
 
@@ -116,4 +125,6 @@ _A desarrollar._
 
 ## 10. Bibliografía Tentativa
 
-_A desarrollar._
+_En construcción._ Se redacta en estilo APA 7.ª ed., en orden alfabético, e incluye únicamente las obras citadas en el texto (Art. 9c). Por ahora contiene las referencias de *Antecedentes*.
+
+> El listado vigente se encuentra en [`09_bibliografia.md`](09_bibliografia.md).

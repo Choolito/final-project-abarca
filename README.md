@@ -53,13 +53,13 @@ Matriz de trazabilidad frente al *Reglamento para la Elaboración de los Trabajo
 | **Art. 4** | Trabajo **individual**. | Único autor en commits. |
 | **Art. 6b.1** | Título y descripción del problema. | `docs/anteproyecto/01_titulo_y_problema.md`. |
 | **Art. 6b.2** | Objetivos y metas evaluables. | `docs/anteproyecto/02_objetivos_generales_y_especificos.md`. |
-| **Art. 6b.3** | Antecedentes / estado del arte. | `docs/anteproyecto/03_antecedentes.md` *(pendiente — #13)*. |
+| **Art. 6b.3** | Antecedentes / estado del arte. | `docs/anteproyecto/03_antecedentes.md`. |
 | **Art. 6b.4** | Justificación. | `docs/anteproyecto/04_justificacion.md`. |
 | **Art. 6b.5** | Marco teórico. | `docs/anteproyecto/05_marco_teorico.md` *(pendiente — #14)*. |
 | **Art. 6b.6** | Metodología. | `docs/anteproyecto/06_metodologia.md` *(pendiente — #15)*. |
 | **Art. 6b.7** | Alcance. | `docs/anteproyecto/07_alcance.md`. |
 | **Art. 6b.8** | Plan de trabajo y cronograma. | `docs/anteproyecto/08_cronograma.md` *(pendiente — #16)*. |
-| **Art. 6b.9** | Bibliografía tentativa. | `docs/anteproyecto/09_bibliografia.md` *(pendiente — #17)*. |
+| **Art. 6b.9** | Bibliografía tentativa. | `docs/anteproyecto/09_bibliografia.md` *(en construcción — #17)*. |
 | **Art. 6a** | Designación de Profesor Tutor por la cátedra. | *(Pendiente — #18)* |
 | **Art. 7** | Evaluación del anteproyecto por la cátedra. | *(Pendiente — cierra la fase actual, #20)* |
 | **Art. 8-10** | Desarrollo, presentación y evaluación del TF. | *(Fases posteriores)* |

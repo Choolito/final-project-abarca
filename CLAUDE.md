@@ -25,13 +25,13 @@ final-project-abarca/
 │   │   ├── apuntes_idea_y_problema.md  # Borrador inicial de trabajo
 │   │   ├── 01_titulo_y_problema.md
 │   │   ├── 02_objetivos_generales_y_especificos.md
-│   │   ├── 03_antecedentes.md       # pendiente (#13)
+│   │   ├── 03_antecedentes.md
 │   │   ├── 04_justificacion.md
 │   │   ├── 05_marco_teorico.md      # pendiente (#14)
 │   │   ├── 06_metodologia.md        # pendiente (#15)
 │   │   ├── 07_alcance.md
 │   │   ├── 08_cronograma.md         # pendiente (#16)
-│   │   └── 09_bibliografia.md       # pendiente (#17)
+│   │   └── 09_bibliografia.md       # en construcción (#17)
 │   └── consigna/              # Consigna de la cátedra (PDF)
 ├── research/
 │   ├── papers/                # Estado del arte y referencias
