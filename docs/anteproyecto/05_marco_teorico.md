@@ -8,7 +8,7 @@
 
 ## 1. Marco Teórico
 
-Este apartado expone los aspectos teórico-prácticos necesarios para el desarrollo del trabajo. El criterio de selección es deliberadamente acotado: se desarrollan **sólo los conceptos que nombran los *Objetivos* y el *Alcance***. Son las tres capas del sistema, las métricas mAP y F1, el line-out y los clips de ±10 s. Al cierre se confirma o ajusta el stack tecnológico tentativo de [`01_titulo_y_problema.md`](01_titulo_y_problema.md) §3.3.
+Este apartado expone los aspectos teórico-prácticos necesarios para el desarrollo del trabajo. Se desarrollan **sólo los conceptos que nombran los *Objetivos* y el *Alcance***: las tres capas del sistema, las métricas mAP y F1, el line-out y los clips de ±10 s. Al cierre se confirma o ajusta el stack tecnológico tentativo de [`01_titulo_y_problema.md`](01_titulo_y_problema.md) §3.3.
 
 | Concepto | Capa del sistema | Objetivo específico que lo requiere |
 |---|---|---|
@@ -22,121 +22,95 @@ Este apartado expone los aspectos teórico-prácticos necesarios para el desarro
 
 ### 1.1. Dominio: el line-out
 
-El line-out es la formación con la que se reanuda el juego cuando el balón sale por la línea de *touch*. Está regulado por la Ley 18 del reglamento de World Rugby (*Touch, quick throw and lineout*) (World Rugby, s.f.). A los fines de este trabajo interesan los rasgos que la ley impone y que, por lo tanto, son **observables en video**:
+El line-out es la formación con la que se reanuda el juego cuando el balón sale por la línea de *touch*. Está regulado por la Ley 18 del reglamento de World Rugby (*Touch, quick throw and lineout*) (World Rugby, s.f.). Interesan los rasgos que la ley impone y que, por lo tanto, son **observables en video**:
 
 - **Dos filas paralelas** de jugadores, una por equipo, perpendiculares a la línea de *touch*, con un mínimo de dos jugadores por equipo (Ley 18.11).
-- **Ubicación acotada**: las filas se forman entre las líneas de 5 m y de 15 m, es decir, siempre junto a una de las bandas (Ley 18.10).
-- **Un espacio de separación** entre ambas filas: cada una se ubica a medio metro de la línea de lanzamiento (*mark of touch*), de su lado, lo que deja ≈1 m entre ellas hasta el lanzamiento (Ley 18.10).
-- **Un lanzador** ubicado en la marca de *touch*, fuera del campo, que arroja el balón derecho a lo largo de la línea de lanzamiento, hacia un jugador del line-out (Ley 18.23).
+- **Ubicación acotada**: las filas se forman entre las líneas de 5 m y de 15 m, siempre junto a una de las bandas (Ley 18.10).
+- **Un espacio de separación**: cada fila se ubica a medio metro de la línea de lanzamiento (*mark of touch*), de su lado, lo que deja ≈1 m entre ellas (Ley 18.10).
+- **Un lanzador** en la marca de *touch*, fuera del campo, que arroja el balón derecho a lo largo de esa línea (Ley 18.23).
 - **Saltadores elevados** por compañeros, que disputan el balón en el aire (Ley 18.29).
-- **Aislamiento espacial**: el resto de los jugadores debe permanecer a 10 m de la línea de lanzamiento (Ley 18.35), por lo que la formación queda separada del resto del juego en la imagen.
+- **Aislamiento espacial**: el resto de los jugadores debe permanecer a 10 m (Ley 18.35), por lo que la formación queda separada del juego en la imagen.
 
-Estos rasgos tienen dos consecuencias de diseño:
+De aquí surgen dos decisiones de diseño:
 
-1. El line-out es una **configuración espacial colectiva muy característica** y relativamente estática en los segundos previos al lanzamiento. Por eso puede describirse a partir de la **disposición de los jugadores**, sin necesidad de modelar gestos individuales.
-2. Tiene un **instante canónico**: el momento en que el balón sale de las manos del lanzador. El propio reglamento lo usa como frontera, ya que nadie puede saltar ni ser levantado antes de ese instante (Ley 18.20). Es breve, inequívoco y fácil de marcar por un anotador. Se adopta como **instante de referencia del evento** para la anotación (objetivo 2) y para la evaluación (§1.7), sujeto a validación con el referente técnico del club (issue #19).
+1. El line-out es una **configuración espacial colectiva muy característica** y casi estática antes del lanzamiento. Puede describirse por la **disposición de los jugadores**, sin modelar gestos individuales.
+2. Tiene un **instante canónico**: el momento en que el balón sale de las manos del lanzador. El propio reglamento lo usa como frontera, ya que nadie puede saltar ni ser levantado antes (Ley 18.20). Es inequívoco y fácil de marcar, y se adopta como **instante de referencia** para la anotación (objetivo 2) y la evaluación (§1.7).
 
-### 1.2. Fundamentos: video digital, aprendizaje profundo y transferencia
+### 1.2. Fundamentos: video y aprendizaje por transferencia
 
-**Video digital.** Una grabación es una secuencia de cuadros (*frames*) muestreados a una tasa fija, típicamente de 25 a 60 cuadros por segundo (Szeliski, 2022). Un partido de 80 minutos a 25 fps tiene ≈120.000 cuadros. Para un problema de eventos poco frecuentes, el costo de procesamiento obliga a **submuestrear temporalmente** la señal. Se procesan, por ejemplo, entre 2 y 5 cuadros por segundo en la capa semántica, con un costo acotado en precisión temporal, que es compatible con la tolerancia definida en §1.7.
+Una grabación es una secuencia de cuadros a una tasa fija, típicamente de 25 a 60 por segundo (Szeliski, 2022). Un partido de 80 minutos a 25 fps tiene ≈120.000 cuadros, por lo que la capa semántica **submuestrea** la señal a 2–5 cuadros por segundo, una resolución compatible con la tolerancia de §1.7.
 
-**Aprendizaje profundo.** Las redes neuronales convolucionales (CNN) aprenden representaciones jerárquicas de la imagen, que van de bordes y texturas a partes y objetos, mediante capas de convolución entrenadas por descenso del gradiente (Goodfellow et al., 2016). Las conexiones residuales permitieron entrenar redes muy profundas de forma estable y son hoy la base de la mayoría de los extractores de características (He et al., 2016).
-
-**Aprendizaje por transferencia.** Las características aprendidas en grandes conjuntos genéricos se reutilizan en dominios nuevos con pocos datos. Se parte de un modelo preentrenado y se lo ajusta (*fine-tuning*) con el conjunto propio (Pan & Yang, 2010; Yosinski et al., 2014). Es una condición de viabilidad del trabajo: el dataset objetivo tiene del orden de 200 line-outs. COCO (Lin et al., 2014) ya incluye las clases *person* y *sports ball*, por lo que el detector parte de un punto de partida razonable y sólo debe adaptarse a la escala, el encuadre y las oclusiones del video amateur.
+Los modelos se basan en redes neuronales convolucionales, que aprenden representaciones jerárquicas de la imagen (Goodfellow et al., 2016). Con un dataset del orden de 200 line-outs, la viabilidad depende del **aprendizaje por transferencia**: se parte de un modelo preentrenado en un conjunto genérico y se lo ajusta (*fine-tuning*) con los datos propios (Pan & Yang, 2010; Yosinski et al., 2014). COCO (Lin et al., 2014) ya incluye las clases *person* y *sports ball*, de modo que el detector sólo debe adaptarse a la escala, el encuadre y las oclusiones del video amateur.
 
 ### 1.3. Capa de percepción I: detección de objetos
 
-**Detectores de una etapa.** La familia **YOLO** (*You Only Look Once*) formula la detección como una única regresión. La red predice en una sola pasada las cajas delimitadoras y las probabilidades de clase sobre una grilla de la imagen (Redmon et al., 2016). Las versiones actuales, mantenidas por Ultralytics (Jocher et al., 2023), son detectores sin *anchors*, con variantes de distinto tamaño. Permiten intercambiar exactitud por velocidad con la misma interfaz de entrenamiento e inferencia. Para un procesamiento *offline* sobre hardware estándar, una variante mediana a resolución de entrada 640–1280 px es un punto de equilibrio razonable.
+La familia **YOLO** formula la detección como una única regresión: la red predice en una sola pasada las cajas delimitadoras y las clases sobre una grilla de la imagen (Redmon et al., 2016). Las versiones actuales, mantenidas por Ultralytics (Jocher et al., 2023), ofrecen variantes de distinto tamaño con la misma interfaz de entrenamiento e inferencia.
 
-**Objetos pequeños.** En el plano general de una cámara amateur, los jugadores del lado opuesto de la cancha y, sobre todo, el balón ocupan pocas decenas de píxeles. Para este caso, la inferencia por mosaicos (*slicing*) divide el cuadro en recortes superpuestos y luego fusiona las detecciones, con lo que mejora la exhaustividad en objetos pequeños a cambio de mayor costo (Akyon et al., 2022). Se reserva como alternativa para la clase *balón*, que por esta razón no tiene umbral exigido en el objetivo 4.
+**Conceptos de evaluación:**
 
-**Conceptos de evaluación.**
+- **IoU** (*Intersection over Union*): cociente entre el área de intersección y la de unión de la caja predicha y la real. Una predicción es correcta si su IoU con una caja real no asignada supera un umbral.
+- **NMS** (*Non-Maximum Suppression*): elimina las cajas redundantes sobre un mismo objeto y conserva la de mayor confianza.
+- **mAP@0.5**: promedio, entre clases, del área bajo la curva precisión-exhaustividad, con umbral de IoU 0,5 (Everingham et al., 2010). Es la métrica del **objetivo 4**, exigida para la clase *jugador*.
 
-- **IoU** (*Intersection over Union*): cociente entre el área de intersección y el área de unión de la caja predicha y la caja real. Una predicción se considera correcta si su IoU con una caja real no asignada supera un umbral.
-- **NMS** (*Non-Maximum Suppression*): posprocesamiento que elimina las cajas redundantes sobre un mismo objeto y conserva la de mayor confianza.
-- **AP y mAP**: la *Average Precision* es el área bajo la curva precisión-exhaustividad de una clase, que se obtiene al ordenar las predicciones por confianza. El **mAP@0.5** promedia la AP de las clases con umbral de IoU 0,5, según el criterio de PASCAL VOC (Everingham et al., 2010). Es la métrica del **objetivo 4**, exigida para la clase *jugador*. COCO popularizó una variante más estricta que promedia los umbrales de IoU entre 0,5 y 0,95. Se reportará como dato complementario, sin umbral asociado.
+El balón ocupa pocas decenas de píxeles en un plano general, por lo que no tiene umbral exigido. La inferencia por mosaicos (Akyon et al., 2022) queda como extensión opcional para mejorar su detección.
 
 ### 1.4. Capa de percepción II: seguimiento multi-objeto
 
-El seguimiento multi-objeto (MOT) asocia las detecciones de cuadros sucesivos en **trayectorias** con identidad persistente. El paradigma dominante es el ***tracking-by-detection***, que combina tres componentes:
+El seguimiento multi-objeto asocia las detecciones de cuadros sucesivos en **trayectorias**. El paradigma dominante, ***tracking-by-detection***, combina un detector por cuadro, un **filtro de Kalman** que predice la posición de cada trayectoria (Kalman, 1960) y una asociación resuelta con el **algoritmo húngaro** sobre una matriz de costos de IoU o de apariencia (Kuhn, 1955).
 
-1. un **detector** por cuadro (§1.3);
-2. un **modelo de movimiento** que predice la posición de cada trayectoria en el cuadro siguiente, típicamente un **filtro de Kalman** con modelo de velocidad constante (Kalman, 1960);
-3. una **asociación** entre predicciones y detecciones, resuelta como un problema de asignación con el **algoritmo húngaro** sobre una matriz de costos basada en IoU o en similitud de apariencia (Kuhn, 1955).
+| Algoritmo | Asociación | Limitación en el line-out |
+|---|---|---|
+| DeepSORT (Wojke et al., 2017) | Kalman + IoU + *embedding* de apariencia | Jugadores del mismo equipo visten igual: la apariencia discrimina poco |
+| **ByteTrack** (Y. Zhang et al., 2022) | Kalman + IoU en dos rondas: primero las detecciones de alta confianza y luego las de **baja confianza** | Depende del modelo de movimiento en cambios bruscos |
+| BoT-SORT (Aharon et al., 2022) | ByteTrack + compensación del movimiento de cámara; apariencia opcional | La variante con apariencia hereda la limitación de DeepSORT |
 
-| Algoritmo | Asociación | Fortaleza | Limitación en rugby |
-|---|---|---|---|
-| SORT (Bewley et al., 2016) | Kalman + IoU | Muy rápido y simple | Pierde la identidad ante oclusiones |
-| DeepSORT (Wojke et al., 2017) | Kalman + IoU + *embedding* de apariencia | Recupera identidades tras oclusiones breves | Requiere un modelo de re-identificación. Jugadores del mismo equipo visten igual, lo que debilita la apariencia como discriminante |
-| **ByteTrack** (Y. Zhang et al., 2022) | Kalman + IoU en dos rondas: detecciones de alta confianza y, luego, las de **baja confianza** | Recupera objetos parcialmente ocluidos, cuya confianza cae, sin modelo de apariencia | Depende de la calidad del modelo de movimiento en cambios bruscos |
-| BoT-SORT (Aharon et al., 2022) | ByteTrack + compensación del movimiento de cámara; apariencia opcional (ReID) | Tolera los paneos de una cámara operada a mano | La variante con ReID hereda la debilidad de la apariencia |
+En el line-out la oclusión es estructural: filas compactas, saltadores elevados y levantadores superpuestos. ByteTrack no descarta las detecciones de baja confianza, típicas de un jugador parcialmente tapado, y no requiere un modelo de apariencia. Por eso **se adopta ByteTrack**, integrado en Ultralytics.
 
-En el line-out, la oclusión es estructural: hay dos filas compactas, saltadores elevados y levantadores superpuestos. ByteTrack ataca exactamente ese caso, porque no descarta las detecciones de baja confianza, que son las típicas de un jugador parcialmente tapado. Además, no agrega un modelo de re-identificación que entrenar. Por eso **se adopta ByteTrack como algoritmo de seguimiento**. Como **extensión opcional**, puede compararse con BoT-SORT: ambos vienen integrados en Ultralytics y se intercambian con un archivo de configuración, sin código adicional. DeepSORT, en cambio, no está integrado y se mantiene sólo como referencia conceptual de la asociación por apariencia.
-
-Para este trabajo no se requiere identidad persistente durante todo el partido. Alcanza con **trayectorias coherentes en ventanas de algunos segundos**, que son las que alimentan las características de la capa semántica (§1.5.3). Por eso el seguimiento **se usa pero no se evalúa formalmente**: el objetivo 4 se mide sólo con el mAP de la detección. Las métricas estándar de MOT, **MOTA** (Bernardin & Stiefelhagen, 2008) e **IDF1** (Ristani et al., 2016), exigen anotar la identidad de cada jugador cuadro a cuadro, la anotación más costosa del dominio, y quedan como **extensión opcional**.
+No se requiere identidad persistente durante todo el partido, sino **trayectorias coherentes en ventanas de algunos segundos**, que alimentan la capa semántica. El seguimiento **se usa pero no se evalúa formalmente**: el objetivo 4 se mide con el mAP de la detección. La comparación con BoT-SORT y las métricas MOTA (Bernardin & Stiefelhagen, 2008) e IDF1 (Ristani et al., 2016), que exigen anotar identidades cuadro a cuadro, quedan como extensiones opcionales.
 
 ### 1.5. Capa semántica: comprensión temporal de video
 
 #### 1.5.1. Tareas de comprensión temporal
 
-La literatura distingue tres tareas con insumos, salidas y métricas distintas (Wu et al., 2022; Xu et al., 2025):
+La literatura distingue tres tareas (Wu et al., 2022; Xu et al., 2025):
 
 | Tarea | Insumo | Salida | Métrica típica | Ejemplos |
 |---|---|---|---|---|
 | Clasificación de acciones | Clip ya recortado | Una etiqueta por clip | Exactitud | C3D (Tran et al., 2015), SlowFast (Feichtenhofer et al., 2019) |
-| Localización temporal (*temporal action localization*) | Video largo sin recortar | Segmentos (inicio, fin, clase) | mAP con umbral de tIoU | ActionFormer (C.-L. Zhang et al., 2022) |
-| ***Action spotting*** | Video largo sin recortar | **Un instante** por evento (tiempo, clase) | Precisión, exhaustividad o mAP con **tolerancia temporal δ** | SoccerNet (Giancola et al., 2018), E2E-Spot (Hong et al., 2022) |
+| Localización temporal | Video largo sin recortar | Segmentos (inicio, fin, clase) | mAP con umbral de tIoU | ActionFormer (C.-L. Zhang et al., 2022) |
+| ***Action spotting*** | Video largo sin recortar | **Un instante** por evento | Precisión, exhaustividad o mAP con **tolerancia temporal δ** | SoccerNet (Giancola et al., 2018), E2E-Spot (Hong et al., 2022) |
 
 #### 1.5.2. Formulación adoptada: *action spotting*
 
-**La tarea de la capa semántica es el *action spotting* del line-out.** Dado un partido completo, el sistema debe producir el conjunto de instantes en que ocurre un lanzamiento de line-out, cada uno con una confianza. El clip se obtiene después como una **ventana fija de ±10 s** alrededor de cada instante, tal como establece el *Alcance*.
+**La capa semántica resuelve el *action spotting* del line-out**: dado un partido completo, produce los instantes de lanzamiento, cada uno con una confianza. El clip se obtiene como una **ventana fija de ±10 s** alrededor de cada instante, tal como establece el *Alcance*.
 
-Se elige spotting y no localización temporal por cuatro razones:
+Se elige spotting y no localización temporal porque el clip de ventana fija sólo necesita un instante; porque anotar un instante es más barato y menos ambiguo que decidir dónde "empieza" y "termina" un line-out; y porque es la formulación estándar para eventos dispersos en videos deportivos largos (Giancola et al., 2018; Deliège et al., 2021). Además, hace medible el objetivo 5 sin ambigüedad (§1.7).
 
-- **Coincide con la salida del sistema.** Un clip de ventana fija sólo necesita un instante, no los bordes del segmento.
-- **Abarata la anotación.** Se marca un instante por evento en lugar de dos bordes, que además son ambiguos: es difícil decidir cuándo "empieza" un line-out que se forma de manera gradual. Esto reduce el costo de construir el dataset (objetivo 2) y la variabilidad entre anotadores.
-- **Es la formulación estándar para eventos dispersos en videos largos.** Es el caso del deporte, que SoccerNet formalizó (Giancola et al., 2018; Deliège et al., 2021).
-- **Hace medible el objetivo 5 sin ambigüedad**, mediante el criterio de acierto de §1.7.
+**Desbalance.** Con ≈25 line-outs por partido (Cullen, 2026), hay menos de un cuadro positivo cada 4.000. El entrenamiento lo compensa con **dilatación de las etiquetas** alrededor del instante y **muestreo balanceado** de ventanas negativas. En inferencia, sobre la serie temporal de confianza se aplica una **supresión de no-máximos temporal**, para que cada line-out produzca un solo instante.
 
-**Desbalance extremo.** Con ≈25 line-outs por partido (Cullen, 2026), los instantes positivos son una fracción ínfima de la señal: menos de 1 cuadro positivo cada 4.000 a 25 fps. El entrenamiento debe compensarlo con **dilatación o suavizado de las etiquetas** alrededor del instante, que convierte el punto en una pequeña región de cuadros positivos, y con **muestreo balanceado** de ventanas negativas. En inferencia, la salida es una **serie temporal de confianza** sobre la que se aplica una **supresión de no-máximos temporal**: se conservan los picos y se eliminan los que caen a menos de una separación mínima de otro pico más fuerte, de modo que cada line-out produzca un solo instante.
+#### 1.5.3. Enfoque adoptado
 
-#### 1.5.3. Enfoques candidatos
+A partir de las detecciones y trayectorias de la capa 1, se calcula por cuadro un vector de **características geométricas** que codifica los rasgos de §1.1. Por ejemplo:
 
-El enfoque **A** constituye el núcleo comprometido del trabajo; el enfoque **B** se describe como **extensión opcional**, a abordar sólo si el núcleo está cumplido:
+- la cantidad de jugadores próximos a una banda;
+- su alineación en dos rectas paralelas;
+- la separación entre ambas filas;
+- la velocidad media del grupo, ya que el line-out es casi estático antes del lanzamiento.
 
-**A. Características espaciales derivadas de la percepción y modelo temporal liviano (enfoque principal).** A partir de las detecciones y trayectorias de la capa 1, se calcula por cuadro un vector de características que codifica los rasgos de §1.1. Algunos ejemplos:
+La secuencia de vectores se procesa con un **modelo temporal liviano**, como una red **LSTM/GRU** (Hochreiter & Schmidhuber, 1997) o una convolución temporal 1D, que emite la confianza por instante. Tiene pocos parámetros, por lo que es entrenable con ≈200 eventos. Es **interpretable**, porque cada característica corresponde a un criterio del catálogo (objetivo 1), y desacopla las capas 1 y 2 (objetivo 3). Su riesgo es que los errores de la percepción se propagan.
 
-- cantidad de jugadores próximos a una banda;
-- grado de alineación de esos jugadores en dos rectas paralelas, estimado por ajuste de rectas o análisis de componentes principales sobre los centros de las cajas;
-- separación entre ambas filas;
-- velocidad media del grupo, ya que el line-out es casi estático antes del lanzamiento.
-
-La secuencia de vectores se procesa con un modelo temporal liviano, que puede ser una red recurrente **LSTM/GRU** (Hochreiter & Schmidhuber, 1997), una convolución temporal 1D o incluso un clasificador clásico sobre ventanas. El modelo emite la confianza por instante.
-
-- *Ventajas:* tiene pocos parámetros, por lo que es entrenable con ≈200 eventos. Además, es **interpretable**, porque cada característica corresponde a un criterio del catálogo del objetivo 1, y desacopla las capas 1 y 2, como exige el objetivo 3.
-- *Riesgo:* su desempeño queda acotado por la calidad de la percepción, de modo que los errores de detección se propagan.
-
-**B. Modelo de video de extremo a extremo (extensión opcional).** Un modelo aprende directamente sobre los cuadros. **E2E-Spot** combina un extractor convolucional por cuadro (RegNet-Y) con módulos de desplazamiento temporal con compuertas (*Gate Shift Modules*) y una GRU bidireccional que clasifica cada cuadro (Hong et al., 2022). Fue diseñado para eventos de alta precisión temporal y es entrenable en una sola GPU. Las arquitecturas basadas en **Transformers** (Vaswani et al., 2017), como ActionFormer, logran el estado del arte en localización temporal, pero resuelven una tarea más rica que la necesaria y requieren más datos.
-
-- *Ventajas:* no depende de reglas ni de la precisión del tracking.
-- *Riesgo:* con un dataset pequeño tiende al sobreajuste y es menos interpretable.
-
-La evaluación del enfoque A incluye, como parte del núcleo, una **línea base heurística**: reglas fijas sobre las mismas características geométricas, sin aprendizaje. Su costo es bajo y sirve para dimensionar cuánto aporta el aprendizaje a los resultados.
+Como **línea base**, se evalúan reglas fijas sobre las mismas características, sin aprendizaje, para dimensionar cuánto aporta el modelo. Un modelo de video de extremo a extremo como E2E-Spot (Hong et al., 2022), que aprende directamente de los cuadros, queda como **extensión opcional**: no depende del tracking, pero con un dataset pequeño tiende al sobreajuste y es menos interpretable.
 
 ### 1.6. Estimación de pose
 
-La estimación de pose localiza puntos clave del cuerpo, como hombros, caderas y rodillas. **MediaPipe** (Lugaresi et al., 2019) está optimizado para personas en primer plano y con gran tamaño en el cuadro. **OpenPose** (Cao et al., 2021) resuelve el caso multipersona, con mayor costo.
-
-En el plano general de una cámara amateur, cada jugador ocupa pocas decenas de píxeles y está superpuesto con otros en la formación. En esas condiciones, la estimación de pose es poco confiable y su costo crece con la cantidad de jugadores. Además, los rasgos de §1.1 se describen con la **disposición de las cajas**, sin necesidad de articulaciones.
-
-Por estas razones, **la estimación de pose se excluye del núcleo del sistema**. Queda como extensión posible, por ejemplo para reconocer el salto con elevación, si el enfoque A resultara insuficiente.
+La estimación de pose localiza articulaciones del cuerpo; **MediaPipe** (Lugaresi et al., 2019) es una herramienta habitual para hacerlo. En el plano general de una cámara amateur, cada jugador ocupa pocas decenas de píxeles y se superpone con otros en la formación, lo que vuelve poco confiable la estimación. Como los rasgos de §1.1 se describen con la **disposición de las cajas**, la estimación de pose **se excluye del núcleo** y queda como extensión opcional.
 
 ### 1.7. Métricas de evaluación del evento
 
-El **objetivo 5** exige un **F1 ≥ 0,70** en la detección del line-out. Para que esa meta sea verificable sin ambigüedad, se define el siguiente **criterio de acierto**:
+El **objetivo 5** exige un **F1 ≥ 0,70** en la detección del line-out. Para que la meta sea verificable, se define el siguiente **criterio de acierto**:
 
 1. Cada evento real se representa por su instante anotado *t*, el del lanzamiento (§1.1). Cada predicción se representa por su instante *t̂* y su confianza.
-2. Una predicción es un **verdadero positivo (TP)** si |*t̂* − *t*| ≤ **δ** para algún evento real todavía no asignado. La asignación es **uno a uno**: se recorren las predicciones de mayor a menor confianza, y cada evento real puede absorber como máximo una predicción.
+2. Una predicción es un **verdadero positivo (TP)** si |*t̂* − *t*| ≤ **δ** para algún evento real todavía no asignado. La asignación es **uno a uno**: se recorren las predicciones de mayor a menor confianza, y cada evento real absorbe como máximo una.
 3. Las predicciones no asignadas son **falsos positivos (FP)** y los eventos reales no asignados son **falsos negativos (FN)**.
 4. Con esas cantidades se calculan (Sokolova & Lapalme, 2009):
 
@@ -144,44 +118,25 @@ El **objetivo 5** exige un **F1 ≥ 0,70** en la detección del line-out. Para q
    - **Exhaustividad** = TP / (TP + FN)
    - **F1** = 2 · P · E / (P + E)
 
-**Tolerancia de referencia: δ = 3 s.** La disputa del line-out es breve: pocos segundos después del lanzamiento el balón ya fue obtenido y sale de la formación, ya sea por un pase al medio scrum o porque se arma un *maul*. Con una tolerancia mayor, por ejemplo 5 s, una predicción podría caer cuando el balón ya dejó el line-out y contarse igual como acierto. Con δ = 3 s, la predicción queda dentro de la secuencia formación–lanzamiento–disputa, y el clip de ±10 s conserva al menos 7 s de contexto a cada lado. El criterio surge de la práctica de análisis de video del club caso testigo y queda dentro del rango estricto (*tight*) de SoccerNet, de 1 a 5 s. Como dato más exigente se reportará también el F1 con δ = 2 s. El valor definitivo se fija en *Metodología* (Art. 6b.6).
+**Tolerancia de referencia: δ = 3 s.** La disputa del line-out es breve: pocos segundos después del lanzamiento el balón sale de la formación, por un pase al medio scrum o porque se arma un *maul*. Con una tolerancia mayor, una predicción podría caer cuando el balón ya dejó el line-out y contarse igual como acierto. Con δ = 3 s, la predicción queda dentro de la secuencia formación–lanzamiento–disputa, y el clip de ±10 s conserva al menos 7 s de contexto a cada lado. El criterio surge de la práctica de análisis de video del club caso testigo y está dentro del rango estricto de SoccerNet (1 a 5 s). El valor definitivo se fija en *Metodología* (Art. 6b.6).
 
-Para que los resultados sean comparables con la literatura, se reportarán dos datos adicionales:
-
-- la **curva de F1 en función de δ**, con δ ∈ {1, 2, 3, 5} s;
-- el **average-mAP** de SoccerNet, que promedia la AP en un rango de tolerancias (Giancola et al., 2018; Deliège et al., 2021).
-
-El umbral de confianza que define el punto de operación se elige sobre el conjunto de **validación**, nunca sobre el de prueba.
+Como datos complementarios se reportarán el F1 con δ = 2 s, la curva de F1 para δ ∈ {1, 2, 3, 5} s y el **average-mAP** de SoccerNet, que promedia la AP en un rango de tolerancias (Deliège et al., 2021). El umbral de confianza se elige sobre el conjunto de **validación**, nunca sobre el de prueba.
 
 ### 1.8. Capa de eventos e ingeniería del sistema
 
-**Arquitectura en capas.** El sistema adopta un estilo arquitectónico en capas. Cada capa ofrece servicios sólo a la superior y oculta su implementación tras una interfaz, lo que favorece la modificabilidad y la prueba independiente (Bass et al., 2021), tal como exige el objetivo 3.
+El sistema adopta un **estilo arquitectónico en capas**, en el que cada capa ofrece servicios sólo a la superior y oculta su implementación tras una interfaz, lo que favorece la modificabilidad y la prueba independiente (Bass et al., 2021), tal como exige el objetivo 3. Como el análisis es posterior al partido, se implementa como un **pipeline *offline*** en el que cada capa persiste un artefacto intermedio (detecciones, serie de confianza, lista de eventos) que materializa su interfaz con la siguiente.
 
-**Pipeline *offline*.** Como el análisis es posterior al partido (*Alcance*), el sistema se implementa como un **pipeline por lotes**. Cada etapa persiste un **artefacto intermedio** con formato definido:
-
-| Etapa | Entrada | Artefacto de salida |
-|---|---|---|
-| Percepción | Video | Detecciones y trayectorias por cuadro (formato tabular tipo MOTChallenge) |
-| Semántica | Trayectorias o cuadros | Serie temporal de confianza y lista de eventos (instante, confianza) |
-| Eventos | Lista de eventos y video | Clips, catálogo indexado en la base de datos |
-
-Los artefactos intermedios **materializan las interfaces** entre capas y permiten re-ejecutar una etapa sin recalcular las anteriores. Por ejemplo, se puede probar otro modelo semántico sobre las mismas trayectorias. También hacen reproducibles los experimentos.
-
-**Procesamiento de video y clips.** La lectura de cuadros se apoya en **OpenCV** (Bradski, 2000) y el recorte de clips, en **FFmpeg** (FFmpeg Developers, s.f.).
-
-El recorte por copia de flujo (*stream copy*) es casi instantáneo, pero sólo puede cortar en cuadros clave. Eso introduce un desfase de hasta algunos segundos según el intervalo entre cuadros clave de la grabación. Para respetar la ventana de ±10 s, los clips se **recodifican**, lo que permite cortar en el cuadro exacto. Con unos 25 clips de 20 s por partido, el costo es despreciable.
-
-**Persistencia y servicios.** El catálogo de eventos (partido, instante, confianza, ruta del clip, estado de revisión) se persiste en **SQLite**. Es suficiente para un uso monousuario y no requiere servidor. El sistema se opera mediante una **interfaz de línea de comandos** y deja los clips en una estructura de carpetas indexada por el catálogo, lo que alcanza para ponerlos a disposición del cuerpo técnico, tal como establece el *Alcance*. Exponer el catálogo como servicio web (por ejemplo, con **FastAPI**) queda como **extensión opcional**.
+La capa de eventos recorta los clips con **FFmpeg** (FFmpeg Developers, s.f.), a partir de cuadros leídos con **OpenCV** (Bradski, 2000), y registra el catálogo en **SQLite**. El sistema se opera por **línea de comandos**; un servicio web queda como extensión opcional.
 
 ### 1.9. Síntesis: stack tecnológico confirmado
 
-El stack se divide en un **núcleo comprometido**, necesario y suficiente para cumplir los objetivos específicos, y **extensiones opcionales**, que no condicionan ningún objetivo y se abordan sólo si el núcleo está cumplido.
+El stack se divide en un **núcleo comprometido**, suficiente para cumplir los objetivos específicos, y **extensiones opcionales**, que no condicionan ningún objetivo.
 
 | Componente | Stack tentativo (§3.3 del *Problema*) | Núcleo comprometido | Extensión opcional |
 |---|---|---|---|
 | Detección | YOLO | YOLO de Ultralytics, preentrenado en COCO y ajustado (objetivo 4) | Inferencia por mosaicos para el balón |
 | Seguimiento | DeepSORT | **ByteTrack**, usado sin evaluación formal | Comparación con BoT-SORT; métricas MOTA e IDF1 |
-| Reconocimiento temporal | SlowFast, LSTM o Transformers | *Action spotting* con características espaciales y un modelo temporal liviano (LSTM/GRU o convolución 1D), más una línea base heurística (objetivo 5) | Modelo de extremo a extremo (E2E-Spot) |
+| Reconocimiento temporal | SlowFast, LSTM o Transformers | *Action spotting* con características geométricas y un modelo temporal liviano (LSTM/GRU o convolución 1D), más una línea base heurística (objetivo 5) | Modelo de extremo a extremo (E2E-Spot) |
 | Análisis biomecánico | MediaPipe | — | Estimación de pose |
 | Infraestructura | OpenCV, FastAPI, SQLite | OpenCV, **FFmpeg** para los clips, SQLite y una interfaz de línea de comandos | Servicio web con FastAPI |
 

@@ -32,11 +32,7 @@ Benzakour, Y., Cabado, B., Giancola, S., Cioppa, A., Ghanem, B., & Van Droogenbr
 
 Bernardin, K., & Stiefelhagen, R. (2008). Evaluating multiple object tracking performance: The CLEAR MOT metrics. *EURASIP Journal on Image and Video Processing, 2008*, Artículo 246309. <https://doi.org/10.1155/2008/246309>
 
-Bewley, A., Ge, Z., Ott, L., Ramos, F., & Upcroft, B. (2016). Simple online and realtime tracking. En *2016 IEEE International Conference on Image Processing (ICIP)* (pp. 3464–3468). <https://doi.org/10.1109/ICIP.2016.7533003>
-
 Bradski, G. (2000). The OpenCV library. *Dr. Dobb's Journal of Software Tools, 25*(11), 120–125.
-
-Cao, Z., Hidalgo, G., Simon, T., Wei, S.-E., & Sheikh, Y. (2021). OpenPose: Realtime multi-person 2D pose estimation using part affinity fields. *IEEE Transactions on Pattern Analysis and Machine Intelligence, 43*(1), 172–186. <https://doi.org/10.1109/TPAMI.2019.2929257>
 
 Catapult. (s.f.). *Catapult launches all-new Rugby Suite to support enhanced rugby-specific analysis*. Recuperado el 15 de octubre de 2026 de <https://www.catapult.com/blog/catapult-launches-all-new-rugby-suite-to-support-enhanced-rugby-specific-analysis>
 
@@ -67,8 +63,6 @@ Francois, G., Ippolito, M., & Fuster, M. (2025). Detección de objetos a alta ve
 Giancola, S., Amine, M., Dghaily, T., & Ghanem, B. (2018). SoccerNet: A scalable dataset for action spotting in soccer videos. En *Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition Workshops*. <https://doi.org/10.48550/arXiv.1804.04527>
 
 Goodfellow, I., Bengio, Y., & Courville, A. (2016). *Deep learning*. MIT Press. <https://www.deeplearningbook.org>
-
-He, K., Zhang, X., Ren, S., & Sun, J. (2016). Deep residual learning for image recognition. En *Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition* (pp. 770–778). <https://doi.org/10.1109/CVPR.2016.90>
 
 Hochreiter, S., & Schmidhuber, J. (1997). Long short-term memory. *Neural Computation, 9*(8), 1735–1780. <https://doi.org/10.1162/neco.1997.9.8.1735>
 
@@ -133,8 +127,6 @@ Szeliski, R. (2022). *Computer vision: Algorithms and applications* (2.ª ed.). 
 Tran, D., Bourdev, L., Fergus, R., Torresani, L., & Paluri, M. (2015). Learning spatiotemporal features with 3D convolutional networks. En *Proceedings of the IEEE International Conference on Computer Vision* (pp. 4489–4497). <https://doi.org/10.1109/ICCV.2015.510>
 
 Unión de Rugby de Buenos Aires. (s.f.). *Nueva plataforma de análisis de video y estadísticas de la URBA*. Recuperado el 15 de octubre de 2026 de <https://urba.org.ar/noticias/nueva-plataforma-de-analisis-de-video-y-estadisticas-de-la-urba>
-
-Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). Attention is all you need. En *Advances in Neural Information Processing Systems 30*. <https://doi.org/10.48550/arXiv.1706.03762>
 
 Veo. (s.f.-a). *Planes y precios*. Recuperado el 4 de noviembre de 2026 de <https://www.veo.com/pricing>
 
