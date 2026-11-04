@@ -7,10 +7,12 @@ on:
       - "**/*.md"
       - ".github/workflows/docs.yml"
       - ".markdownlint.json"
+      - ".lycheeignore"
   push:
     branches: [develop, main]
     paths:
       - "**/*.md"
+      - ".lycheeignore"
 
 permissions:
   contents: read

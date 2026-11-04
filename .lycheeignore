@@ -1,0 +1,15 @@
+# Exclusiones del link checker (lychee).
+#
+# Sitios con protección antibot (WAF/Cloudflare) que rechazan a los runners
+# de GitHub Actions con 403/405, aunque el link es válido desde un navegador.
+# Cada patrón es una regex sobre la URL tal como figura en el Markdown.
+# Antes de agregar una entrada, verificar el link manualmente.
+
+# DOIs de Taylor & Francis (tandfonline.com) — 403
+^https://doi\.org/10\.1080/
+# DOIs de Human Kinetics (journals.humankinetics.com) — 405
+^https://doi\.org/10\.1123/
+# Centro de ayuda de Veo (Zendesk) — 403
+^https://support\.veo\.com/
+# Stats Perform / Opta — 403
+^https://www\.statsperform\.com/
