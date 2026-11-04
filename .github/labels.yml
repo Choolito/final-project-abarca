@@ -1,0 +1,28 @@
+# Repository label system (versioned source of truth). Usage: CLAUDE.md → "Labels".
+# Each issue gets one label per group; groups are told apart by color.
+
+# Priority (red → yellow)
+- { name: "P0", color: "b60205", description: "Do now: blocks other issues or has an external deadline" }
+- { name: "P1", color: "d93f0b", description: "Next in line" }
+- { name: "P2", color: "fbca04", description: "Needed, can wait" }
+- { name: "P3", color: "fef2c0", description: "Optional" }
+
+# Status
+- { name: "ready", color: "2ea44f", description: "Can be started" }
+- { name: "blocked", color: "6e7781", description: "Depends on another open issue" }
+- { name: "waiting", color: "8250df", description: "Waiting on an external reply (faculty, tutor, club)" }
+
+# Effort (blues; reference ~10 h/week)
+- { name: "S", color: "c5def5", description: "~2 h" }
+- { name: "M", color: "79b8ff", description: "~10 h (one week)" }
+- { name: "L", color: "0366d6", description: ">10 h" }
+
+# Type
+- { name: "writing", color: "0075ca", description: "Writing a section of the proposal or the final report" }
+- { name: "management", color: "5319e7", description: "Coordination with third parties (faculty, tutor, club)" }
+- { name: "release", color: "0e8a16", description: "Closing, export and delivery of a version" }
+- { name: "infra", color: "444d56", description: "CI, workflows, repository configuration" }
+
+# Phase
+- { name: "proposal", color: "bfd4f2", description: "Art. 6-7: project proposal (anteproyecto) and its evaluation" }
+- { name: "development", color: "1d76db", description: "Art. 8-10: development, presentation and evaluation" }

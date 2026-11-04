@@ -40,6 +40,7 @@ final-project-abarca/
 │   ├── workflows/             # CI (markdownlint, link check, convención de ramas, limpieza de ramas)
 │   ├── rulesets-main.json     # Ruleset de protección de main
 │   ├── rulesets-develop.json  # Ruleset de protección de develop
+│   ├── labels.yml             # Definición del sistema de labels
 │   └── RULESETS_SETUP.md      # Guía de configuración manual de rulesets
 ├── .gitignore
 ├── README.md
@@ -154,6 +155,22 @@ Las reglas para el repositorio están definidas en `.github/rulesets-main.json` 
 - ✅ **main:** requiere PR con aprobación antes de mergear
 - ✅ **main y develop:** protegidas contra force-push y eliminación
 - ✅ **develop:** rama de integración para feature/*, fix/*, docs/*
+
+---
+
+## Labels — Priorización de issues
+
+Definidos en `.github/labels.yml` (nombres en inglés, sin prefijo de grupo; los grupos se distinguen por color). Cada issue lleva **uno de cada grupo**:
+
+| Grupo | Labels |
+|---|---|
+| **Prioridad** | `P0` (bloquea a otros o tiene plazo externo), `P1`, `P2`, `P3` (opcional) |
+| **Estado** | `ready` (se puede empezar), `blocked` (depende de otro issue), `waiting` (respuesta externa) |
+| **Esfuerzo** | `S` ≈2 h, `M` ≈10 h, `L` >10 h (referencia: ~10 h/semana) |
+| **Tipo** | `writing` (redacción), `management` (gestión con terceros), `release`, `infra` |
+| **Fase** | `proposal` (anteproyecto, Art. 6–7), `development` (desarrollo, Art. 8–10) |
+
+**Qué hacer primero:** filtrar por `ready` y tomar la prioridad más alta. Al cerrar un issue, pasar los que dependían de él de `blocked` a `ready`.
 
 ---
 
