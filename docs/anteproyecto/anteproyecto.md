@@ -79,7 +79,15 @@ El Trabajo Final se justifica por la convergencia de una necesidad concreta y de
 
 ## 6. Marco Teórico
 
-_A desarrollar._
+El marco desarrolla sólo los conceptos que nombran los *Objetivos* y el *Alcance*, organizados según las tres capas del sistema.
+
+- **Dominio.** El line-out (Ley 18 de World Rugby) es una configuración colectiva muy característica: dos filas paralelas junto a la banda, un lanzador y saltadores elevados. Tiene un instante canónico —el lanzamiento— que se adopta como referencia para anotar y evaluar.
+- **Percepción.** Detección con **YOLO** preentrenado en COCO y ajustado por transferencia, evaluada con **mAP@0.5** (objetivo 4). Seguimiento por *tracking-by-detection* con **ByteTrack**, elegido sobre DeepSORT porque recupera jugadores parcialmente ocluidos sin un modelo de apariencia, débil cuando los jugadores visten igual.
+- **Semántica.** La tarea se formula como ***action spotting***: un instante por evento, del cual se deriva el clip de ±10 s. El enfoque principal usa características geométricas de la formación con un modelo temporal liviano; un modelo de extremo a extremo (E2E-Spot) y una heurística sirven de comparación. La estimación de pose queda fuera del núcleo.
+- **Evaluación del evento.** Una predicción es acierto si cae a **δ = 5 s** o menos de un line-out real, con asignación uno a uno. Sobre esa base se calculan precisión, exhaustividad y **F1** (objetivo 5).
+- **Ingeniería.** Pipeline *offline* en capas, con artefactos intermedios que materializan las interfaces, recorte de clips con FFmpeg y catálogo en SQLite.
+
+> El desarrollo completo de este apartado, con la síntesis del stack tecnológico, se encuentra en [`05_marco_teorico.md`](05_marco_teorico.md).
 
 ---
 
@@ -125,6 +133,6 @@ _A desarrollar._
 
 ## 10. Bibliografía Tentativa
 
-_En construcción._ Se redacta en estilo APA 7.ª ed., en orden alfabético, e incluye únicamente las obras citadas en el texto (Art. 9c). Por ahora contiene las referencias de *Antecedentes*.
+_En construcción._ Se redacta en estilo APA 7.ª ed., en orden alfabético, e incluye únicamente las obras citadas en el texto (Art. 9c). Por ahora contiene las referencias de *Antecedentes* y *Marco Teórico*.
 
 > El listado vigente se encuentra en [`09_bibliografia.md`](09_bibliografia.md).
