@@ -28,7 +28,7 @@ Bass, L., Clements, P., & Kazman, R. (2021). *Software architecture in practice*
 
 Benzakour, Y., Cabado, B., Giancola, S., Cioppa, A., Ghanem, B., & Van Droogenbroeck, M. (2024). OSL-ActionSpotting: A unified library for action spotting in sports videos. En *2024 IEEE International Workshop on Sport, Technology and Research (STAR)* (pp. 132–137). <https://doi.org/10.1109/STAR62027.2024.10635981>
 
-Bernardin, K., & Stiefelhagen, R. (2008). Evaluating multiple object tracking performance: The CLEAR MOT metrics. *EURASIP Journal on Image and Video Processing, 2008*, Artículo 246309. <https://doi.org/10.1155/2008/246309>
+Bernardin, K., & Stiefelhagen, R. (2008). Evaluating multiple object tracking performance: The CLEAR MOT metrics. *EURASIP Journal on Image and Video Processing, 2008*, Artículo 246309. <https://doi.org/10.1155/2008/246309> **[verificar: el DOI devuelve 404 en el link checker; confirmar contra SpringerOpen]**
 
 Bewley, A., Ge, Z., Ott, L., Ramos, F., & Upcroft, B. (2016). Simple online and realtime tracking. En *2016 IEEE International Conference on Image Processing (ICIP)* (pp. 3464–3468). <https://doi.org/10.1109/ICIP.2016.7533003>
 
