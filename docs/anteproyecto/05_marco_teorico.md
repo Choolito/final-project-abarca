@@ -70,9 +70,9 @@ El seguimiento multi-objeto (MOT) asocia las detecciones de cuadros sucesivos en
 | **ByteTrack** (Y. Zhang et al., 2022) | Kalman + IoU en dos rondas: detecciones de alta confianza y, luego, las de **baja confianza** | Recupera objetos parcialmente ocluidos, cuya confianza cae, sin modelo de apariencia | Depende de la calidad del modelo de movimiento en cambios bruscos |
 | BoT-SORT (Aharon et al., 2022) | ByteTrack + compensación del movimiento de cámara; apariencia opcional (ReID) | Tolera los paneos de una cámara operada a mano | La variante con ReID hereda la debilidad de la apariencia |
 
-En el line-out, la oclusión es estructural: hay dos filas compactas, saltadores elevados y levantadores superpuestos. ByteTrack ataca exactamente ese caso, porque no descarta las detecciones de baja confianza, que son las típicas de un jugador parcialmente tapado. Además, no agrega un modelo de re-identificación que entrenar. Por eso **se adopta ByteTrack como algoritmo principal y BoT-SORT como alternativa de comparación**. Ambos vienen integrados en Ultralytics y se intercambian con un archivo de configuración, sin código adicional; DeepSORT, en cambio, no está integrado y se mantiene sólo como referencia conceptual de la asociación por apariencia.
+En el line-out, la oclusión es estructural: hay dos filas compactas, saltadores elevados y levantadores superpuestos. ByteTrack ataca exactamente ese caso, porque no descarta las detecciones de baja confianza, que son las típicas de un jugador parcialmente tapado. Además, no agrega un modelo de re-identificación que entrenar. Por eso **se adopta ByteTrack como algoritmo de seguimiento**. Como **extensión opcional**, puede compararse con BoT-SORT: ambos vienen integrados en Ultralytics y se intercambian con un archivo de configuración, sin código adicional. DeepSORT, en cambio, no está integrado y se mantiene sólo como referencia conceptual de la asociación por apariencia.
 
-Para este trabajo no se requiere identidad persistente durante todo el partido. Alcanza con **trayectorias coherentes en ventanas de algunos segundos**, que son las que alimentan las características de la capa semántica (§1.5.3). Las métricas estándar de MOT, **MOTA** (Bernardin & Stiefelhagen, 2008) e **IDF1** (Ristani et al., 2016), se usarán como **diagnóstico** de la capa de percepción y no como objetivo formal.
+Para este trabajo no se requiere identidad persistente durante todo el partido. Alcanza con **trayectorias coherentes en ventanas de algunos segundos**, que son las que alimentan las características de la capa semántica (§1.5.3). Por eso el seguimiento **se usa pero no se evalúa formalmente**: el objetivo 4 se mide sólo con el mAP de la detección. Las métricas estándar de MOT, **MOTA** (Bernardin & Stiefelhagen, 2008) e **IDF1** (Ristani et al., 2016), exigen anotar la identidad de cada jugador cuadro a cuadro, la anotación más costosa del dominio, y quedan como **extensión opcional**.
 
 ### 1.5. Capa semántica: comprensión temporal de video
 
@@ -101,7 +101,7 @@ Se elige spotting y no localización temporal por cuatro razones:
 
 #### 1.5.3. Enfoques candidatos
 
-Se evaluarán dos enfoques, en orden de prioridad:
+El enfoque **A** constituye el núcleo comprometido del trabajo; el enfoque **B** se describe como **extensión opcional**, a abordar sólo si el núcleo está cumplido:
 
 **A. Características espaciales derivadas de la percepción y modelo temporal liviano (enfoque principal).** A partir de las detecciones y trayectorias de la capa 1, se calcula por cuadro un vector de características que codifica los rasgos de §1.1. Algunos ejemplos:
 
@@ -115,12 +115,12 @@ La secuencia de vectores se procesa con un modelo temporal liviano, que puede se
 - *Ventajas:* tiene pocos parámetros, por lo que es entrenable con ≈200 eventos. Además, es **interpretable**, porque cada característica corresponde a un criterio del catálogo del objetivo 1, y desacopla las capas 1 y 2, como exige el objetivo 3.
 - *Riesgo:* su desempeño queda acotado por la calidad de la percepción, de modo que los errores de detección se propagan.
 
-**B. Modelo de video de extremo a extremo (enfoque de comparación).** Un modelo aprende directamente sobre los cuadros. **E2E-Spot** combina un extractor convolucional por cuadro (RegNet-Y) con módulos de desplazamiento temporal con compuertas (*Gate Shift Modules*) y una GRU bidireccional que clasifica cada cuadro (Hong et al., 2022). Fue diseñado para eventos de alta precisión temporal y es entrenable en una sola GPU. Las arquitecturas basadas en **Transformers** (Vaswani et al., 2017), como ActionFormer, logran el estado del arte en localización temporal, pero resuelven una tarea más rica que la necesaria y requieren más datos.
+**B. Modelo de video de extremo a extremo (extensión opcional).** Un modelo aprende directamente sobre los cuadros. **E2E-Spot** combina un extractor convolucional por cuadro (RegNet-Y) con módulos de desplazamiento temporal con compuertas (*Gate Shift Modules*) y una GRU bidireccional que clasifica cada cuadro (Hong et al., 2022). Fue diseñado para eventos de alta precisión temporal y es entrenable en una sola GPU. Las arquitecturas basadas en **Transformers** (Vaswani et al., 2017), como ActionFormer, logran el estado del arte en localización temporal, pero resuelven una tarea más rica que la necesaria y requieren más datos.
 
 - *Ventajas:* no depende de reglas ni de la precisión del tracking.
 - *Riesgo:* con un dataset pequeño tiende al sobreajuste y es menos interpretable.
 
-Además de A y B, la evaluación incluirá una **línea base heurística**: reglas fijas sobre las mismas características geométricas, sin aprendizaje. Sirve para dimensionar cuánto aporta el aprendizaje a los resultados.
+La evaluación del enfoque A incluye, como parte del núcleo, una **línea base heurística**: reglas fijas sobre las mismas características geométricas, sin aprendizaje. Su costo es bajo y sirve para dimensionar cuánto aporta el aprendizaje a los resultados.
 
 ### 1.6. Estimación de pose
 
@@ -170,17 +170,19 @@ Los artefactos intermedios **materializan las interfaces** entre capas y permite
 
 El recorte por copia de flujo (*stream copy*) es casi instantáneo, pero sólo puede cortar en cuadros clave. Eso introduce un desfase de hasta algunos segundos según el intervalo entre cuadros clave de la grabación. Para respetar la ventana de ±10 s, los clips se **recodifican**, lo que permite cortar en el cuadro exacto. Con unos 25 clips de 20 s por partido, el costo es despreciable.
 
-**Persistencia y servicios.** El catálogo de eventos (partido, instante, confianza, ruta del clip, estado de revisión) se persiste en **SQLite**. Es suficiente para un uso monousuario y no requiere servidor. **FastAPI** expone el catálogo y los clips como servicios, sin pretensión de interfaz comercial, tal como establece el *Alcance*.
+**Persistencia y servicios.** El catálogo de eventos (partido, instante, confianza, ruta del clip, estado de revisión) se persiste en **SQLite**. Es suficiente para un uso monousuario y no requiere servidor. El sistema se opera mediante una **interfaz de línea de comandos** y deja los clips en una estructura de carpetas indexada por el catálogo, lo que alcanza para ponerlos a disposición del cuerpo técnico, tal como establece el *Alcance*. Exponer el catálogo como servicio web (por ejemplo, con **FastAPI**) queda como **extensión opcional**.
 
 ### 1.9. Síntesis: stack tecnológico confirmado
 
-| Componente | Stack tentativo (§3.3 del *Problema*) | Decisión |
-|---|---|---|
-| Detección | YOLO | **Se confirma**: YOLO de Ultralytics, preentrenado en COCO y ajustado. Inferencia por mosaicos como alternativa para el balón |
-| Seguimiento | DeepSORT | **Se ajusta**: **ByteTrack** como principal y BoT-SORT como comparación, ambos integrados en Ultralytics |
-| Reconocimiento temporal | SlowFast, LSTM o Transformers | **Se ajusta y se precisa la tarea**: *action spotting*. Enfoque principal: características espaciales con un modelo temporal liviano (LSTM/GRU o convolución 1D). Comparación: E2E-Spot. Línea base heurística |
-| Análisis biomecánico | MediaPipe | **Se excluye del núcleo**. Queda como extensión opcional |
-| Infraestructura | OpenCV, FastAPI, SQLite | **Se confirma**, sumando **FFmpeg** para el recorte de clips |
+El stack se divide en un **núcleo comprometido**, necesario y suficiente para cumplir los objetivos específicos, y **extensiones opcionales**, que no condicionan ningún objetivo y se abordan sólo si el núcleo está cumplido.
+
+| Componente | Stack tentativo (§3.3 del *Problema*) | Núcleo comprometido | Extensión opcional |
+|---|---|---|---|
+| Detección | YOLO | YOLO de Ultralytics, preentrenado en COCO y ajustado (objetivo 4) | Inferencia por mosaicos para el balón |
+| Seguimiento | DeepSORT | **ByteTrack**, usado sin evaluación formal | Comparación con BoT-SORT; métricas MOTA e IDF1 |
+| Reconocimiento temporal | SlowFast, LSTM o Transformers | *Action spotting* con características espaciales y un modelo temporal liviano (LSTM/GRU o convolución 1D), más una línea base heurística (objetivo 5) | Modelo de extremo a extremo (E2E-Spot) |
+| Análisis biomecánico | MediaPipe | — | Estimación de pose |
+| Infraestructura | OpenCV, FastAPI, SQLite | OpenCV, **FFmpeg** para los clips, SQLite y una interfaz de línea de comandos | Servicio web con FastAPI |
 
 ---
 

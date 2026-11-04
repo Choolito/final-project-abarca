@@ -74,12 +74,12 @@ A fin de preservar la separación de responsabilidades y facilitar la evolución
 
 ### 3.3. Enfoque técnico preliminar
 
-El desarrollo se apoyará en el ecosistema de Python y, en particular, en el siguiente conjunto de tecnologías de referencia, confirmado y ajustado en el *Marco Teórico* ([`05_marco_teorico.md`](05_marco_teorico.md) §1.9):
+El desarrollo se apoyará en el ecosistema de Python y, en particular, en el siguiente conjunto de tecnologías de referencia, confirmado y ajustado en el *Marco Teórico* ([`05_marco_teorico.md`](05_marco_teorico.md) §1.9). Se distingue el **núcleo comprometido**, suficiente para cumplir los objetivos, de las **extensiones opcionales**, que no condicionan ningún objetivo:
 
-- **Detección y seguimiento de agentes:** arquitecturas de detección de la familia **YOLO** (*You Only Look Once*) para la localización de jugadores y balón, complementadas con el algoritmo de seguimiento multi-objeto **ByteTrack** —con **BoT-SORT** como alternativa de comparación— para la persistencia de identidad entre cuadros.
-- **Reconocimiento temporal del evento:** formulación como *action spotting* —un instante por line-out—, a partir de características espaciales de la formación derivadas de la percepción y procesadas por un modelo temporal liviano (**LSTM/GRU** o convolución 1D); un modelo de video de extremo a extremo (**E2E-Spot**) se evalúa como comparación.
-- **Análisis biomecánico:** la estimación de pose (**MediaPipe**) queda **excluida del núcleo** del sistema y se reserva como extensión opcional.
-- **Infraestructura de soporte:** **OpenCV** y **FFmpeg** para el procesamiento de video y el recorte de clips, **FastAPI** como capa de servicios del *backend* y **SQLite** para la persistencia del catálogo de eventos.
+- **Detección y seguimiento de agentes:** arquitecturas de detección de la familia **YOLO** (*You Only Look Once*) para la localización de jugadores y balón, complementadas con el algoritmo de seguimiento multi-objeto **ByteTrack** para la persistencia de identidad entre cuadros.
+- **Reconocimiento temporal del evento:** formulación como *action spotting* —un instante por line-out—, a partir de características espaciales de la formación derivadas de la percepción y procesadas por un modelo temporal liviano (**LSTM/GRU** o convolución 1D) y contrastadas con una línea base heurística.
+- **Infraestructura de soporte:** **OpenCV** y **FFmpeg** para el procesamiento de video y el recorte de clips, **SQLite** para la persistencia del catálogo de eventos y una interfaz de línea de comandos para operar el sistema.
+- **Extensiones opcionales:** comparación de trackers (**BoT-SORT**) y métricas de seguimiento; un modelo de video de extremo a extremo (**E2E-Spot**); estimación de pose (**MediaPipe**); y un servicio web (**FastAPI**) para exponer el catálogo.
 
 ### 3.4. Propuesta de valor
 
