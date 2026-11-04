@@ -108,7 +108,7 @@ Martin, Z., Hendricks, S., & Patel, A. (2021). Automated tackle injury risk asse
 
 Migdalski, A., & Stone, J. (2019). Investigating lineout performance between the top and bottom four English Premiership rugby union teams in the 2016/17 season. *International Journal of Performance Analysis in Sport, 19*(1), 131–141. <https://doi.org/10.1080/24748668.2019.1570459>
 
-Nacsport. (s.f.). [Página de inicio del software de análisis de video Nacsport]. Recuperado el 15 de octubre de 2026 de <https://www.nacsport.com>
+Nacsport. (s.f.). *Videoanálisis en constante evolución* [Página de inicio]. Recuperado el 4 de noviembre de 2026 de <https://www.nacsport.com/index.php?lc=es-es>
 
 Nonaka, N., Fujihira, R., Koshiba, T., Maeda, A., & Seita, J. (2024). Rugby scene classification enhanced by vision language model. En *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops* (pp. 3256–3266). <https://doi.org/10.1109/CVPRW63382.2024.00331>
 
@@ -136,9 +136,9 @@ Unión de Rugby de Buenos Aires. (s.f.). *Nueva plataforma de análisis de video
 
 Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). Attention is all you need. En *Advances in Neural Information Processing Systems 30*. <https://doi.org/10.48550/arXiv.1706.03762>
 
-Veo. (s.f.-a). *Rugby camera for teams: Record, track & analyse*. Recuperado el 15 de octubre de 2026 de <https://www.veo.com/sport/rugby>
+Veo. (s.f.-a). *Planes y precios*. Recuperado el 4 de noviembre de 2026 de <https://www.veo.com/pricing>
 
-Veo. (s.f.-b). *Understanding AI-generated clips in Veo recordings*. Recuperado el 15 de octubre de 2026 de <https://support.veo.com/hc/en-us/articles/28730302256785-Understanding-AI-generated-clips-in-Veo-recordings>
+Veo. (s.f.-b). *Rugby camera for teams: Record, track & analyse*. Recuperado el 15 de octubre de 2026 de <https://www.veo.com/sport/rugby>
 
 Veo. (s.f.-c). *Veo capabilities by sport: Features and differences explained*. Recuperado el 15 de octubre de 2026 de <https://support.veo.com/hc/en-us/articles/30159089390865-Veo-capabilities-by-sport-features-and-differences-explained>
 
