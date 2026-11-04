@@ -133,7 +133,7 @@ La producción académica sobre rugby es **comparativamente escasa** y se orient
 Se observan tres regularidades:
 
 1. Los trabajos que detectan eventos tácticos —incluido el line-out— (Jayasuriya, 2022; Nonaka et al., 2024) operan sobre **transmisiones televisivas profesionales**, con encuadres de calidad, repeticiones y gráficos. Ninguno se valida sobre **grabaciones amateur de una sola cámara**.
-2. Ningún trabajo relevado combina la **localización temporal del line-out** con la **generación automática de clips** para el cuerpo técnico.
+2. Ningún trabajo relevado combina la **localización temporal del line-out sobre video amateur** con la **generación automática de clips** para el cuerpo técnico. Jayasuriya (2022) localiza temporalmente el line-out y ofrece un *framework* desplegable, pero sobre transmisiones televisivas.
 3. Una parte significativa de la investigación sobre rugby se orienta a la **seguridad del jugador** (tackles de riesgo, colisiones), no a la preparación táctica.
 
 #### 1.4.4. El line-out como objeto de análisis
@@ -174,7 +174,7 @@ El relevamiento muestra que el reconocimiento automático de eventos en video de
 4. **En lo internacional**:
    - las herramientas accesibles no automatizan la detección;
    - las que la automatizan (Catapult, Veo) requieren instrumentación o hardware propietario y no son retroactivas;
-   - la investigación que reconoce el line-out opera sobre transmisiones televisivas y no genera clips;
+   - la investigación que reconoce el line-out opera sobre transmisiones televisivas, no sobre video amateur de una sola cámara;
    - la evidencia reciente indica que los resultados sobre video profesional no se trasladan directamente al video amateur.
 
 En consecuencia, la **contribución** del presente Trabajo Final consiste en:
