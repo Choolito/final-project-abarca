@@ -55,7 +55,7 @@ Matriz de trazabilidad frente al *Reglamento para la Elaboración de los Trabajo
 | **Art. 6b.2** | Objetivos y metas evaluables. | `docs/anteproyecto/02_objetivos_generales_y_especificos.md`. |
 | **Art. 6b.3** | Antecedentes / estado del arte. | `docs/anteproyecto/03_antecedentes.md`. |
 | **Art. 6b.4** | Justificación. | `docs/anteproyecto/04_justificacion.md`. |
-| **Art. 6b.5** | Marco teórico. | `docs/anteproyecto/05_marco_teorico.md` *(pendiente — #14)*. |
+| **Art. 6b.5** | Marco teórico. | `docs/anteproyecto/05_marco_teorico.md`. |
 | **Art. 6b.6** | Metodología. | `docs/anteproyecto/06_metodologia.md` *(pendiente — #15)*. |
 | **Art. 6b.7** | Alcance. | `docs/anteproyecto/07_alcance.md`. |
 | **Art. 6b.8** | Plan de trabajo y cronograma. | `docs/anteproyecto/08_cronograma.md` *(pendiente — #16)*. |

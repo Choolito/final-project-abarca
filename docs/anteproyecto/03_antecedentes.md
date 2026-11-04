@@ -70,7 +70,7 @@ Estas soluciones exigen **equipar a cada jugador** o contratar un servicio profe
 
 **c) Cámaras autónomas con inteligencia artificial.** Es la categoría más cercana a la propuesta.
 
-- **Veo** comercializa una cámara panorámica autónoma que graba el partido sin camarógrafo. Su plataforma **detecta automáticamente eventos de rugby** —inicio y fin de período, *try*, conversión, **scrum y line-out**— y genera los clips (Veo, s.f.-a, s.f.-c). La generación de clips por IA no está disponible en el plan de entrada (*Starter*), sino en los planes superiores de suscripción (Veo, s.f.-b).
+- **Veo** comercializa una cámara panorámica autónoma que graba el partido sin camarógrafo. Su plataforma **detecta automáticamente eventos de rugby**: marca el inicio y el fin de cada período y genera clips de *try*, conversión, **scrum y line-out** (Veo, s.f.-b, s.f.-c). Según su tabla de planes vigente, la detección automática de eventos está incluida en todos los planes de suscripción, desde el de entrada (*Starter*); el análisis avanzado con IA (*Veo Analytics 2*: estadísticas individuales, mapas de calor, informes tácticos) es un complemento pago disponible **sólo para fútbol** (Veo, s.f.-a, s.f.-c).
 - **Hudl Focus** y **Pixellot** ofrecen cámaras que siguen la acción y suben la grabación de forma automática; el etiquetado se resuelve en sus plataformas o mediante servicios (Hudl, s.f.-c; Pixellot, s.f.). En la documentación consultada de Pixellot, el rugby no figura entre los deportes soportados.
 
 Veo demuestra que la detección automática del line-out es **técnicamente factible y comercialmente valorada**. Su modelo presenta, sin embargo, tres restricciones relevantes para el ámbito amateur regional:
@@ -103,8 +103,10 @@ Ambos respaldan la hipótesis de diseño de este trabajo: reconocer el evento a 
 
 **d) Video amateur de una sola cámara.** Kodathala et al. (2026) estudiaron la comprensión de video deportivo en **condiciones amateur con una sola cámara fija**, sobre 66 partidos de vóley con 46.648 contactos anotados. Reportan dos hallazgos:
 
-- un modelo entrenado de apenas dos millones de parámetros supera a los modelos de visión-lenguaje basados en *prompts* en la localización de eventos, con una fracción del costo;
-- los *benchmarks* construidos sobre video profesional pueden **sobrestimar** el desempeño esperable en video amateur.
+- un modelo entrenado específico, mucho más pequeño, supera a los modelos de visión-lenguaje basados en *prompts* en la detección de eventos (*spotting* de contactos), con una fracción del costo;
+- los buenos resultados sobre *benchmarks* curados o filmados profesionalmente **no garantizan** un desempeño equivalente en video amateur.
+
+Los autores pertenecen a una empresa de análisis de video deportivo (Sports Vision, Inc.), por lo que sus conclusiones deben leerse con esa salvedad.
 
 Es el antecedente más próximo en **condiciones de captura**, y su conclusión justifica construir y evaluar sobre un dataset propio de video amateur.
 
@@ -131,7 +133,7 @@ La producción académica sobre rugby es **comparativamente escasa** y se orient
 Se observan tres regularidades:
 
 1. Los trabajos que detectan eventos tácticos —incluido el line-out— (Jayasuriya, 2022; Nonaka et al., 2024) operan sobre **transmisiones televisivas profesionales**, con encuadres de calidad, repeticiones y gráficos. Ninguno se valida sobre **grabaciones amateur de una sola cámara**.
-2. Ningún trabajo relevado combina la **localización temporal del line-out** con la **generación automática de clips** para el cuerpo técnico.
+2. Ningún trabajo relevado combina la **localización temporal del line-out sobre video amateur** con la **generación automática de clips** para el cuerpo técnico. Jayasuriya (2022) localiza temporalmente el line-out y ofrece un *framework* desplegable, pero sobre transmisiones televisivas.
 3. Una parte significativa de la investigación sobre rugby se orienta a la **seguridad del jugador** (tackles de riesgo, colisiones), no a la preparación táctica.
 
 #### 1.4.4. El line-out como objeto de análisis
@@ -172,7 +174,7 @@ El relevamiento muestra que el reconocimiento automático de eventos en video de
 4. **En lo internacional**:
    - las herramientas accesibles no automatizan la detección;
    - las que la automatizan (Catapult, Veo) requieren instrumentación o hardware propietario y no son retroactivas;
-   - la investigación que reconoce el line-out opera sobre transmisiones televisivas y no genera clips;
+   - la investigación que reconoce el line-out opera sobre transmisiones televisivas, no sobre video amateur de una sola cámara;
    - la evidencia reciente indica que los resultados sobre video profesional no se trasladan directamente al video amateur.
 
 En consecuencia, la **contribución** del presente Trabajo Final consiste en:

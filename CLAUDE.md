@@ -27,7 +27,7 @@ final-project-abarca/
 │   │   ├── 02_objetivos_generales_y_especificos.md
 │   │   ├── 03_antecedentes.md
 │   │   ├── 04_justificacion.md
-│   │   ├── 05_marco_teorico.md      # pendiente (#14)
+│   │   ├── 05_marco_teorico.md
 │   │   ├── 06_metodologia.md        # pendiente (#15)
 │   │   ├── 07_alcance.md
 │   │   ├── 08_cronograma.md         # pendiente (#16)

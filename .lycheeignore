@@ -13,3 +13,12 @@
 ^https://support\.veo\.com/
 # Stats Perform / Opta — 403
 ^https://www\.statsperform\.com/
+# DOIs de Wiley (onlinelibrary.wiley.com) — 403
+^https://doi\.org/10\.1002/
+# DOIs de ASME Digital Collection — 403
+^https://doi\.org/10\.1115/
+# DOIs de MIT Press Direct — 403
+^https://doi\.org/10\.1162/
+# Bernardin & Stiefelhagen (2008): el DOI es correcto (verificado en SpringerOpen),
+# pero la redirección de Hindawi a SpringerOpen devuelve 404 al bot.
+^https://doi\.org/10\.1155/2008/246309$

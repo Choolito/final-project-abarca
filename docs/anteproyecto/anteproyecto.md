@@ -56,7 +56,7 @@ El relevamiento se ordena de lo más cercano a lo más lejano: local, regional, 
 - **Local y regional.** No se identificaron antecedentes de análisis automático de video deportivo. La práctica actual del club caso testigo (CRAR) está pendiente de relevamiento.
 - **Nacional.** La URBA impulsa una plataforma de análisis de video basada en **codificación manual** (URBA, s.f.). En la industria, Beelup valida el modelo "cámara fija + IA + clips" en el deporte amateur, pero orientado a *highlights* recreativos de fútbol y con hardware propio (Forbes Argentina, 2024). En lo académico, el antecedente más próximo detecta objetos en tenis con equipamiento accesible (Francois et al., 2025).
 - **Latinoamérica.** El único antecedente de rugby sobre video amateur detecta choques entre jugadores. Su motivación fue que la cámara comercial del club no identificaba esos eventos (Santana Domínguez, 2024).
-- **Internacional.** Las herramientas accesibles (Hudl Sportscode, Nacsport, LongoMatch, Framesports) sólo asisten el **etiquetado manual**. Las que automatizan dependen de **sensores** (Catapult) o de **hardware propietario con suscripción** (Veo, que detecta line-outs, pero sólo sobre video de su propia cámara). La investigación formalizó el *action spotting* (Giancola et al., 2018) y el reconocimiento de formaciones colectivas (Atmosukarto et al., 2013). Los trabajos de rugby que reconocen el line-out operan, en cambio, sobre **transmisiones televisivas** y no generan clips (Jayasuriya, 2022; Nonaka et al., 2024). La evidencia reciente advierte que los resultados sobre video profesional no se trasladan directamente al video amateur de una sola cámara (Kodathala et al., 2026).
+- **Internacional.** Las herramientas accesibles (Hudl Sportscode, Nacsport, LongoMatch, Framesports) sólo asisten el **etiquetado manual**. Las que automatizan dependen de **sensores** (Catapult) o de **hardware propietario con suscripción** (Veo, que detecta line-outs, pero sólo sobre video de su propia cámara). La investigación formalizó el *action spotting* (Giancola et al., 2018) y el reconocimiento de formaciones colectivas (Atmosukarto et al., 2013). Los trabajos de rugby que reconocen el line-out operan, en cambio, sobre **transmisiones televisivas**, no sobre video amateur (Jayasuriya, 2022; Nonaka et al., 2024). La evidencia reciente advierte que los resultados sobre video profesional no se trasladan directamente al video amateur de una sola cámara (Kodathala et al., 2026).
 
 **Contribución.** El trabajo propone un sistema de software que reconoce y localiza temporalmente el **line-out** sobre **video amateur de una sola cámara**, **sin sensores ni hardware propietario**, y genera los clips correspondientes. El sistema es aplicable al archivo histórico de los clubes. Se acompaña de un dataset anotado y de una evaluación cuantitativa construidos en el **contexto regional argentino**. Según estudios de nivel amateur, se registran ≈25 line-outs por partido (Cullen, 2026), por lo que la meta de ≥200 clips equivale a unos 8–10 partidos.
 
@@ -79,7 +79,15 @@ El Trabajo Final se justifica por la convergencia de una necesidad concreta y de
 
 ## 6. Marco Teórico
 
-_A desarrollar._
+El marco desarrolla sólo los conceptos que nombran los *Objetivos* y el *Alcance*, organizados según las tres capas del sistema.
+
+- **Dominio.** El line-out (Ley 18 de World Rugby) es una configuración colectiva muy característica: dos filas paralelas junto a la banda, un lanzador y saltadores elevados. Tiene un instante canónico —el lanzamiento— que se adopta como referencia para anotar y evaluar.
+- **Percepción.** Detección con **YOLO** preentrenado en COCO y ajustado por transferencia, evaluada con **mAP@0.5** (objetivo 4). Seguimiento por *tracking-by-detection* con **ByteTrack**, elegido sobre DeepSORT porque recupera jugadores parcialmente ocluidos sin un modelo de apariencia, débil cuando los jugadores visten igual.
+- **Semántica.** La tarea se formula como ***action spotting***: un instante por evento, del cual se deriva el clip de ±10 s. El núcleo usa características geométricas de la formación con un modelo temporal liviano, contrastado con una línea base heurística. Un modelo de extremo a extremo (E2E-Spot), la estimación de pose y un servicio web quedan como extensiones opcionales.
+- **Evaluación del evento.** Una predicción es acierto si cae a **δ = 3 s** o menos del lanzamiento de un line-out real, con asignación uno a uno. Sobre esa base se calculan precisión, exhaustividad y **F1** (objetivo 5).
+- **Ingeniería.** Pipeline *offline* en capas, con artefactos intermedios que materializan las interfaces, recorte de clips con FFmpeg y catálogo en SQLite.
+
+> El desarrollo completo de este apartado, con la síntesis del stack tecnológico, se encuentra en [`05_marco_teorico.md`](05_marco_teorico.md).
 
 ---
 
@@ -125,6 +133,6 @@ _A desarrollar._
 
 ## 10. Bibliografía Tentativa
 
-_En construcción._ Se redacta en estilo APA 7.ª ed., en orden alfabético, e incluye únicamente las obras citadas en el texto (Art. 9c). Por ahora contiene las referencias de *Antecedentes*.
+_En construcción._ Se redacta en estilo APA 7.ª ed., en orden alfabético, e incluye únicamente las obras citadas en el texto (Art. 9c). Por ahora contiene las referencias de *Antecedentes* y *Marco Teórico*.
 
 > El listado vigente se encuentra en [`09_bibliografia.md`](09_bibliografia.md).
