@@ -76,7 +76,7 @@ A fin de preservar la separación de responsabilidades y facilitar la evolución
 
 El desarrollo se apoyará en el ecosistema de Python y, en particular, en el siguiente conjunto de tecnologías de referencia, confirmado y ajustado en el *Marco Teórico* ([`05_marco_teorico.md`](05_marco_teorico.md) §1.9):
 
-- **Detección y seguimiento de agentes:** arquitecturas de detección de la familia **YOLO** (*You Only Look Once*) para la localización de jugadores y balón, complementadas con el algoritmo de seguimiento multi-objeto **ByteTrack** —con **DeepSORT** como alternativa de comparación— para la persistencia de identidad entre cuadros.
+- **Detección y seguimiento de agentes:** arquitecturas de detección de la familia **YOLO** (*You Only Look Once*) para la localización de jugadores y balón, complementadas con el algoritmo de seguimiento multi-objeto **ByteTrack** —con **BoT-SORT** como alternativa de comparación— para la persistencia de identidad entre cuadros.
 - **Reconocimiento temporal del evento:** formulación como *action spotting* —un instante por line-out—, a partir de características espaciales de la formación derivadas de la percepción y procesadas por un modelo temporal liviano (**LSTM/GRU** o convolución 1D); un modelo de video de extremo a extremo (**E2E-Spot**) se evalúa como comparación.
 - **Análisis biomecánico:** la estimación de pose (**MediaPipe**) queda **excluida del núcleo** del sistema y se reserva como extensión opcional.
 - **Infraestructura de soporte:** **OpenCV** y **FFmpeg** para el procesamiento de video y el recorte de clips, **FastAPI** como capa de servicios del *backend* y **SQLite** para la persistencia del catálogo de eventos.

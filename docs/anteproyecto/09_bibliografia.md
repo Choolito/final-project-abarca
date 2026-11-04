@@ -20,6 +20,8 @@
 
 ### Referencias
 
+Aharon, N., Orfaig, R., & Bobrovsky, B.-Z. (2022). *BoT-SORT: Robust associations multi-pedestrian tracking* (arXiv:2206.14651). arXiv. <https://doi.org/10.48550/arXiv.2206.14651>
+
 Akyon, F. C., Altinuc, S. O., & Temizel, A. (2022). Slicing aided hyper inference and fine-tuning for small object detection. En *2022 IEEE International Conference on Image Processing (ICIP)* (pp. 966–970). <https://doi.org/10.1109/ICIP46576.2022.9897990>
 
 Atmosukarto, I., Ghanem, B., Ahuja, S., Muthuswamy, K., & Ahuja, N. (2013). Automatic recognition of offensive team formation in American football plays. En *Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition Workshops*. <https://openaccess.thecvf.com/content_cvpr_workshops_2013/W19/html/Atmosukarto_Automatic_Recognition_of_2013_CVPR_paper.html>
@@ -28,7 +30,7 @@ Bass, L., Clements, P., & Kazman, R. (2021). *Software architecture in practice*
 
 Benzakour, Y., Cabado, B., Giancola, S., Cioppa, A., Ghanem, B., & Van Droogenbroeck, M. (2024). OSL-ActionSpotting: A unified library for action spotting in sports videos. En *2024 IEEE International Workshop on Sport, Technology and Research (STAR)* (pp. 132–137). <https://doi.org/10.1109/STAR62027.2024.10635981>
 
-Bernardin, K., & Stiefelhagen, R. (2008). Evaluating multiple object tracking performance: The CLEAR MOT metrics. *EURASIP Journal on Image and Video Processing, 2008*, Artículo 246309. <https://doi.org/10.1155/2008/246309> **[verificar: el DOI devuelve 404 en el link checker; confirmar contra SpringerOpen]**
+Bernardin, K., & Stiefelhagen, R. (2008). Evaluating multiple object tracking performance: The CLEAR MOT metrics. *EURASIP Journal on Image and Video Processing, 2008*, Artículo 246309. <https://doi.org/10.1155/2008/246309>
 
 Bewley, A., Ge, Z., Ott, L., Ramos, F., & Upcroft, B. (2016). Simple online and realtime tracking. En *2016 IEEE International Conference on Image Processing (ICIP)* (pp. 3464–3468). <https://doi.org/10.1109/ICIP.2016.7533003>
 
@@ -84,7 +86,7 @@ InfoNegocios. (s.f.). *¿Te gustaría revivir esa jugada épica del fútbol 5 co
 
 Jayasuriya, D. P. (2022). *Rugby event detection in broadcast videos based on visual features using deep learning* [Tesis de maestría, University of Moratuwa]. <https://dl.lib.uom.lk/items/71e71f1a-4210-4f16-b389-43b403aa8d72>
 
-Jocher, G., Qiu, J., & Chaurasia, A. (2023). *Ultralytics YOLO* (Versión 8.0.0) [Software]. <https://github.com/ultralytics/ultralytics>
+Jocher, G., Chaurasia, A., & Qiu, J. (2023). *Ultralytics YOLO* (Versión 8.0.0) [Software]. <https://github.com/ultralytics/ultralytics>
 
 Kalman, R. E. (1960). A new approach to linear filtering and prediction problems. *Journal of Basic Engineering, 82*(1), 35–45. <https://doi.org/10.1115/1.3662552>
 
@@ -142,7 +144,7 @@ Veo. (s.f.-c). *Veo capabilities by sport: Features and differences explained*. 
 
 Wojke, N., Bewley, A., & Paulus, D. (2017). Simple online and realtime tracking with a deep association metric. En *2017 IEEE International Conference on Image Processing (ICIP)* (pp. 3645–3649). <https://doi.org/10.1109/ICIP.2017.8296962>
 
-World Rugby. (s.f.). *Laws of the game: Law 18 – Touch, quick throw and lineout*. Recuperado el 4 de noviembre de 2026 de <https://passport.world.rugby/laws-of-the-game/> **[verificar: URL directa de la Ley 18 y edición vigente]**
+World Rugby. (s.f.). *Laws of the game: Law 18 – Touch, quick throw and lineout*. Recuperado el 4 de noviembre de 2026 de <https://passport.world.rugby/laws-of-the-game/laws-by-number/18-touch-quick-throw-and-lineout/>
 
 Wu, F., Wang, Q., Bian, J., Xiong, H., Ding, N., Lu, F., Cheng, J., & Dou, D. (2022). *A survey on video action recognition in sports: Datasets, methods and applications* (arXiv:2206.01038). arXiv. <https://doi.org/10.48550/arXiv.2206.01038>
 

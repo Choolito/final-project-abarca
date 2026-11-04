@@ -19,6 +19,6 @@
 ^https://doi\.org/10\.1115/
 # DOIs de MIT Press Direct — 403
 ^https://doi\.org/10\.1162/
-# Bernardin & Stiefelhagen (2008): 404 tras la redirección de Hindawi a
-# SpringerOpen. Entrada marcada [verificar] en la bibliografía.
+# Bernardin & Stiefelhagen (2008): el DOI es correcto (verificado en SpringerOpen),
+# pero la redirección de Hindawi a SpringerOpen devuelve 404 al bot.
 ^https://doi\.org/10\.1155/2008/246309$

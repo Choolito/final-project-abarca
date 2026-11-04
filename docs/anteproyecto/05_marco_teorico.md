@@ -27,7 +27,7 @@ El line-out es la formación con la que se reanuda el juego cuando el balón sal
 - **Dos filas paralelas** de jugadores, una por equipo, perpendiculares a la línea de *touch*, con un mínimo de dos jugadores por fila.
 - **Ubicación acotada**: las filas se forman entre las líneas de 5 m y de 15 m, es decir, siempre junto a una de las bandas.
 - **Un espacio de separación** de aproximadamente 1 m entre ambas filas.
-- **Un lanzador** ubicado sobre la línea de *touch*, que arroja el balón en línea recta entre las filas.
+- **Un lanzador** ubicado en la marca de *touch*, fuera del campo, que arroja el balón en línea recta a lo largo de la línea de lanzamiento, entre ambas filas.
 - **Saltadores elevados** por compañeros, que disputan el balón en el aire.
 
 Estos rasgos tienen dos consecuencias de diseño:
@@ -68,8 +68,9 @@ El seguimiento multi-objeto (MOT) asocia las detecciones de cuadros sucesivos en
 | SORT (Bewley et al., 2016) | Kalman + IoU | Muy rápido y simple | Pierde la identidad ante oclusiones |
 | DeepSORT (Wojke et al., 2017) | Kalman + IoU + *embedding* de apariencia | Recupera identidades tras oclusiones breves | Requiere un modelo de re-identificación. Jugadores del mismo equipo visten igual, lo que debilita la apariencia como discriminante |
 | **ByteTrack** (Y. Zhang et al., 2022) | Kalman + IoU en dos rondas: detecciones de alta confianza y, luego, las de **baja confianza** | Recupera objetos parcialmente ocluidos, cuya confianza cae, sin modelo de apariencia | Depende de la calidad del modelo de movimiento en cambios bruscos |
+| BoT-SORT (Aharon et al., 2022) | ByteTrack + compensación del movimiento de cámara; apariencia opcional (ReID) | Tolera los paneos de una cámara operada a mano | La variante con ReID hereda la debilidad de la apariencia |
 
-En el line-out, la oclusión es estructural: hay dos filas compactas, saltadores elevados y levantadores superpuestos. ByteTrack ataca exactamente ese caso, porque no descarta las detecciones de baja confianza, que son las típicas de un jugador parcialmente tapado. Además, no agrega un modelo de re-identificación que entrenar. Por eso **se adopta ByteTrack como algoritmo principal y DeepSORT como alternativa de comparación**. Ambos están integrados en el ecosistema de Ultralytics.
+En el line-out, la oclusión es estructural: hay dos filas compactas, saltadores elevados y levantadores superpuestos. ByteTrack ataca exactamente ese caso, porque no descarta las detecciones de baja confianza, que son las típicas de un jugador parcialmente tapado. Además, no agrega un modelo de re-identificación que entrenar. Por eso **se adopta ByteTrack como algoritmo principal y BoT-SORT como alternativa de comparación**. Ambos vienen integrados en Ultralytics y se intercambian con un archivo de configuración, sin código adicional; DeepSORT, en cambio, no está integrado y se mantiene sólo como referencia conceptual de la asociación por apariencia.
 
 Para este trabajo no se requiere identidad persistente durante todo el partido. Alcanza con **trayectorias coherentes en ventanas de algunos segundos**, que son las que alimentan las características de la capa semántica (§1.5.3). Las métricas estándar de MOT, **MOTA** (Bernardin & Stiefelhagen, 2008) e **IDF1** (Ristani et al., 2016), se usarán como **diagnóstico** de la capa de percepción y no como objetivo formal.
 
@@ -114,7 +115,7 @@ La secuencia de vectores se procesa con un modelo temporal liviano, que puede se
 - *Ventajas:* tiene pocos parámetros, por lo que es entrenable con ≈200 eventos. Además, es **interpretable**, porque cada característica corresponde a un criterio del catálogo del objetivo 1, y desacopla las capas 1 y 2, como exige el objetivo 3.
 - *Riesgo:* su desempeño queda acotado por la calidad de la percepción, de modo que los errores de detección se propagan.
 
-**B. Modelo de video de extremo a extremo (enfoque de comparación).** Un modelo aprende directamente sobre los cuadros. **E2E-Spot** combina un extractor convolucional por cuadro con un módulo de desplazamiento temporal y una GRU bidireccional que clasifica cada cuadro (Hong et al., 2022). Fue diseñado para eventos de alta precisión temporal y es entrenable en una sola GPU. Las arquitecturas basadas en **Transformers** (Vaswani et al., 2017), como ActionFormer, logran el estado del arte en localización temporal, pero resuelven una tarea más rica que la necesaria y requieren más datos.
+**B. Modelo de video de extremo a extremo (enfoque de comparación).** Un modelo aprende directamente sobre los cuadros. **E2E-Spot** combina un extractor convolucional por cuadro (RegNet-Y) con módulos de desplazamiento temporal con compuertas (*Gate Shift Modules*) y una GRU bidireccional que clasifica cada cuadro (Hong et al., 2022). Fue diseñado para eventos de alta precisión temporal y es entrenable en una sola GPU. Las arquitecturas basadas en **Transformers** (Vaswani et al., 2017), como ActionFormer, logran el estado del arte en localización temporal, pero resuelven una tarea más rica que la necesaria y requieren más datos.
 
 - *Ventajas:* no depende de reglas ni de la precisión del tracking.
 - *Riesgo:* con un dataset pequeño tiende al sobreajuste y es menos interpretable.
@@ -176,7 +177,7 @@ El recorte por copia de flujo (*stream copy*) es casi instantáneo, pero sólo p
 | Componente | Stack tentativo (§3.3 del *Problema*) | Decisión |
 |---|---|---|
 | Detección | YOLO | **Se confirma**: YOLO de Ultralytics, preentrenado en COCO y ajustado. Inferencia por mosaicos como alternativa para el balón |
-| Seguimiento | DeepSORT | **Se ajusta**: **ByteTrack** como principal y DeepSORT como comparación |
+| Seguimiento | DeepSORT | **Se ajusta**: **ByteTrack** como principal y BoT-SORT como comparación, ambos integrados en Ultralytics |
 | Reconocimiento temporal | SlowFast, LSTM o Transformers | **Se ajusta y se precisa la tarea**: *action spotting*. Enfoque principal: características espaciales con un modelo temporal liviano (LSTM/GRU o convolución 1D). Comparación: E2E-Spot. Línea base heurística |
 | Análisis biomecánico | MediaPipe | **Se excluye del núcleo**. Queda como extensión opcional |
 | Infraestructura | OpenCV, FastAPI, SQLite | **Se confirma**, sumando **FFmpeg** para el recorte de clips |
