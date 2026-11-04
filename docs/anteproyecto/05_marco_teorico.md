@@ -144,11 +144,11 @@ El **objetivo 5** exige un **F1 ≥ 0,70** en la detección del line-out. Para q
    - **Exhaustividad** = TP / (TP + FN)
    - **F1** = 2 · P · E / (P + E)
 
-**Tolerancia de referencia: δ = 5 s.** Con un clip de ±10 s, un error de hasta 5 s garantiza que el clip todavía contenga el lanzamiento con al menos 5 s de contexto a cada lado, de modo que sigue siendo útil para el cuerpo técnico. El valor definitivo se fija en *Metodología* (Art. 6b.6).
+**Tolerancia de referencia: δ = 3 s.** La disputa del line-out es breve: pocos segundos después del lanzamiento el balón ya fue obtenido y sale de la formación, ya sea por un pase al medio scrum o porque se arma un *maul*. Con una tolerancia mayor, por ejemplo 5 s, una predicción podría caer cuando el balón ya dejó el line-out y contarse igual como acierto. Con δ = 3 s, la predicción queda dentro de la secuencia formación–lanzamiento–disputa, y el clip de ±10 s conserva al menos 7 s de contexto a cada lado. El criterio surge de la práctica de análisis de video del club caso testigo y queda dentro del rango estricto (*tight*) de SoccerNet, de 1 a 5 s. Como dato más exigente se reportará también el F1 con δ = 2 s. El valor definitivo se fija en *Metodología* (Art. 6b.6).
 
 Para que los resultados sean comparables con la literatura, se reportarán dos datos adicionales:
 
-- la **curva de F1 en función de δ**, con δ ∈ {1, 2, 5, 10} s;
+- la **curva de F1 en función de δ**, con δ ∈ {1, 2, 3, 5} s;
 - el **average-mAP** de SoccerNet, que promedia la AP en un rango de tolerancias (Giancola et al., 2018; Deliège et al., 2021).
 
 El umbral de confianza que define el punto de operación se elige sobre el conjunto de **validación**, nunca sobre el de prueba.
