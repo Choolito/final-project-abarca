@@ -93,7 +93,14 @@ El marco desarrolla sólo los conceptos que nombran los *Objetivos* y el *Alcanc
 
 ## 7. Metodología
 
-_A desarrollar._
+- **Proceso.** Gestión según el PMBOK, ciclo de ML según **CRISP-ML(Q)** y desarrollo de software iterativo e incremental, en iteraciones de dos semanas. Seguimiento con el Director (Ing. Mariano Ferrero) en reuniones cada tres semanas, con minuta a cargo del autor.
+- **Qué se entrena.** Sólo dos componentes: el detector YOLO, por ajuste fino desde COCO, y el modelo temporal que reconoce el lanzamiento, desde cero. El seguimiento, las características geométricas y la línea base heurística no se entrenan.
+- **Dataset.** Se anotan **12 partidos** del plantel superior del CRAR (≈300 line-outs) de un total de más de 60, con autorización escrita del club (Ley 25.326). Se marcan los instantes de lanzamiento y se anotan cajas en 300–500 cuadros con CVAT. La calidad se mide con acuerdo intra e inter-anotador, y la partición se hace **por partido** (8/2/2) para evitar fugas de datos.
+- **Evaluación.** Metas definitivas: **mAP@0.5 ≥ 0,70** para *jugador* y **F1 ≥ 0,70 con δ = 3 s** para el line-out, medidas una sola vez sobre el conjunto de prueba. Los modelos se eligen sobre validación.
+- **Riesgos.** Punto de decisión **Go/No-Go** en la semana 16 sobre el detector, con una secuencia de medidas si no alcanza el umbral, y partidos de reserva para ampliar los datos.
+- **Entorno.** Python y PyTorch sobre una RTX 5070 Ti de 16 GB; experimentos registrados con MLflow.
+
+> El desarrollo completo de este apartado se encuentra en [`06_metodologia.md`](06_metodologia.md).
 
 ---
 
@@ -133,6 +140,6 @@ _A desarrollar._
 
 ## 10. Bibliografía Tentativa
 
-_En construcción._ Se redacta en estilo APA 7.ª ed., en orden alfabético, e incluye únicamente las obras citadas en el texto (Art. 9c). Por ahora contiene las referencias de *Antecedentes* y *Marco Teórico*.
+_En construcción._ Se redacta en estilo APA 7.ª ed., en orden alfabético, e incluye únicamente las obras citadas en el texto (Art. 9c). Por ahora contiene las referencias de *Antecedentes*, *Marco Teórico* y *Metodología*.
 
 > El listado vigente se encuentra en [`09_bibliografia.md`](09_bibliografia.md).

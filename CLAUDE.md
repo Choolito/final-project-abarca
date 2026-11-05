@@ -28,7 +28,7 @@ final-project-abarca/
 │   │   ├── 03_antecedentes.md
 │   │   ├── 04_justificacion.md
 │   │   ├── 05_marco_teorico.md
-│   │   ├── 06_metodologia.md        # pendiente (#15)
+│   │   ├── 06_metodologia.md
 │   │   ├── 07_alcance.md
 │   │   ├── 08_cronograma.md         # pendiente (#16)
 │   │   └── 09_bibliografia.md       # en construcción (#17)

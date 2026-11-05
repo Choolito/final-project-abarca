@@ -22,3 +22,7 @@
 # Bernardin & Stiefelhagen (2008): el DOI es correcto (verificado en SpringerOpen),
 # pero la redirección de Hindawi a SpringerOpen devuelve 404 al bot.
 ^https://doi\.org/10\.1155/2008/246309$
+# DOIs de ACM Digital Library — 403
+^https://doi\.org/10\.1145/
+# DOIs de MDPI — 403
+^https://doi\.org/10\.3390/
