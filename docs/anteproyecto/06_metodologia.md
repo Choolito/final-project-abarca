@@ -35,6 +35,13 @@ CRISP-ML(Q) extiende CRISP-DM con controles de calidad específicos de ML y se o
 
 El desarrollo se organiza en **iteraciones de dos semanas**. El seguimiento se lleva en los *issues* del repositorio, priorizados con un sistema de etiquetas, y el código y la documentación se versionan con Git siguiendo el flujo *Git Flow*, con integración continua.
 
+**Seguimiento con el Director.** El trabajo es dirigido por el Ing. Mariano Ferrero, docente de Inteligencia Artificial de la UCSE DAR (Profesor Tutor, Art. 6a). La dinámica acordada es la siguiente:
+
+- **reuniones de seguimiento de 30 minutos cada tres semanas**, o con mayor frecuencia en las fases que lo requieran, para revisar avances, resolver bloqueos y ajustar el plan;
+- una **minuta de cada reunión**, a cargo del autor, con los temas tratados, las decisiones, las tareas acordadas y sus fechas;
+- **revisión iterativa del documento final** (borrador, devolución y corrección) hasta su versión definitiva;
+- **visto bueno escrito del Director** sobre la versión final, como requisito para inscribirse a la defensa oral.
+
 ### 1.2. Componentes que se entrenan
 
 El sistema integra componentes de distinta naturaleza. Sólo dos se entrenan; el resto son algoritmos o reglas que se configuran:
@@ -114,7 +121,7 @@ El sistema se implementa como un **pipeline *offline*** de tres capas. Cada capa
 | Semántica | Trayectorias | Serie temporal de confianza y lista de eventos (instante, confianza) |
 | Eventos | Lista de eventos y video | Clips y catálogo indexado |
 
-Los artefactos permiten volver a ejecutar una etapa sin recalcular las anteriores, por ejemplo para probar otro modelo semántico sobre las mismas trayectorias, y hacen reproducibles los experimentos. El diseño detallado de las capas y sus interfaces es el entregable del objetivo 3, que se aprueba con el Profesor Tutor antes de la implementación.
+Los artefactos permiten volver a ejecutar una etapa sin recalcular las anteriores, por ejemplo para probar otro modelo semántico sobre las mismas trayectorias, y hacen reproducibles los experimentos. El diseño detallado de las capas y sus interfaces es el entregable del objetivo 3, que se aprueba con el Director antes de la implementación.
 
 Los clips de ±10 s se recortan con FFmpeg **recodificando** el video. La copia directa del flujo (*stream copy*) sólo puede cortar en cuadros clave y desfasaría la ventana en hasta algunos segundos; con unos 25 clips de 20 s por partido, el costo de recodificar es despreciable. El catálogo se guarda en SQLite con el partido, el instante, la confianza, la ruta del clip y un estado de revisión. El sistema se opera por línea de comandos.
 

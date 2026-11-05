@@ -3,7 +3,7 @@
 > Trabajo Final de Carrera — Ingeniería en Informática
 > Universidad Católica de Santiago del Estero — DAR (UCSE DAR)
 > Autor: Juan Ignacio Abarca
-> Tutor: _[A designar por cátedra — Art. 6a del Reglamento de TF]_
+> Director: Ing. Mariano Ferrero (Profesor Tutor, Art. 6a del Reglamento de TF) — docente de Inteligencia Artificial, UCSE DAR
 
 ---
 
@@ -60,7 +60,7 @@ Matriz de trazabilidad frente al *Reglamento para la Elaboración de los Trabajo
 | **Art. 6b.7** | Alcance. | `docs/anteproyecto/07_alcance.md`. |
 | **Art. 6b.8** | Plan de trabajo y cronograma. | `docs/anteproyecto/08_cronograma.md` *(pendiente — #16)*. |
 | **Art. 6b.9** | Bibliografía tentativa. | `docs/anteproyecto/09_bibliografia.md` *(en construcción — #17)*. |
-| **Art. 6a** | Designación de Profesor Tutor por la cátedra. | *(Pendiente — #18)* |
+| **Art. 6a** | Designación de Profesor Tutor por la cátedra. | Director propuesto: Ing. Mariano Ferrero; se formaliza con la entrega del anteproyecto (#20). |
 | **Art. 7** | Evaluación del anteproyecto por la cátedra. | *(Pendiente — cierra la fase actual, #20)* |
 | **Art. 8-10** | Desarrollo, presentación y evaluación del TF. | *(Fases posteriores)* |
 
