@@ -15,7 +15,7 @@
 - Estilo **APA 7.ª edición**.
 - **Orden alfabético** por primer autor.
 - Se incluyen **únicamente** las obras citadas en el texto del anteproyecto (criterio del Art. 9c del Reglamento de TF, aplicado desde esta etapa).
-- Las fuentes institucionales, comerciales y de prensa sin fecha de publicación se indican con *s.f.* y se consultaron en octubre de 2026.
+- Las fuentes institucionales, comerciales y de prensa sin fecha de publicación se indican con *s.f.*; en cada una se consigna la fecha de consulta.
 - Las entradas marcadas con **[verificar]** tienen datos que deben confirmarse contra el documento original antes de la entrega.
 
 ### Referencias
@@ -94,7 +94,7 @@ Kuhn, H. W. (1955). The Hungarian method for the assignment problem. *Naval Rese
 
 Laboriano Galindo, A. (2024). *Clasificación automática de eventos en videos de fútbol utilizando redes convolucionales profundas* [Tesis de maestría, Pontificia Universidad Católica del Perú]. <https://repositorio.pucp.edu.pe/index/handle/123456789/200116>
 
-Ley N.º 25.326. (2000). *Protección de los datos personales*. Boletín Oficial de la República Argentina. <https://servicios.infoleg.gob.ar/infolegInternet/anexos/60000-64999/64790/texact.htm>
+Ley N.º 25.326. (2000). *Protección de los datos personales*. Boletín Oficial de la República Argentina. <https://www.argentina.gob.ar/normativa/nacional/64790/texto>
 
 Lin, T.-Y., Maire, M., Belongie, S., Hays, J., Perona, P., Ramanan, D., Dollár, P., & Zitnick, C. L. (2014). Microsoft COCO: Common objects in context. En *Computer Vision – ECCV 2014* (pp. 740–755). Springer. <https://doi.org/10.1007/978-3-319-10602-1_48>
 

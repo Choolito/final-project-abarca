@@ -33,14 +33,9 @@ CRISP-ML(Q) extiende CRISP-DM con controles de calidad específicos de ML y se o
 | Despliegue | 5 (clips y catálogo) | Generación de clips verificada sobre partidos de prueba |
 | Monitoreo y mantenimiento | — | Fuera del alcance del TF |
 
-El desarrollo se organiza en **iteraciones de dos semanas**. El seguimiento se lleva en los *issues* del repositorio, priorizados con un sistema de etiquetas, y el código y la documentación se versionan con Git siguiendo el flujo *Git Flow*, con integración continua.
+El desarrollo se organiza en **iteraciones cortas**, cuya duración se fija en el *Plan de trabajo y cronograma*. El seguimiento se lleva en los *issues* del repositorio, priorizados con un sistema de etiquetas, y el código y la documentación se versionan con Git siguiendo el flujo *Git Flow*, con integración continua.
 
-**Seguimiento con el Director.** El trabajo es dirigido por el Ing. Mariano Ferrero, docente de Inteligencia Artificial de la UCSE DAR (Profesor Tutor, Art. 6a). La dinámica acordada es la siguiente:
-
-- **reuniones de seguimiento de 30 minutos cada tres semanas**, o con mayor frecuencia en las fases que lo requieran, para revisar avances, resolver bloqueos y ajustar el plan;
-- una **minuta de cada reunión**, a cargo del autor, con los temas tratados, las decisiones, las tareas acordadas y sus fechas;
-- **revisión iterativa del documento final** (borrador, devolución y corrección) hasta su versión definitiva;
-- **visto bueno escrito del Director** sobre la versión final, como requisito para inscribirse a la defensa oral.
+**Seguimiento con el Director.** El trabajo se desarrolla bajo la dirección del Ing. Mariano Ferrero, docente de Inteligencia Artificial de la UCSE DAR (Profesor Tutor, Art. 6a), mediante **reuniones periódicas de seguimiento**. El autor lleva un registro de cada reunión con los puntos tratados, las decisiones tomadas y las tareas acordadas, y el documento final se revisa en forma iterativa.
 
 ### 1.2. Componentes que se entrenan
 
@@ -57,9 +52,9 @@ El sistema integra componentes de distinta naturaleza. Sólo dos se entrenan; el
 
 ### 1.3. Protocolo de construcción del conjunto de datos
 
-**Fuente.** Grabaciones del **plantel superior** del Círculo Rafaelino de Rugby (CRAR), todas de jugadores mayores de 18 años. Se dispone de más de 60 partidos. Se anotan **12 partidos**, que a razón de ≈25 line-outs por partido (Cullen, 2026) suman **≈300 line-outs**, por encima de la meta de 200 del objetivo 2. El resto queda como **reserva** para el punto de decisión de §1.5.
+**Fuente.** Grabaciones del **plantel superior** del Círculo Rafaelino de Rugby (CRAR), todas de jugadores mayores de 18 años. Se dispone de más de 60 partidos. Se anotan partidos hasta reunir **≈300 line-outs**, por encima de la meta de 200 del objetivo 2. A razón de ≈25 line-outs por partido (Cullen, 2026), se estiman unos 12 partidos. Los partidos no anotados quedan como **reserva** para el punto de decisión de §1.5.
 
-**Autorización y datos personales.** Las imágenes de los jugadores son datos personales en los términos de la Ley 25.326, cuyo principio de finalidad impide usarlos para fines incompatibles con los que motivaron su obtención (Ley N.º 25.326, 2000). Por eso el uso académico de las grabaciones se respalda con una **autorización escrita del club**. El material se almacena en forma local, el conjunto de datos no se publica y las figuras del informe no permiten identificar a los jugadores.
+**Datos personales.** Las imágenes de los jugadores son datos personales en los términos de la Ley 25.326 (Ley N.º 25.326, 2000). Por eso el material se almacena en forma local, el conjunto de datos no se publica y las figuras del informe no permiten identificar a los jugadores.
 
 **Anotación.** Se construyen dos conjuntos, uno por componente entrenado:
 
@@ -73,7 +68,7 @@ El sistema integra componentes de distinta naturaleza. Sólo dos se entrenan; el
 
 En ambos casos se informa el error absoluto medio entre instantes, en segundos, y el porcentaje de marcas que coinciden dentro de δ = 3 s. Para las cajas se informa el IoU medio entre anotaciones.
 
-**Partición por partido.** Los 12 partidos se asignan completos a cada conjunto: **8 de entrenamiento, 2 de validación y 2 de prueba**. Eso da una proporción cercana a la 70/15/15 del objetivo 2, medida en cantidad de line-outs. La partición por partido es obligatoria. Clips o cuadros del mismo partido comparten cancha, iluminación y equipos, y repartirlos entre conjuntos produciría una **fuga de datos** que inflaría las métricas. Los cuadros con cajas siguen la misma partición.
+**Partición por partido, balanceada por line-outs.** Cada partido se asigna completo a un único conjunto. Clips o cuadros del mismo partido comparten cancha, iluminación y equipos, y repartirlos entre conjuntos produciría una **fuga de datos** que inflaría las métricas. Como la cantidad de line-outs varía entre partidos, la proporción 70/15/15 del objetivo 2 se mide sobre el **total de line-outs** y no sobre la cantidad de partidos: los partidos se asignan de modo que entrenamiento, validación y prueba reúnan aproximadamente el 70 %, el 15 % y el 15 % de los line-outs, y se informa la proporción finalmente alcanzada. Los cuadros con cajas siguen la misma partición.
 
 **Documentación.** El conjunto de datos se documenta con una ficha según *Datasheets for Datasets* (Gebru et al., 2021): origen, criterios de selección de partidos, guía de etiquetado, acuerdo entre anotaciones y partición. Un **manifiesto** con el *hash* de cada archivo de video y la asignación de partidos a conjuntos garantiza que la partición sea reproducible.
 
@@ -107,9 +102,8 @@ Al cumplirse el objetivo 4, hacia la **semana 16**, se evalúa el detector sobre
 |---|---|---|
 | El detector no alcanza el umbral | Objetivo 4 | Punto de decisión de la semana 16 |
 | El F1 del evento no alcanza el umbral | Objetivo 5 | Revisar las características, sumar partidos de la reserva y analizar errores sobre validación |
-| Grabaciones con encuadre o calidad insuficiente | Objetivos 2, 4 y 5 | Criterios de selección de partidos y reserva de más de 50 partidos |
-| Demora en la autorización del club | Objetivo 2 | Gestionarla antes de iniciar la anotación (issue #19) |
-| Incompatibilidad de la GPU con versiones antiguas de PyTorch | Objetivos 4 y 5 | Entorno fijado desde el inicio con PyTorch 2.7 o superior compilado para CUDA 12.8 |
+| Grabaciones con encuadre o calidad insuficiente | Objetivos 2, 4 y 5 | Criterios de selección de partidos y reserva de partidos no anotados |
+| Incompatibilidades entre el software y el hardware disponible | Objetivos 4 y 5 | Verificar y fijar las versiones del entorno antes de entrenar |
 
 ### 1.6. Arquitectura e implementación
 
@@ -129,7 +123,7 @@ Los clips de ±10 s se recortan con FFmpeg **recodificando** el video. La copia 
 
 | Uso | Herramienta |
 |---|---|
-| Lenguaje y aprendizaje profundo | Python, PyTorch ≥ 2.7 (CUDA 12.8) |
+| Lenguaje y aprendizaje profundo | Python y PyTorch |
 | Detección y seguimiento | Ultralytics YOLO y ByteTrack |
 | Procesamiento de video | OpenCV y FFmpeg |
 | Anotación | CVAT (cajas) y planilla de instantes |
@@ -137,7 +131,9 @@ Los clips de ±10 s se recortan con FFmpeg **recodificando** el video. La copia 
 | Persistencia | SQLite |
 | Versionado y gestión | Git y GitHub: *Git Flow*, *issues* con etiquetas e integración continua |
 
-El desarrollo se realiza sobre el equipo del autor: GPU **NVIDIA RTX 5070 Ti** de 16 GB de VRAM, procesador **AMD Ryzen 7 9800X3D** y **64 GB** de RAM DDR5. Esta configuración alcanza para ajustar variantes medianas y grandes de YOLO a resoluciones de 1280 px y para entrenar el modelo temporal, que tiene pocos parámetros. Así se cumple el supuesto del *Alcance* de trabajar con recursos de cómputo propios, sin infraestructura especializada. El entorno se fija con las versiones exactas de cada dependencia y semillas aleatorias controladas.
+Las herramientas son de referencia: pueden reemplazarse por equivalentes sin modificar el método.
+
+El desarrollo se realiza sobre el equipo del autor, con una **GPU de 16 GB de VRAM** y **64 GB de RAM**. Esta configuración alcanza para ajustar variantes medianas y grandes de YOLO y para entrenar el modelo temporal, que tiene pocos parámetros. Así se cumple el supuesto del *Alcance* de trabajar con recursos de cómputo propios, sin infraestructura especializada. El entorno se fija con las versiones exactas de cada dependencia y semillas aleatorias controladas.
 
 ---
 
