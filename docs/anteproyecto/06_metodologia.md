@@ -115,7 +115,7 @@ El sistema se implementa como un **pipeline *offline*** de tres capas. Cada capa
 | Semántica | Trayectorias | Serie temporal de confianza y lista de eventos (instante, confianza) |
 | Eventos | Lista de eventos y video | Clips y catálogo indexado |
 
-Los artefactos permiten volver a ejecutar una etapa sin recalcular las anteriores, por ejemplo para probar otro modelo semántico sobre las mismas trayectorias, y hacen reproducibles los experimentos. El diseño detallado de las capas y sus interfaces es el entregable del objetivo 3, que se aprueba con el Director antes de la implementación.
+Los artefactos permiten volver a ejecutar una etapa sin recalcular las anteriores, por ejemplo para probar otro modelo semántico sobre las mismas trayectorias, y hacen reproducibles los experimentos. El diseño detallado de las capas y sus interfaces es el entregable del objetivo 3, que se presenta al Director antes de la implementación.
 
 Los clips de ±10 s se recortan con FFmpeg **recodificando** el video. La copia directa del flujo (*stream copy*) sólo puede cortar en cuadros clave y desfasaría la ventana en hasta algunos segundos; con unos 25 clips de 20 s por partido, el costo de recodificar es despreciable. El catálogo se guarda en SQLite con el partido, el instante, la confianza, la ruta del clip y un estado de revisión. El sistema se opera por línea de comandos.
 
