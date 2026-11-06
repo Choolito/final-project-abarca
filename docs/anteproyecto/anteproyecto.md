@@ -4,7 +4,7 @@
 > Carrera de Ingeniería en Informática.
 > Autor: Juan Ignacio Abarca.
 
-Este documento desarrolla los diez puntos requeridos por la consigna de Trabajo Final de la UCSE DAR. Las secciones se completan de manera iterativa; los apartados aún no abordados se mantienen como marcadores explícitos.
+Este documento desarrolla los diez puntos requeridos por la consigna de Trabajo Final de la UCSE DAR. Cada punto resume el apartado correspondiente y enlaza a su desarrollo completo.
 
 ---
 
@@ -134,12 +134,19 @@ Este apartado delimita **qué se va a hacer y qué no se va a hacer** en el Trab
 
 ## 9. Plan de Trabajo y Cronograma
 
-_A desarrollar._
+El plan se expresa en **semanas relativas** (S1 = inicio del desarrollo tras la aprobación del anteproyecto) sobre **26 semanas**, con una dedicación de referencia de ≈10 horas semanales e iteraciones de dos semanas.
+
+- **18 actividades** con descripción, duración, horas, predecesoras y entregable. Suman ≈245 horas sobre ≈260 disponibles.
+- **Hitos:** catálogo (S3), diseño presentado al Director (S5), dataset completo (S14), Go/No-Go del detector (S16), line-out integrado (S22) e informe final (S26).
+- **Camino crítico:** construcción del dataset, ajuste del detector, modelo temporal y evaluación final. Para mitigarlo, el detector se empieza a ajustar en la S8 con las cajas ya anotadas.
+- Las extensiones opcionales no se planifican: sólo se abordan si queda holgura una vez cumplido el objetivo 5.
+
+> El desarrollo completo de este apartado, con la tabla de actividades y el diagrama de Gantt, se encuentra en [`08_cronograma.md`](08_cronograma.md).
 
 ---
 
 ## 10. Bibliografía Tentativa
 
-_En construcción._ Se redacta en estilo APA 7.ª ed., en orden alfabético, e incluye únicamente las obras citadas en el texto (Art. 9c). Por ahora contiene las referencias de *Antecedentes*, *Marco Teórico* y *Metodología*.
+Redactada en estilo APA 7.ª ed., en orden alfabético, con únicamente las obras citadas en el texto del anteproyecto (Art. 9c).
 
 > El listado vigente se encuentra en [`09_bibliografia.md`](09_bibliografia.md).
