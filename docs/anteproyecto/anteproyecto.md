@@ -95,7 +95,7 @@ El marco desarrolla sólo los conceptos que nombran los *Objetivos* y el *Alcanc
 
 - **Proceso.** Gestión según el PMBOK, ciclo de ML según **CRISP-ML(Q)** y desarrollo de software iterativo e incremental, en iteraciones cortas. Seguimiento con el Director (Ing. Mariano Ferrero) en reuniones periódicas.
 - **Qué se entrena.** Sólo dos componentes: el detector YOLO, por ajuste fino desde COCO, y el modelo temporal que reconoce el lanzamiento, desde cero. El seguimiento, las características geométricas y la línea base heurística no se entrenan.
-- **Dataset.** Se anotan partidos del plantel superior del CRAR, de un total de más de 60, hasta reunir **≈300 line-outs** (unos 12 partidos). Se marcan los instantes de lanzamiento y se anotan cajas en 300–500 cuadros con CVAT. La calidad se mide con acuerdo intra e inter-anotador. La partición asigna cada partido completo a un solo conjunto, para evitar fugas de datos, y busca el 70/15/15 sobre el **total de line-outs**.
+- **Dataset.** Se anotan partidos del plantel superior del CRAR, de local y de visitante, de un total de más de 60, hasta reunir **≈300 line-outs** (unos 12 partidos). Se marcan los instantes de lanzamiento y se anotan cajas en 300–500 cuadros con CVAT. La calidad se mide con acuerdo intra e inter-anotador. La partición asigna cada partido completo a un solo conjunto, para evitar fugas de datos, y busca el 70/15/15 sobre el **total de line-outs**. La prueba incluye al menos una cancha no vista en entrenamiento, para medir la generalización.
 - **Evaluación.** Metas definitivas: **mAP@0.5 ≥ 0,70** para *jugador* y **F1 ≥ 0,70 con δ = 3 s** para el line-out, medidas una sola vez sobre el conjunto de prueba. Los modelos se eligen sobre validación.
 - **Riesgos.** Punto de decisión **Go/No-Go** en la semana 16 sobre el detector, con una secuencia de medidas si no alcanza el umbral, y partidos de reserva para ampliar los datos.
 - **Entorno.** Python y PyTorch sobre el equipo del autor (GPU de 16 GB); experimentos registrados con MLflow.
@@ -110,11 +110,11 @@ Este apartado delimita **qué se va a hacer y qué no se va a hacer** en el Trab
 
 **Qué se va a hacer:**
 
-- Sistema **exclusivamente de software** sobre grabaciones de rugby en formato de video estándar.
+- Sistema **exclusivamente de software** sobre grabaciones de rugby en formato de video estándar, utilizable por **cualquier club** sobre sus propias grabaciones (el CRAR es el caso testigo).
 - Reconocimiento del *line-out* (evento inicial y único de validación obligatoria) y su localización temporal: objetivo central del sistema.
 - Detección y seguimiento de jugadores y balón como **paso intermedio necesario** para identificar el evento (no es un fin en sí mismo).
 - Registro indexado de eventos y **generación automática de clips segmentados**, con una ventana de referencia de **≈10 s antes y 10 s después** del evento.
-- Validación sobre grabaciones reales del ámbito amateur regional con métricas objetivas (mAP; precisión, exhaustividad y F1-score).
+- Validación sobre grabaciones reales del ámbito amateur regional (partidos del CRAR como local y visitante) con métricas objetivas (mAP; precisión, exhaustividad y F1-score).
 - Arquitectura **modular**, con *scrum* y *ruck* especificados como extensión opcional, no exigible.
 
 **Qué no se va a hacer:**
@@ -124,7 +124,7 @@ Este apartado delimita **qué se va a hacer y qué no se va a hacer** en el Trab
 - Reconocimiento de otros eventos del rugby fuera del line-out (tries, conversiones, infracciones, marcador).
 - Análisis táctico interpretativo automático, recomendaciones ni estadísticas avanzadas.
 - Interfaz de nivel comercial, despliegue en producción, comercialización, soporte o mantenimiento.
-- Validación de la extensión a otros deportes o dominios.
+- Validación de la extensión a otros deportes o dominios, y validación con grabaciones registradas por otros clubes.
 
 **Supuestos:** grabaciones con calidad/encuadre suficientes, colaboración de un referente técnico para validar el etiquetado y recursos de cómputo estándar. Los volúmenes y umbrales son metas de referencia preliminares.
 

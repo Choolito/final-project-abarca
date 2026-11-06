@@ -12,11 +12,11 @@ Este apartado delimita con precisión **qué se va a hacer y qué no se va a hac
 
 ### 1.1. Qué se va a hacer (incluido)
 
-- Desarrollar un sistema **exclusivamente de software**, que opere sobre **grabaciones de rugby en formato de video estándar**.
+- Desarrollar un sistema **exclusivamente de software**, que opere sobre **grabaciones de rugby en formato de video estándar** y que pueda ser utilizado por **cualquier club de rugby sobre sus propias grabaciones**. El CRAR es el caso testigo sobre el que se construye y valida, pero el sistema no depende de características propias de ese club.
 - Reconocer el **line-out** como **evento inicial y único de validación obligatoria**, determinando su **localización temporal** en la grabación. Este es el objetivo central del sistema.
 - Como **paso intermedio necesario** para lo anterior, detectar y seguir a los **agentes del juego** relevantes (jugadores y balón); la detección/seguimiento no es un fin en sí mismo, sino el insumo perceptual sobre el cual se identifica el evento.
 - Registrar los eventos detectados de forma indexada y **generar automáticamente los clips segmentados** correspondientes, listos para el cuerpo técnico. Cada clip abarca una **ventana temporal en torno al evento** —de referencia, **≈10 segundos antes y 10 segundos después** del instante identificado—, ajustable según las características del line-out.
-- **Validar** el sistema sobre grabaciones reales del ámbito amateur regional, con **métricas objetivas** (mAP para la detección; precisión, exhaustividad y F1-score para el reconocimiento del evento).
+- **Validar** el sistema sobre grabaciones reales del ámbito amateur regional —partidos del CRAR como local y como visitante, en distintas canchas—, con **métricas objetivas** (mAP para la detección; precisión, exhaustividad y F1-score para el reconocimiento del evento).
 - Dejar la arquitectura organizada de forma **modular**, especificando el *scrum* y el *ruck* en el catálogo como **eventos de extensión** (su implementación queda como mejora opcional, no exigible).
 
 ### 1.2. Qué no se va a hacer (excluido)
@@ -28,6 +28,7 @@ Este apartado delimita con precisión **qué se va a hacer y qué no se va a hac
 - **No** se construirá una **interfaz de nivel comercial** ni se desplegará en producción: la salida se limita a poner los clips y el catálogo a disposición.
 - **No** se abordan comercialización, soporte, mantenimiento ni gestión de usuarios.
 - **No** se valida la extensión del sistema a otros deportes o dominios; la modularidad es sólo una orientación de diseño.
+- **No** se valida el sistema con grabaciones registradas por otros clubes. Los partidos del CRAR como visitante aportan evidencia de su funcionamiento en canchas distintas.
 
 ### 1.3. Supuestos y restricciones
 
