@@ -15,7 +15,7 @@
 - Estilo **APA 7.ª edición**.
 - **Orden alfabético** por primer autor.
 - Se incluyen **únicamente** las obras citadas en el texto del anteproyecto (criterio del Art. 9c del Reglamento de TF, aplicado desde esta etapa).
-- Las fuentes institucionales, comerciales y de prensa sin fecha de publicación se indican con *s.f.* y se consultaron en octubre de 2026.
+- Las fuentes institucionales, comerciales y de prensa sin fecha de publicación se indican con *s.f.*; en cada una se consigna la fecha de consulta.
 - Las entradas marcadas con **[verificar]** tienen datos que deben confirmarse contra el documento original antes de la entrega.
 
 ### Referencias

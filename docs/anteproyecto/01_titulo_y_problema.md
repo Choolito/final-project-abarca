@@ -68,7 +68,7 @@ A fin de preservar la separación de responsabilidades y facilitar la evolución
 
 | Capa | Responsabilidad abstracta | Instanciación en el caso de estudio (Rugby) |
 |---|---|---|
-| **Capa 1 — Percepción** | Segmentación de objetos, detección de agentes y estimación de flujo óptico sobre el cuadro de video. | Detección y seguimiento de jugadores y balón en el campo de juego, como paso intermedio para identificar el evento. |
+| **Capa 1 — Percepción** | Detección de agentes en cada cuadro de video y seguimiento de sus trayectorias entre cuadros. | Detección y seguimiento de jugadores y balón en el campo de juego, como paso intermedio para identificar el evento. |
 | **Capa 2 — Semántica** | Reconocimiento de estados espacio-temporales complejos a partir de la agregación de las primitivas de percepción. | Identificación del *line-out* (evento inicial obligatorio); *scrum* y *ruck* especificados como eventos de extensión. |
 | **Capa 3 — Eventos** | Disparo de etiquetas (*triggers*), persistencia de la información catalogada y exposición de los clips segmentados al usuario final. | Generación automática de clips segmentados, registro temporal indexado y puesta a disposición del cuerpo técnico. |
 
