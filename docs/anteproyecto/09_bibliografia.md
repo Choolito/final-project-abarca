@@ -8,7 +8,7 @@
 
 ## 1. Bibliografía Tentativa
 
-> **En construcción (issue #17).** La bibliografía se carga en paralelo a la redacción de cada sección. Por ahora contiene las obras citadas en *Antecedentes* ([`03_antecedentes.md`](03_antecedentes.md)) *Marco Teórico* ([`05_marco_teorico.md`](05_marco_teorico.md)) y *Metodología* ([`06_metodologia.md`](06_metodologia.md)).
+> Contiene las obras citadas en *Antecedentes* ([`03_antecedentes.md`](03_antecedentes.md)), *Marco Teórico* ([`05_marco_teorico.md`](05_marco_teorico.md)) y *Metodología* ([`06_metodologia.md`](06_metodologia.md)).
 
 **Criterios:**
 
@@ -16,7 +16,6 @@
 - **Orden alfabético** por primer autor.
 - Se incluyen **únicamente** las obras citadas en el texto del anteproyecto (criterio del Art. 9c del Reglamento de TF, aplicado desde esta etapa).
 - Las fuentes institucionales, comerciales y de prensa sin fecha de publicación se indican con *s.f.*; en cada una se consigna la fecha de consulta.
-- Las entradas marcadas con **[verificar]** tienen datos que deben confirmarse contra el documento original antes de la entrega.
 
 ### Referencias
 

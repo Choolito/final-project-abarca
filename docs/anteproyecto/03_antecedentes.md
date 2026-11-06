@@ -145,7 +145,7 @@ Las ciencias del deporte confirman la **relevancia táctica** del line-out y, de
 
 Este último trabajo aporta dos datos útiles para la planificación:
 
-- en el nivel amateur se registran **≈25 line-outs por partido**, lo que permite estimar que la meta de ≥200 clips del objetivo específico 2 requiere del orden de **8 a 10 partidos** completos;
+- en el nivel amateur se registran **≈25 line-outs por partido**, lo que permite estimar que la meta de ≥200 line-outs del objetivo específico 2 requiere del orden de **8 a 10 partidos** completos;
 - aun en un estudio académico, la obtención de los datos depende del **etiquetado manual**, que es precisamente el costo que este trabajo busca reducir.
 
 ### 1.5. Síntesis comparativa

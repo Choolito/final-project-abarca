@@ -52,7 +52,7 @@ El sistema integra componentes de distinta naturaleza. Sólo dos se entrenan; el
 
 ### 1.3. Protocolo de construcción del conjunto de datos
 
-**Fuente.** Grabaciones del **plantel superior** del Círculo Rafaelino de Rugby (CRAR), todas de jugadores mayores de 18 años. Se dispone de más de 60 partidos. Se anotan partidos hasta reunir **≈300 line-outs**, por encima de la meta de 200 del objetivo 2. A razón de ≈25 line-outs por partido (Cullen, 2026), se estiman unos 12 partidos. Los partidos no anotados quedan como **reserva** para el punto de decisión de §1.5.
+**Fuente.** Grabaciones del **plantel superior** del Círculo Rafaelino de Rugby (CRAR), todas de jugadores mayores de 18 años, en partidos **de local y de visitante**. Estos últimos aportan distintas canchas, fondos, iluminaciones y condiciones de captura. Se dispone de más de 60 partidos. Se anotan partidos hasta reunir **≈300 line-outs**, por encima de la meta de 200 del objetivo 2. A razón de ≈25 line-outs por partido (Cullen, 2026), se estiman unos 12 partidos. Los partidos no anotados quedan como **reserva** para el punto de decisión de §1.5.
 
 **Datos personales.** Las imágenes de los jugadores son datos personales en los términos de la Ley 25.326 (Ley N.º 25.326, 2000). Por eso el material se almacena en forma local, el conjunto de datos no se publica y las figuras del informe no permiten identificar a los jugadores.
 
@@ -68,7 +68,7 @@ El sistema integra componentes de distinta naturaleza. Sólo dos se entrenan; el
 
 En ambos casos se informa el error absoluto medio entre instantes, en segundos, y el porcentaje de marcas que coinciden dentro de δ = 3 s. Para las cajas se informa el IoU medio entre anotaciones.
 
-**Partición por partido, balanceada por line-outs.** Cada partido se asigna completo a un único conjunto. Clips o cuadros del mismo partido comparten cancha, iluminación y equipos, y repartirlos entre conjuntos produciría una **fuga de datos** que inflaría las métricas. Como la cantidad de line-outs varía entre partidos, la proporción 70/15/15 del objetivo 2 se mide sobre el **total de line-outs** y no sobre la cantidad de partidos: los partidos se asignan de modo que entrenamiento, validación y prueba reúnan aproximadamente el 70 %, el 15 % y el 15 % de los line-outs, y se informa la proporción finalmente alcanzada. Los cuadros con cajas siguen la misma partición.
+**Partición por partido, balanceada por line-outs.** Cada partido se asigna completo a un único conjunto. Los line-outs y cuadros de un mismo partido comparten cancha, iluminación y equipos, y repartirlos entre conjuntos produciría una **fuga de datos** que inflaría las métricas. Como la cantidad de line-outs varía entre partidos, la proporción 70/15/15 del objetivo 2 se mide sobre el **total de line-outs** y no sobre la cantidad de partidos: los partidos se asignan de modo que entrenamiento, validación y prueba reúnan aproximadamente el 70 %, el 15 % y el 15 % de los line-outs, y se informa la proporción finalmente alcanzada. Los cuadros con cajas siguen la misma partición. Los partidos de distintas canchas se reparten entre los tres conjuntos, de modo que todos reflejen la variedad de condiciones de captura.
 
 **Documentación.** El conjunto de datos se documenta con una ficha según *Datasheets for Datasets* (Gebru et al., 2021): origen, criterios de selección de partidos, guía de etiquetado, acuerdo entre anotaciones y partición. Un **manifiesto** con el *hash* de cada archivo de video y la asignación de partidos a conjuntos garantiza que la partición sea reproducible.
 

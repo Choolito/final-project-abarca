@@ -30,8 +30,8 @@ final-project-abarca/
 │   │   ├── 05_marco_teorico.md
 │   │   ├── 06_metodologia.md
 │   │   ├── 07_alcance.md
-│   │   ├── 08_cronograma.md         # pendiente (#16)
-│   │   └── 09_bibliografia.md       # en construcción (#17)
+│   │   ├── 08_cronograma.md
+│   │   └── 09_bibliografia.md
 │   └── consigna/              # Consigna de la cátedra (PDF)
 ├── research/
 │   ├── papers/                # Estado del arte y referencias

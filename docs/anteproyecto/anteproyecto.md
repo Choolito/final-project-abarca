@@ -4,7 +4,7 @@
 > Carrera de Ingeniería en Informática.
 > Autor: Juan Ignacio Abarca.
 
-Este documento desarrolla los diez puntos requeridos por la consigna de Trabajo Final de la UCSE DAR. Las secciones se completan de manera iterativa; los apartados aún no abordados se mantienen como marcadores explícitos.
+Este documento desarrolla los diez puntos requeridos por la consigna de Trabajo Final de la UCSE DAR. Cada punto resume el apartado correspondiente y enlaza a su desarrollo completo.
 
 ---
 
@@ -39,7 +39,7 @@ Desarrollar y validar un sistema de software para el reconocimiento automático 
 Formulados bajo criterio **SMART** y de forma incremental, tomando el **line-out** como evento inicial (scrum y ruck como extensión; detalle en *Alcance*). Los umbrales son metas de referencia preliminares y los plazos se expresan en **semanas** sobre una duración total de **6 meses (≈26 semanas)**; el etiquetado del dataset es la actividad de mayor extensión:
 
 1. Delimitar y documentar el catálogo de eventos —line-out como evento inicial y scrum/ruck especificados como extensión— con sus criterios observables, hacia la semana 3, validado con el cuerpo técnico del club.
-2. Construir un dataset de ≥200 clips de line-out de distintos partidos y condiciones de captura, anotados y particionados 70/15/15, con protocolo reproducible (semanas 3–14, la tarea más larga).
+2. Construir un dataset de ≥200 line-outs etiquetados temporalmente sobre partidos completos, en distintas condiciones de captura, particionados 70/15/15, con protocolo reproducible (semanas 3–14, la tarea más larga).
 3. Diseñar y presentar al Director el documento de arquitectura modular en tres capas (percepción, interpretación semántica y gestión de eventos) con interfaces definidas, hacia la semana 5.
 4. Implementar el módulo de percepción (detección de jugadores y balón) con mAP@0.5 ≥ 0,70 para la clase jugador sobre el conjunto de prueba, hacia la semana 16.
 5. Implementar el módulo de reconocimiento y catalogación del line-out (localización temporal + clips automáticos) con F1-score ≥ 0,70 sobre el conjunto de prueba, hacia la semana 22.
@@ -58,7 +58,7 @@ El relevamiento se ordena de lo más cercano a lo más lejano: local, regional, 
 - **Latinoamérica.** El único antecedente de rugby sobre video amateur detecta choques entre jugadores. Su motivación fue que la cámara comercial del club no identificaba esos eventos (Santana Domínguez, 2024).
 - **Internacional.** Las herramientas accesibles (Hudl Sportscode, Nacsport, LongoMatch, Framesports) sólo asisten el **etiquetado manual**. Las que automatizan dependen de **sensores** (Catapult) o de **hardware propietario con suscripción** (Veo, que detecta line-outs, pero sólo sobre video de su propia cámara). La investigación formalizó el *action spotting* (Giancola et al., 2018) y el reconocimiento de formaciones colectivas (Atmosukarto et al., 2013). Los trabajos de rugby que reconocen el line-out operan, en cambio, sobre **transmisiones televisivas**, no sobre video amateur (Jayasuriya, 2022; Nonaka et al., 2024). La evidencia reciente advierte que los resultados sobre video profesional no se trasladan directamente al video amateur de una sola cámara (Kodathala et al., 2026).
 
-**Contribución.** El trabajo propone un sistema de software que reconoce y localiza temporalmente el **line-out** sobre **video amateur de una sola cámara**, **sin sensores ni hardware propietario**, y genera los clips correspondientes. El sistema es aplicable al archivo histórico de los clubes. Se acompaña de un dataset anotado y de una evaluación cuantitativa construidos en el **contexto regional argentino**. Según estudios de nivel amateur, se registran ≈25 line-outs por partido (Cullen, 2026), por lo que la meta de ≥200 clips equivale a unos 8–10 partidos.
+**Contribución.** El trabajo propone un sistema de software que reconoce y localiza temporalmente el **line-out** sobre **video amateur de una sola cámara**, **sin sensores ni hardware propietario**, y genera los clips correspondientes. El sistema es aplicable al archivo histórico de los clubes. Se acompaña de un dataset anotado y de una evaluación cuantitativa construidos en el **contexto regional argentino**. Según estudios de nivel amateur, se registran ≈25 line-outs por partido (Cullen, 2026), por lo que la meta de ≥200 line-outs equivale a unos 8–10 partidos.
 
 > El desarrollo completo de este apartado, con la tabla comparativa de soluciones, se encuentra en [`03_antecedentes.md`](03_antecedentes.md).
 
@@ -95,7 +95,7 @@ El marco desarrolla sólo los conceptos que nombran los *Objetivos* y el *Alcanc
 
 - **Proceso.** Gestión según el PMBOK, ciclo de ML según **CRISP-ML(Q)** y desarrollo de software iterativo e incremental, en iteraciones cortas. Seguimiento con el Director (Ing. Mariano Ferrero) en reuniones periódicas.
 - **Qué se entrena.** Sólo dos componentes: el detector YOLO, por ajuste fino desde COCO, y el modelo temporal que reconoce el lanzamiento, desde cero. El seguimiento, las características geométricas y la línea base heurística no se entrenan.
-- **Dataset.** Se anotan partidos del plantel superior del CRAR, de un total de más de 60, hasta reunir **≈300 line-outs** (unos 12 partidos). Se marcan los instantes de lanzamiento y se anotan cajas en 300–500 cuadros con CVAT. La calidad se mide con acuerdo intra e inter-anotador. La partición asigna cada partido completo a un solo conjunto, para evitar fugas de datos, y busca el 70/15/15 sobre el **total de line-outs**.
+- **Dataset.** Se anotan partidos del plantel superior del CRAR, de local y de visitante, de un total de más de 60, hasta reunir **≈300 line-outs** (unos 12 partidos). Se marcan los instantes de lanzamiento y se anotan cajas en 300–500 cuadros con CVAT. La calidad se mide con acuerdo intra e inter-anotador. La partición asigna cada partido completo a un solo conjunto, para evitar fugas de datos, y busca el 70/15/15 sobre el **total de line-outs**. Los partidos de distintas canchas se reparten entre los tres conjuntos.
 - **Evaluación.** Metas definitivas: **mAP@0.5 ≥ 0,70** para *jugador* y **F1 ≥ 0,70 con δ = 3 s** para el line-out, medidas una sola vez sobre el conjunto de prueba. Los modelos se eligen sobre validación.
 - **Riesgos.** Punto de decisión **Go/No-Go** en la semana 16 sobre el detector, con una secuencia de medidas si no alcanza el umbral, y partidos de reserva para ampliar los datos.
 - **Entorno.** Python y PyTorch sobre el equipo del autor (GPU de 16 GB); experimentos registrados con MLflow.
@@ -134,12 +134,19 @@ Este apartado delimita **qué se va a hacer y qué no se va a hacer** en el Trab
 
 ## 9. Plan de Trabajo y Cronograma
 
-_A desarrollar._
+El plan se expresa en **semanas relativas** (S1 = inicio del desarrollo tras la aprobación del anteproyecto) sobre **26 semanas**, con una dedicación de referencia de ≈10 horas semanales e iteraciones de dos semanas.
+
+- **18 actividades** con descripción, duración, horas, predecesoras y entregable. Suman ≈245 horas sobre ≈260 disponibles.
+- **Hitos:** catálogo (S3), diseño presentado al Director (S5), dataset completo (S14), Go/No-Go del detector (S16), line-out integrado (S22) e informe final (S26).
+- **Camino crítico:** construcción del dataset, ajuste del detector, modelo temporal y evaluación final. Para mitigarlo, el detector se empieza a ajustar en la S8 con las cajas ya anotadas.
+- Las extensiones opcionales no se planifican: sólo se abordan si queda holgura una vez cumplido el objetivo 5.
+
+> El desarrollo completo de este apartado, con la tabla de actividades y el diagrama de Gantt, se encuentra en [`08_cronograma.md`](08_cronograma.md).
 
 ---
 
 ## 10. Bibliografía Tentativa
 
-_En construcción._ Se redacta en estilo APA 7.ª ed., en orden alfabético, e incluye únicamente las obras citadas en el texto (Art. 9c). Por ahora contiene las referencias de *Antecedentes*, *Marco Teórico* y *Metodología*.
+Redactada en estilo APA 7.ª ed., en orden alfabético, con únicamente las obras citadas en el texto del anteproyecto (Art. 9c).
 
 > El listado vigente se encuentra en [`09_bibliografia.md`](09_bibliografia.md).
