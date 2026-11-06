@@ -26,3 +26,8 @@
 ^https://doi\.org/10\.1145/
 # DOIs de MDPI — 403
 ^https://doi\.org/10\.3390/
+# Normativa nacional (argentina.gob.ar / InfoLEG): responde 404 en forma
+# intermitente al runner de CI (pasó y falló con minutos de diferencia sobre
+# la misma URL). La página de la Ley 25.326 fue verificada manualmente.
+^https://www\.argentina\.gob\.ar/normativa/
+^https://servicios\.infoleg\.gob\.ar/
