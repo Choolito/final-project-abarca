@@ -32,3 +32,11 @@ desktop.ini
 ~$*.docx
 ~$*.xlsx
 ~$*.pptx
+
+# ===== Datos y experimentos (Ley 25.326: no versionar video ni datos de personas) =====
+*.mp4
+*.mov
+*.avi
+*.mkv
+data/
+mlruns/

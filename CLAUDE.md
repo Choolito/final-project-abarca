@@ -151,9 +151,9 @@ Las reglas para el repositorio están definidas en `.github/rulesets-main.json` 
 
 **Qué protege:**
 
-- ✅ Convención de nombres de rama (main, develop, feature/*, fix/*, docs/*, release/x.y.z)
-- ✅ **main:** requiere PR con aprobación antes de mergear
+- ✅ **main y develop:** requieren PR para recibir cambios (sin aprobaciones obligatorias: `required_approving_review_count: 0`)
 - ✅ **main y develop:** protegidas contra force-push y eliminación
+- ℹ️ La convención de nombres de rama (main, develop, feature/*, fix/*, docs/*, release/x.y.z) la hace cumplir el workflow `branch-naming.yml`, no el ruleset
 - ✅ **develop:** rama de integración para feature/*, fix/*, docs/*
 
 ---
