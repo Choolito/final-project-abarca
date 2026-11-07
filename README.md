@@ -19,7 +19,7 @@ Este repositorio funciona por ahora como **espacio de documentación**. El alcan
 
 Trabajo Final orientado al diseño de un **sistema de reconocimiento automático de eventos deportivos en video**, diseñado, implementado y validado sobre partidos de rugby, con el **line-out** como evento inicial. El enfoque persigue una doble contribución: una **técnica** (cadena de reconocimiento de eventos sobre video estándar, organizada de forma modular) y una **social** (democratizar el acceso a herramientas de análisis de video en el tejido deportivo amateur argentino).
 
-El abstract definitivo se consolidará en [`docs/anteproyecto/01_titulo_y_problema.md`](docs/anteproyecto/01_titulo_y_problema.md). El documento consolidado del anteproyecto está en [`docs/anteproyecto/anteproyecto.md`](docs/anteproyecto/anteproyecto.md).
+El documento consolidado del anteproyecto está en [`docs/anteproyecto/anteproyecto.md`](docs/anteproyecto/anteproyecto.md).
 
 ---
 
@@ -50,7 +50,7 @@ Matriz de trazabilidad frente al *Reglamento para la Elaboración de los Trabajo
 | **Art. 1** | Integración de conocimientos: formulación de problemas, investigación, redacción y gestión de proyectos TIC. | `docs/anteproyecto/`. |
 | **Art. 2b** | Desarrollo de prototipo/sistema que aplique tecnologías afines. | *(Fase posterior)* |
 | **Art. 3** | Metodología y alcance alineados al perfil del egresado. | `docs/anteproyecto/06_metodologia.md`, `07_alcance.md`. |
-| **Art. 4** | Trabajo **individual**. | Único autor en commits. |
+| **Art. 4** | Trabajo **individual**. | Autor único. Ver *Uso de herramientas de IA*. |
 | **Art. 6b.1** | Título y descripción del problema. | `docs/anteproyecto/01_titulo_y_problema.md`. |
 | **Art. 6b.2** | Objetivos y metas evaluables. | `docs/anteproyecto/02_objetivos_generales_y_especificos.md`. |
 | **Art. 6b.3** | Antecedentes / estado del arte. | `docs/anteproyecto/03_antecedentes.md`. |
@@ -60,13 +60,19 @@ Matriz de trazabilidad frente al *Reglamento para la Elaboración de los Trabajo
 | **Art. 6b.7** | Alcance. | `docs/anteproyecto/07_alcance.md`. |
 | **Art. 6b.8** | Plan de trabajo y cronograma. | `docs/anteproyecto/08_cronograma.md`. |
 | **Art. 6b.9** | Bibliografía tentativa. | `docs/anteproyecto/09_bibliografia.md`. |
-| **Art. 6a** | Designación de Profesor Tutor por la cátedra. | Director propuesto: Ing. Mariano Ferrero; se formaliza con la entrega del anteproyecto (#20). |
+| **Art. 6a** | Designación de Profesor Tutor por la cátedra. | Director: Ing. Mariano Ferrero (Profesor Tutor). |
 | **Art. 7** | Evaluación del anteproyecto por la cátedra. | *(Pendiente — cierra la fase actual, #20)* |
 | **Art. 8-10** | Desarrollo, presentación y evaluación del TF. | *(Fases posteriores)* |
 
 > La consigna de la cátedra ([`docs/consigna/`](docs/consigna/Elementos_del_Plan_de_Proyecto_de_Trabajo_Final.pdf)) enumera **10 puntos** porque separa *Título* y *Descripción del problema*, que el Art. 6b agrupa en el inciso 1. El consolidado [`anteproyecto.md`](docs/anteproyecto/anteproyecto.md) sigue la numeración de la consigna (1–10); los archivos por sección siguen la del reglamento (`01`–`09`).
 
 Copia íntegra del reglamento en [`research/reglamento_ucse/reglamento_tf_ucse.pdf`](research/reglamento_ucse/reglamento_tf_ucse.pdf).
+
+---
+
+## Uso de herramientas de IA
+
+El Trabajo Final es individual (Art. 4). Durante su elaboración se utilizan herramientas de inteligencia artificial generativa (Claude Code) como **asistencia** en la redacción, la búsqueda y verificación de fuentes, la revisión de coherencia y el mantenimiento del repositorio. Los commits generados con esa asistencia lo indican con la línea `Co-Authored-By`. Las decisiones de contenido, alcance y diseño, así como la validación de cada cambio, son del autor.
 
 ---
 

@@ -63,13 +63,13 @@ Francois, G., Ippolito, M., & Fuster, M. (2025). Detección de objetos a alta ve
 
 Gebru, T., Morgenstern, J., Vecchione, B., Vaughan, J. W., Wallach, H., Daumé III, H., & Crawford, K. (2021). Datasheets for datasets. *Communications of the ACM, 64*(12), 86–92. <https://doi.org/10.1145/3458723>
 
-Giancola, S., Amine, M., Dghaily, T., & Ghanem, B. (2018). SoccerNet: A scalable dataset for action spotting in soccer videos. En *Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition Workshops*. <https://doi.org/10.48550/arXiv.1804.04527>
+Giancola, S., Amine, M., Dghaily, T., & Ghanem, B. (2018). SoccerNet: A scalable dataset for action spotting in soccer videos. En *Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition Workshops* (pp. 1711–1721). <https://doi.org/10.1109/CVPRW.2018.00223>
 
 Goodfellow, I., Bengio, Y., & Courville, A. (2016). *Deep learning*. MIT Press. <https://www.deeplearningbook.org>
 
 Hochreiter, S., & Schmidhuber, J. (1997). Long short-term memory. *Neural Computation, 9*(8), 1735–1780. <https://doi.org/10.1162/neco.1997.9.8.1735>
 
-Hong, J., Zhang, H., Gharbi, M., Fisher, M., & Fatahalian, K. (2022). Spotting temporally precise, fine-grained events in video. En *European Conference on Computer Vision (ECCV 2022)*. <https://doi.org/10.48550/arXiv.2207.10213>
+Hong, J., Zhang, H., Gharbi, M., Fisher, M., & Fatahalian, K. (2022). Spotting temporally precise, fine-grained events in video. En *Computer Vision – ECCV 2022*. Springer. <https://doi.org/10.1007/978-3-031-19833-5_3>
 
 Hudl. (s.f.-a). *Code window* [Manual de Hudl Sportscode]. Recuperado el 15 de octubre de 2026 de <https://www.hudl.com/support/manuals/sportscode/code/code-window>
 
@@ -101,9 +101,9 @@ LongoMatch. (s.f.). *Company*. Recuperado el 15 de octubre de 2026 de <https://l
 
 Lugaresi, C., Tang, J., Nash, H., McClanahan, C., Uboweja, E., Hays, M., Zhang, F., Chang, C.-L., Yong, M. G., Lee, J., Chang, W.-T., Hua, W., Georg, M., & Grundmann, M. (2019). *MediaPipe: A framework for building perception pipelines* (arXiv:1906.08172). arXiv. <https://doi.org/10.48550/arXiv.1906.08172>
 
-Maglo, A., Orcesi, A., & Pham, Q.-C. (2022). Efficient tracking of team sport players with few game-specific annotations. En *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops*. <https://doi.org/10.48550/arXiv.2204.04049>
+Maglo, A., Orcesi, A., & Pham, Q.-C. (2022). Efficient tracking of team sport players with few game-specific annotations. En *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops* (pp. 3461–3471). <https://doi.org/10.1109/CVPRW56347.2022.00390>
 
-Martin, Z., Hendricks, S., & Patel, A. (2021). Automated tackle injury risk assessment in contact-based sports – A rugby union example. En *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops* (pp. 4594–4603). <https://doi.org/10.48550/arXiv.2104.10916>
+Martin, Z., Hendricks, S., & Patel, A. (2021). Automated tackle injury risk assessment in contact-based sports – A rugby union example. En *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops* (pp. 4594–4603). <https://doi.org/10.1109/CVPRW53098.2021.00517>
 
 Migdalski, A., & Stone, J. (2019). Investigating lineout performance between the top and bottom four English Premiership rugby union teams in the 2016/17 season. *International Journal of Performance Analysis in Sport, 19*(1), 131–141. <https://doi.org/10.1080/24748668.2019.1570459>
 
