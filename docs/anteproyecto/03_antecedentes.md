@@ -23,11 +23,18 @@ El relevamiento se ordena **por proximidad al caso de estudio**, de lo más cerc
 
 En Rafaela (UCSE DAR, UTN Facultad Regional Rafaela, Universidad Nacional de Rafaela) y en la región de Santa Fe y el Litoral (UNL, UNR, UTN, Unión Santafesina de Rugby) no se identificaron, en las fuentes públicas consultadas, antecedentes de análisis automático de video deportivo, por lo que el relevamiento continúa en el ámbito nacional.
 
-> **Pendiente de relevamiento (issue #19).** La práctica actual del club caso testigo, el Círculo Rafaelino de Rugby (CRAR), constituye el antecedente local directo del problema. Se completará con datos primarios: dispositivo de grabación, herramienta de análisis utilizada, horas-analista por partido y volumen de archivo histórico disponible. El dato de horas por partido permitirá cuantificar el costo del proceso manual descrito en el *Problema*.
+**Práctica del club caso testigo.** El antecedente local directo del problema es la práctica actual del Círculo Rafaelino de Rugby (CRAR), relevada por el autor en su rol de analista de video del club:
+
+- **Captura:** los partidos se registran con una videocámara montada en trípode, que un operador orienta y acerca (*zoom*) para seguir el juego.
+- **Análisis:** los eventos se codifican manualmente con LongoMatch y con una herramienta propia del analista.
+- **Costo:** el análisis de un partido de 80 minutos demanda entre 2 y 3 horas de trabajo.
+- **Archivo:** el club dispone de más de 60 partidos grabados del plantel superior.
+
+No se identificaron en el club ni en la región herramientas que automaticen esta tarea sobre el video existente.
 
 ### 1.2. Ámbito nacional — Argentina
 
-**Instituciones del rugby.** La Unión de Rugby de Buenos Aires (URBA) puso en marcha una plataforma de análisis de video y estadísticas para sus clubes, con un **protocolo único de codificación** de los partidos de sus divisiones superiores (URBA, s.f.). La iniciativa confirma el valor que la principal unión del país asigna al análisis de video. También confirma que su producción descansa en la **codificación manual** de cada encuentro.
+**Instituciones del rugby.** La Unión de Rugby de Buenos Aires (URBA) puso en marcha una plataforma de análisis de video y estadísticas para sus clubes, con un **protocolo único de codificación** de los partidos de sus divisiones superiores (Unión de Rugby de Buenos Aires [URBA], s.f.). La iniciativa confirma el valor que la principal unión del país asigna al análisis de video. También confirma que su producción descansa en la **codificación manual** de cada encuentro.
 
 **Industria.** **Beelup** instala kits de cámaras fijas conectadas en canchas de fútbol amateur y otros deportes. Bajo un modelo de abono mensual, utiliza inteligencia artificial para identificar automáticamente las jugadas destacadas y generar los clips. Se informaron 5.000 cámaras en 2.500 canchas de 17 países (Forbes Argentina, 2024; InfoNegocios, s.f.). Es la **validación nacional más clara del modelo "cámara fija + IA + clips automáticos" en el deporte amateur**. Su objetivo, no obstante, es el *highlight* recreativo, no la catalogación táctica, y no abarca el rugby.
 
@@ -35,7 +42,7 @@ En Rafaela (UCSE DAR, UTN Facultad Regional Rafaela, Universidad Nacional de Raf
 
 Comparte con este trabajo la motivación de democratizar el análisis con hardware no especializado, pero se orienta a un deporte individual y a la percepción de objetos, no al reconocimiento de eventos colectivos.
 
-Una búsqueda exploratoria en repositorios universitarios argentinos (SEDICI-UNLP, Biblioteca Digital FCEN-UBA, repositorios institucionales) no identificó trabajos sobre reconocimiento automático de eventos de rugby. Queda pendiente una consulta sistemática en el Sistema Nacional de Repositorios Digitales (SNRD).
+Una búsqueda exploratoria en repositorios universitarios argentinos (SEDICI-UNLP, Biblioteca Digital FCEN-UBA, repositorios institucionales) no identificó trabajos sobre reconocimiento automático de eventos de rugby.
 
 ### 1.3. Ámbito latinoamericano
 
@@ -106,7 +113,7 @@ Ambos respaldan la hipótesis de diseño de este trabajo: reconocer el evento a 
 - un modelo entrenado específico, mucho más pequeño, supera a los modelos de visión-lenguaje basados en *prompts* en la detección de eventos (*spotting* de contactos), con una fracción del costo;
 - los buenos resultados sobre *benchmarks* curados o filmados profesionalmente **no garantizan** un desempeño equivalente en video amateur.
 
-Los autores pertenecen a una empresa de análisis de video deportivo (Sports Vision, Inc.), por lo que sus conclusiones deben leerse con esa salvedad.
+Se trata de un *preprint* sin revisión por pares, y sus autores pertenecen a una empresa de análisis de video deportivo (Sports Vision, Inc.), por lo que sus conclusiones deben leerse con esa doble salvedad.
 
 Es el antecedente más próximo en **condiciones de captura**, y su conclusión justifica construir y evaluar sobre un dataset propio de video amateur.
 
@@ -180,9 +187,9 @@ El relevamiento muestra que el reconocimiento automático de eventos en video de
 En consecuencia, la **contribución** del presente Trabajo Final consiste en:
 
 - Un **sistema de software documentado** que reconoce y localiza temporalmente el **line-out** sobre **grabaciones amateur de una sola cámara**, **sin sensores ni hardware propietario**, y genera automáticamente los clips correspondientes.
-- Su **aplicabilidad al archivo histórico** de video que los clubes ya poseen, con independencia del dispositivo de grabación.
-- Un **dataset anotado y un protocolo de etiquetado reproducible** de line-outs en video amateur —inexistentes en la literatura relevada—, construidos y validados con un club del **contexto regional argentino**.
-- Una **evaluación cuantitativa** (mAP, precisión, exhaustividad y F1) en condiciones reales de captura amateur, que la literatura de rugby, basada en transmisiones profesionales, no reporta.
+- Un sistema **diseñado para aplicarse al archivo histórico** de video que los clubes ya poseen, sin depender de un dispositivo de grabación propietario. La validación se limita a las grabaciones del club caso testigo.
+- Un **protocolo de etiquetado reproducible** de line-outs en video amateur —guía de etiquetado, medidas de acuerdo entre anotaciones y ficha del conjunto de datos—, construido con un club del **contexto regional argentino**. El conjunto de datos no se publica, por tratarse de imágenes de personas identificables.
+- Una **evaluación cuantitativa del reconocimiento del line-out** (AP, precisión, exhaustividad y F1) en condiciones reales de captura amateur, que la literatura relevada sobre este evento, basada en transmisiones profesionales, no reporta.
 
 ---
 

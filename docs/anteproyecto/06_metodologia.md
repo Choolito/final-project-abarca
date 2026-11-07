@@ -18,7 +18,7 @@ El trabajo combina tres enfoques, uno por cada nivel del proyecto:
 
 | Nivel | Enfoque | Qué gobierna |
 |---|---|---|
-| Gestión del proyecto | Planificación según el **PMBOK** (Project Management Institute, 2021) | Alcance, hitos, cronograma y gestión de riesgos |
+| Gestión del proyecto | **PMBOK**, 7.ª ed. (Project Management Institute, 2021) | Los dominios de desempeño de planificación, medición e incertidumbre: hitos y cronograma, seguimiento del avance y gestión de riesgos |
 | Ciclo de aprendizaje automático | **CRISP-ML(Q)** (Studer et al., 2021) | Las iteraciones técnicas, desde los datos hasta la evaluación, con aseguramiento de calidad en cada fase |
 | Desarrollo de software | **Iterativo e incremental** | La construcción del sistema por capas, empezando por el line-out |
 
@@ -43,10 +43,10 @@ El sistema integra componentes de distinta naturaleza. Sólo dos se entrenan; el
 
 | Componente | ¿Se entrena? | Cómo | Datos | Evaluación |
 |---|---|---|---|---|
-| Detector YOLO | **Sí, por ajuste fino** | Desde pesos preentrenados en COCO | Cajas de *jugador* y *balón* | mAP@0.5 (objetivo 4) |
-| Seguimiento ByteTrack | No | Algoritmo; se configuran umbrales | — | Sin evaluación formal |
+| Detector YOLO | **Sí, por ajuste fino** | Desde pesos preentrenados en COCO | Cajas de *jugador* y *balón* | AP@0.5 de *jugador* (objetivos 4 y 6) |
+| Seguimiento BoT-SORT | No | Algoritmo; se configuran umbrales y la compensación del movimiento de cámara | — | Sin evaluación formal |
 | Características geométricas | No | Se calculan a partir de las trayectorias | — | — |
-| Modelo temporal (LSTM/GRU o convolución 1D) | **Sí, desde cero** | Sobre la serie de características | Instantes de lanzamiento | F1 con δ = 3 s (objetivo 5) |
+| Modelo temporal (LSTM/GRU o convolución 1D) | **Sí, desde cero** | Sobre la serie de características | Instantes de lanzamiento | F1 con δ = 3 s (objetivos 5 y 6) |
 | Línea base heurística | No | Reglas fijas sobre las mismas características | — | F1 con δ = 3 s, como comparación |
 | Clips y catálogo | No | FFmpeg y SQLite | — | Verificación funcional |
 
@@ -54,7 +54,7 @@ El sistema integra componentes de distinta naturaleza. Sólo dos se entrenan; el
 
 **Fuente.** Grabaciones del **plantel superior** del Círculo Rafaelino de Rugby (CRAR), todas de jugadores mayores de 18 años, en partidos **de local y de visitante**. Estos últimos aportan distintas canchas, fondos, iluminaciones y condiciones de captura. Se dispone de más de 60 partidos. Se anotan partidos hasta reunir **≈300 line-outs**, por encima de la meta de 200 del objetivo 2. A razón de ≈25 line-outs por partido (Cullen, 2026), se estiman unos 12 partidos. Los partidos no anotados quedan como **reserva** para el punto de decisión de §1.5.
 
-**Datos personales.** Las imágenes de los jugadores son datos personales en los términos de la Ley 25.326 (Ley N.º 25.326, 2000). Por eso el material se almacena en forma local, el conjunto de datos no se publica y las figuras del informe no permiten identificar a los jugadores.
+**Datos personales.** Las imágenes de los jugadores son datos personales en los términos de la Ley 25.326 (Ley N.º 25.326, 2000). Esto incluye a los jugadores de los equipos rivales, que son terceros sin vínculo con el club caso testigo. Por eso el material se almacena en forma local, con copias de respaldo cifradas, el conjunto de datos no se publica y las figuras del informe no permiten identificar a ningún jugador.
 
 **Anotación.** Se construyen dos conjuntos, uno por componente entrenado:
 
@@ -68,7 +68,7 @@ El sistema integra componentes de distinta naturaleza. Sólo dos se entrenan; el
 
 En ambos casos se informa el error absoluto medio entre instantes, en segundos, y el porcentaje de marcas que coinciden dentro de δ = 3 s. Para las cajas se informa el IoU medio entre anotaciones.
 
-**Partición por partido, balanceada por line-outs.** Cada partido se asigna completo a un único conjunto. Los line-outs y cuadros de un mismo partido comparten cancha, iluminación y equipos, y repartirlos entre conjuntos produciría una **fuga de datos** que inflaría las métricas. Como la cantidad de line-outs varía entre partidos, la proporción 70/15/15 del objetivo 2 se mide sobre el **total de line-outs** y no sobre la cantidad de partidos: los partidos se asignan de modo que entrenamiento, validación y prueba reúnan aproximadamente el 70 %, el 15 % y el 15 % de los line-outs, y se informa la proporción finalmente alcanzada. Los cuadros con cajas siguen la misma partición. Los partidos de distintas canchas se reparten entre los tres conjuntos, de modo que todos reflejen la variedad de condiciones de captura.
+**Partición por partido, balanceada por line-outs.** Cada partido se asigna completo a un único conjunto. Los line-outs y cuadros de un mismo partido comparten cancha, iluminación y equipos, y repartirlos entre conjuntos produciría una **fuga de datos** que inflaría las métricas. Como la cantidad de line-outs varía entre partidos, la proporción 70/15/15 del objetivo 2 se mide sobre el **total de line-outs** y no sobre la cantidad de partidos: los partidos se asignan de modo que entrenamiento, validación y prueba reúnan aproximadamente el 70 %, el 15 % y el 15 % de los line-outs, y se informa la proporción finalmente alcanzada. Los cuadros con cajas siguen la misma partición. Además, la asignación procura que validación y prueba incluyan partidos de local y de visitante, para que reflejen la variedad de condiciones de captura.
 
 **Documentación.** El conjunto de datos se documenta con una ficha según *Datasheets for Datasets* (Gebru et al., 2021): origen, criterios de selección de partidos, guía de etiquetado, acuerdo entre anotaciones y partición. Un **manifiesto** con el *hash* de cada archivo de video y la asignación de partidos a conjuntos garantiza que la partición sea reproducible.
 
@@ -82,9 +82,13 @@ En ambos casos se informa el error absoluto medio entre instantes, en segundos, 
 | Validación | Elegir hiperparámetros, detener el entrenamiento a tiempo, fijar el umbral de confianza y comparar el modelo contra la línea base |
 | Prueba | Medir las métricas que se reportan. Se usa **una sola vez**, al final |
 
-**Detección (objetivo 4).** YOLO se ajusta desde los pesos de COCO. La variante y la resolución de entrada se eligen por el mAP en validación. La meta definitiva es un **mAP@0.5 ≥ 0,70 para la clase *jugador*** sobre el conjunto de prueba. Para el balón se informa el resultado sin umbral exigido.
+**Detección (objetivo 4).** YOLO se ajusta desde los pesos de COCO. La variante y la resolución de entrada se eligen por el AP en validación. La meta definitiva es un **AP@0.5 ≥ 0,70 para la clase *jugador***, medido sobre el conjunto de prueba en la evaluación final (objetivo 6). Para el balón se informa el resultado sin umbral exigido.
 
-**Reconocimiento del line-out (objetivo 5).** El modelo temporal se entrena sobre la serie de características geométricas de los partidos de entrenamiento, con dilatación de etiquetas y muestreo balanceado de ventanas negativas. La línea base heurística se calibra con los mismos datos. La meta definitiva es un **F1 ≥ 0,70 con δ = 3 s** sobre el conjunto de prueba, con el criterio de acierto uno a uno definido en el *Marco Teórico* §1.7. Como datos complementarios se informan el F1 con δ = 2 s, la curva de F1 para δ ∈ {1, 2, 3, 5} s y el average-mAP.
+**Reconocimiento del line-out (objetivo 5).** El modelo temporal se entrena sobre la serie de características geométricas de los partidos de entrenamiento, con dilatación de etiquetas y muestreo balanceado de ventanas negativas. La línea base heurística se calibra con los mismos datos. La meta definitiva es un **F1 ≥ 0,70 con δ = 3 s**, medido sobre el conjunto de prueba en la evaluación final (objetivo 6), con el criterio de acierto uno a uno definido en el *Marco Teórico* §1.7. Como datos complementarios se informan el F1 con δ = 2 s, la curva de F1 para δ ∈ {1, 2, 3, 5} s y el average-mAP.
+
+**Incertidumbre de las métricas.** Con ≈300 line-outs y la partición 70/15/15, el conjunto de prueba reúne ≈45 line-outs de pocos partidos, por lo que un F1 puntual tiene un margen de error del orden de ±0,1. Las métricas de prueba se informan con un **intervalo de confianza del 95 % por *bootstrap***, remuestreando partidos completos. Si el tiempo lo permite, se suma una validación cruzada dejando un partido afuera por vez (*leave-one-match-out*) como estimación complementaria.
+
+**Tiempo de procesamiento (objetivo 6).** Se mide el tiempo que el sistema completo demora en procesar un partido, tanto en GPU como sólo en CPU, para dimensionar los requisitos de cómputo de un club que quiera utilizarlo.
 
 **Análisis de errores (objetivo 6).** Los falsos positivos y negativos del conjunto de prueba se clasifican según su causa probable: line-out en el lado lejano de la cancha, oclusión, movimiento de cámara, formación parcial fuera de cuadro o falla de la detección. El análisis orienta las conclusiones y el trabajo futuro.
 
@@ -92,11 +96,13 @@ En ambos casos se informa el error absoluto medio entre instantes, en segundos, 
 
 ### 1.5. Punto de decisión y riesgos
 
-Al cumplirse el objetivo 4, hacia la **semana 16**, se evalúa el detector sobre el conjunto de validación (**Go/No-Go**). Si el mAP@0.5 de *jugador* no alcanza 0,70, se aplican en orden las siguientes medidas antes de avanzar con la capa semántica:
+Al cumplirse el objetivo 4, hacia la **semana 16**, se evalúa el detector sobre el conjunto de validación (**Go/No-Go**). La capa semántica ya está en desarrollo para ese momento, con las detecciones disponibles. Si el AP@0.5 de *jugador* no alcanza 0,70, se aplican en orden las siguientes medidas, financiadas con la reserva de horas del cronograma:
 
 1. ampliar la anotación de cajas con cuadros de los partidos de reserva;
 2. aumentar la resolución de entrada o usar una variante más grande de YOLO;
 3. aplicar inferencia por mosaicos.
+
+Si tras las tres medidas el umbral sigue sin alcanzarse, se continúa con el mejor detector obtenido: el umbral es una meta de desempeño y no una condición para avanzar. El desvío se documenta y se analiza su impacto sobre el objetivo 5.
 
 | Riesgo | Impacto | Mitigación |
 |---|---|---|
@@ -104,6 +110,9 @@ Al cumplirse el objetivo 4, hacia la **semana 16**, se evalúa el detector sobre
 | El F1 del evento no alcanza el umbral | Objetivo 5 | Revisar las características, sumar partidos de la reserva y analizar errores sobre validación |
 | Grabaciones con encuadre o calidad insuficiente | Objetivos 2, 4 y 5 | Criterios de selección de partidos y reserva de partidos no anotados |
 | Incompatibilidades entre el software y el hardware disponible | Objetivos 4 y 5 | Verificar y fijar las versiones del entorno antes de entrenar |
+| Paneo y *zoom* de la cámara | Objetivos 4 y 5 | Compensación del movimiento de cámara y características normalizadas por la altura de los jugadores |
+| Menor disponibilidad horaria del autor | Todos | Reserva de horas en el cronograma y priorización del núcleo sobre las extensiones |
+| Pérdida de datos o anotaciones | Objetivo 2 | Copias de respaldo periódicas y versionado del manifiesto y de las anotaciones |
 
 ### 1.6. Arquitectura e implementación
 
@@ -124,7 +133,7 @@ Los clips de ±10 s se recortan con FFmpeg **recodificando** el video. La copia 
 | Uso | Herramienta |
 |---|---|
 | Lenguaje y aprendizaje profundo | Python y PyTorch |
-| Detección y seguimiento | Ultralytics YOLO y ByteTrack |
+| Detección y seguimiento | Ultralytics YOLO y BoT-SORT |
 | Procesamiento de video | OpenCV y FFmpeg |
 | Anotación | CVAT (cajas) y planilla de instantes |
 | Registro de experimentos | MLflow (local) |

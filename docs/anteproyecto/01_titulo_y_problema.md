@@ -10,7 +10,7 @@
 
 **Sistema de Reconocimiento Automático de Eventos Deportivos en Video mediante Visión por Computadora — Caso de Estudio: Análisis de Partidos de Rugby.**
 
-*Subtítulo técnico:* Plataforma modular de detección, segmentación y catalogación de eventos tácticos en secuencias de video, basada en arquitecturas de aprendizaje profundo aplicadas al reconocimiento de comportamiento colectivo.
+*Subtítulo técnico:* Detección automática de line-outs y generación de clips en video amateur mediante visión por computadora.
 
 El proyecto se encuadra en el **Artículo 2, inciso b** del Reglamento para la Elaboración de los Trabajos Finales de la Carrera de Ingeniería en Informática de la UCSE, en tanto propone el *desarrollo de una idea, prototipo y/o sistema que contribuya a la aplicación de las tecnologías afines a la currícula de la carrera*, integrando competencias de ingeniería de software, inteligencia artificial y procesamiento de señales.
 
@@ -20,7 +20,7 @@ El proyecto se encuadra en el **Artículo 2, inciso b** del Reglamento para la E
 
 ### 2.1. Contexto y dominio de aplicación
 
-El análisis de video se ha consolidado como una herramienta determinante en la preparación táctica de los cuerpos técnicos del deporte profesional contemporáneo. En disciplinas de alta complejidad espacio-temporal como el rugby —caracterizadas por formaciones colectivas (*scrum*, *line-out*, *ruck*, *maul*), transiciones rápidas y una densidad elevada de agentes en interacción— la revisión sistemática de las grabaciones constituye una fuente primaria de información para la planificación estratégica, la evaluación del rendimiento individual y la toma de decisiones arbitrales.
+El análisis de video se ha consolidado como una herramienta determinante en la preparación táctica de los cuerpos técnicos del deporte profesional contemporáneo. En disciplinas de alta complejidad espacio-temporal como el rugby —caracterizadas por formaciones colectivas (*scrum*, *line-out*, *ruck*, *maul*), transiciones rápidas y una densidad elevada de agentes en interacción— la revisión sistemática de las grabaciones constituye una fuente primaria de información para la planificación estratégica, y la evaluación del rendimiento individual y colectivo.
 
 Sin embargo, el proceso por el cual esa información en bruto se convierte en conocimiento táctico accionable presenta tres problemáticas concurrentes que motivan el presente Trabajo Final.
 
@@ -30,19 +30,19 @@ Sin embargo, el proceso por el cual esa información en bruto se convierte en co
 
 En la práctica habitual de instituciones amateur y semiprofesionales, la catalogación de eventos tácticos en video es un procedimiento **manual, iterativo y escasamente reproducible**. El analista recorre de forma secuencial la grabación completa del encuentro, identifica visualmente los eventos de interés, los marca temporalmente y los segmenta en clips para su posterior estudio. Esta tarea:
 
-- Consume un volumen de horas desproporcionado respecto de la duración efectiva del partido, con ratios frecuentemente superiores a 4:1 entre tiempo de análisis y tiempo de juego.
+- Consume un volumen de horas desproporcionado respecto de la duración efectiva del partido. En el club caso testigo, el análisis manual de un partido de 80 minutos demanda entre **2 y 3 horas** de trabajo del analista, que se repiten en cada fecha de la temporada.
 - Depende de la pericia y disponibilidad de un recurso humano especializado, lo que introduce variabilidad en los criterios de etiquetado y dificulta la trazabilidad entre analistas.
 - Restringe el tiempo disponible para el análisis interpretativo de alto nivel —la actividad que efectivamente aporta valor al cuerpo técnico— desplazándolo hacia tareas mecánicas de localización y recorte.
 
 #### 2.2.2. Brecha de accesibilidad de las soluciones comerciales
 
-Las plataformas comerciales actualmente disponibles en el mercado internacional abordan parcialmente esta problemática mediante la integración de **hardware especializado de IoT**, tales como sensores inerciales embebidos en el balón de juego, dispositivos GPS colocados en los jugadores o cámaras multiespectrales sincronizadas. Si bien esta clase de soluciones ofrece resultados de alta precisión, presenta barreras estructurales de adopción:
+Las soluciones que automatizan parcialmente esta tarea siguen dos caminos. En el **alto rendimiento** se apoyan en la instrumentación del entorno de juego, como dispositivos GPS e inerciales colocados en los jugadores o sistemas de cámaras sincronizadas para el seguimiento óptico. En el ámbito amateur surgieron **cámaras autónomas con inteligencia artificial**, que detectan algunos eventos sobre el video que ellas mismas graban (ver *Antecedentes*). Ambos caminos presentan barreras de adopción:
 
-- **Barrera económica:** el costo de licenciamiento, adquisición y mantenimiento del hardware es incompatible con el presupuesto operativo de clubes amateur o federaciones regionales.
-- **Barrera logística:** la necesidad de instrumentación física del entorno —balones certificados, chalecos con sensores, infraestructura de captura— resulta inviable en el contexto de partidos disputados en canchas de propiedad de terceros o en torneos sin control centralizado de material.
-- **Barrera de dependencia:** la vinculación del software a un ecosistema de hardware propietario impide su uso sobre el archivo de video histórico del club, que constituye precisamente el activo de mayor valor analítico.
+- **Barrera económica:** la adquisición de hardware y las licencias o suscripciones, en general en moneda extranjera, son difíciles de sostener para clubes amateur o federaciones regionales.
+- **Barrera logística:** instrumentar el entorno de juego —chalecos con sensores, infraestructura de captura— resulta inviable en partidos disputados en canchas de terceros o en torneos sin control centralizado del material.
+- **Barrera de dependencia:** el análisis queda atado al dispositivo del fabricante. No se aplica al archivo histórico del club ni a video registrado con otros equipos, y su método es cerrado, sin posibilidad de auditarlo o adaptarlo.
 
-En consecuencia, el beneficio del análisis asistido por inteligencia artificial queda reservado al deporte profesional de primer nivel, reproduciendo a escala tecnológica la brecha competitiva ya existente a escala económica.
+En consecuencia, el análisis automático de eventos queda condicionado a la adquisición de hardware y servicios propietarios, y no alcanza al video que los clubes ya registran con sus propios medios.
 
 #### 2.2.3. Carencia tecnológica en el ámbito local
 
@@ -76,10 +76,10 @@ A fin de preservar la separación de responsabilidades y facilitar la evolución
 
 El desarrollo se apoyará en el ecosistema de Python y, en particular, en el siguiente conjunto de tecnologías de referencia, confirmado y ajustado en el *Marco Teórico* ([`05_marco_teorico.md`](05_marco_teorico.md) §1.9). Se distingue el **núcleo comprometido**, suficiente para cumplir los objetivos, de las **extensiones opcionales**, que no condicionan ningún objetivo:
 
-- **Detección y seguimiento de agentes:** arquitecturas de detección de la familia **YOLO** (*You Only Look Once*) para la localización de jugadores y balón, complementadas con el algoritmo de seguimiento multi-objeto **ByteTrack** para la persistencia de identidad entre cuadros.
+- **Detección y seguimiento de agentes:** arquitecturas de detección de la familia **YOLO** (*You Only Look Once*) para la localización de jugadores y balón, complementadas con el algoritmo de seguimiento multi-objeto **BoT-SORT** (sin reidentificación por apariencia), que compensa el movimiento de la cámara, para la persistencia de identidad entre cuadros.
 - **Reconocimiento temporal del evento:** formulación como *action spotting* —un instante por line-out—, a partir de características espaciales de la formación derivadas de la percepción y procesadas por un modelo temporal liviano (**LSTM/GRU** o convolución 1D) y contrastadas con una línea base heurística.
 - **Infraestructura de soporte:** **OpenCV** y **FFmpeg** para el procesamiento de video y el recorte de clips, **SQLite** para la persistencia del catálogo de eventos y una interfaz de línea de comandos para operar el sistema.
-- **Extensiones opcionales:** comparación de trackers (**BoT-SORT**) y métricas de seguimiento; un modelo de video de extremo a extremo (**E2E-Spot**); estimación de pose (**MediaPipe**); y un servicio web (**FastAPI**) para exponer el catálogo.
+- **Extensiones opcionales:** comparación con otros algoritmos de seguimiento y métricas de seguimiento; registración de la cancha por homografía; un modelo de video de extremo a extremo (**E2E-Spot**); estimación de pose (**MediaPipe**); y un servicio web (**FastAPI**) para exponer el catálogo.
 
 ### 3.4. Propuesta de valor
 
