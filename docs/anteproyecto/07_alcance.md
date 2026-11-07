@@ -33,7 +33,7 @@ Este apartado delimita con precisión **qué se va a hacer y qué no se va a hac
 
 - Se dispone de grabaciones de partidos con calidad y encuadre suficientes para identificar visualmente los eventos.
 - Se cuenta con la colaboración de al menos un referente del cuerpo técnico para validar los criterios de etiquetado.
-- El volumen del conjunto de datos y los umbrales de las métricas son metas de referencia preliminares, sujetas a ajuste según la disponibilidad real de material.
+- El volumen del conjunto de datos depende de la disponibilidad real de material; los umbrales de las métricas se fijan en *Metodología* (Art. 6b.6).
 - El desarrollo se realiza con recursos de cómputo estándar disponibles para el autor, sin infraestructura especializada.
 
 ---

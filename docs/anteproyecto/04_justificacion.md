@@ -16,7 +16,7 @@ El análisis de video es hoy un insumo central de la preparación táctica, pero
 
 ### 1.2. Relevancia social
 
-Las soluciones comerciales que automatizan esta tarea se apoyan en instrumentación física del entorno de juego (sensores en el balón, GPS en los jugadores, cámaras certificadas), cuyo costo y logística las vuelven inaccesibles para el deporte amateur y semiprofesional. Esto reproduce, a escala tecnológica, la brecha competitiva ya existente a escala económica. Al prescindir de hardware específico y operar sobre grabaciones estándar —incluido el **archivo histórico** de los clubes—, el sistema busca **democratizar el acceso** a herramientas de análisis táctico de alto rendimiento, tomando como caso testigo al ecosistema del rugby amateur regional.
+Las soluciones que automatizan esta tarea dependen de hardware propietario: instrumentación del entorno de juego en el alto rendimiento (dispositivos GPS e inerciales, sistemas de seguimiento óptico) o cámaras autónomas con suscripción en el ámbito amateur. En ambos casos el análisis queda atado a un dispositivo y a un método cerrado, y no alcanza al video que los clubes ya registran con sus propios medios. Al operar sobre grabaciones estándar —incluido el **archivo histórico** de los clubes— y con un método abierto y documentado, el sistema busca **democratizar el acceso** a herramientas de análisis táctico, tomando como caso testigo al ecosistema del rugby amateur regional.
 
 ### 1.3. Relevancia académica y tecnológica
 
