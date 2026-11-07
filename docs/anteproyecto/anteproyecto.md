@@ -114,7 +114,7 @@ Este apartado delimita **qué se va a hacer y qué no se va a hacer** en el Trab
 - Reconocimiento del *line-out* (evento inicial y único de validación obligatoria) y su localización temporal: objetivo central del sistema.
 - Detección y seguimiento de jugadores y balón como **paso intermedio necesario** para identificar el evento (no es un fin en sí mismo).
 - Registro indexado de eventos y **generación automática de clips segmentados**, con una ventana de referencia de **≈10 s antes y 10 s después** del evento.
-- Validación sobre grabaciones reales del ámbito amateur regional con métricas objetivas (mAP; precisión, exhaustividad y F1-score).
+- Validación sobre grabaciones reales del ámbito amateur regional con métricas objetivas (AP@0.5 de la detección; precisión, exhaustividad y F1-score).
 - Arquitectura **modular**, con *scrum* y *ruck* especificados como extensión opcional, no exigible.
 
 **Qué no se va a hacer:**
