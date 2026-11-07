@@ -11,7 +11,7 @@ Documento de entrega del anteproyecto con la **estructura de la plantilla de la 
 | `paginas.json` | Números de página del índice |
 | `logo.png`, `gantt_rgb.png` | Logo UCSE (extraído de la plantilla) y diagrama de Gantt |
 
-El contenido de referencia sigue siendo `docs/anteproyecto/`: este documento es una versión condensada para respetar la extensión de entrega (≈11 páginas con portada y bibliografía). La bibliografía incluye sólo las 31 obras citadas en esta versión (Art. 9c).
+El contenido de referencia sigue siendo `docs/anteproyecto/`: este documento es una versión condensada para respetar la extensión de entrega (15 páginas con portada y bibliografía). La bibliografía incluye sólo las 39 obras citadas en esta versión (Art. 9c).
 
 Para regenerarlo:
 

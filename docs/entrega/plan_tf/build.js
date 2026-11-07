@@ -89,7 +89,7 @@ let n = 0;
 for (const b of C.secciones) {
   if (b.h1) { n++; body.push(new Paragraph({ heading: HeadingLevel.HEADING_1, children: [new TextRun(`${n}. ${b.h1}`)] })); }
   else if (b.h2) body.push(new Paragraph({ heading: HeadingLevel.HEADING_2, children: [new TextRun(b.h2)] }));
-  else if (b.p) body.push(P(b.p));
+  else if (b.p) body.push(P(b.p, /:\*{0,2}$/.test(b.p.trim()) || b.p.startsWith("La tabla") ? { keepNext: true } : {}));
   else if (b.bullets) b.bullets.forEach(t => body.push(P(t, { numbering: { reference: "vinetas", level: 0 } })));
   else if (b.numbered) b.numbered.forEach(t => body.push(P(t, { numbering: { reference: "objetivos", level: 0 } })));
   else if (b.table) { body.push(table(b.table)); body.push(new Paragraph({ spacing: { after: 60 }, children: [] })); }
