@@ -136,9 +136,9 @@ Este apartado delimita **qué se va a hacer y qué no se va a hacer** en el Trab
 
 El plan se expresa en **semanas relativas** (S1 = inicio del desarrollo tras la aprobación del anteproyecto) sobre **26 semanas**, con una dedicación de referencia de ≈10 horas semanales e iteraciones de dos semanas.
 
-- **18 actividades** con descripción, duración, horas, predecesoras y entregable. Suman ≈245 horas sobre ≈260 disponibles.
+- **19 actividades** con descripción, duración, horas, predecesoras y entregable. Suman ≈222 horas sobre ≈260 disponibles; el resto (≈15 %) es una reserva para contingencias.
 - **Hitos:** catálogo (S3), diseño presentado al Director (S5), dataset completo (S14), Go/No-Go del detector (S16), line-out integrado (S22) e informe final (S26).
-- **Camino crítico:** construcción del dataset, ajuste del detector, modelo temporal y evaluación final. Para mitigarlo, el detector se empieza a ajustar en la S8 con las cajas ya anotadas.
+- **Camino crítico:** etiquetado de cajas y partición del dataset, ajuste del detector y del seguimiento, modelo temporal, capa de eventos, evaluación final y revisión del informe. Para mitigarlo, el detector se empieza a ajustar en la S8 con las cajas ya etiquetadas.
 - Las extensiones opcionales no se planifican: sólo se abordan si queda holgura una vez cumplido el objetivo 5.
 
 > El desarrollo completo de este apartado, con la tabla de actividades y el diagrama de Gantt, se encuentra en [`08_cronograma.md`](08_cronograma.md).
